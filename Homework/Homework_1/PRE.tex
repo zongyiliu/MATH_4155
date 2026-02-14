@@ -1,2 +1,286 @@
+\documentclass[letterpaper]{article} 
+\usepackage[utf8]{inputenc}
+\linespread{0.85}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{fontspec}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage[dvipsnames]{xcolor}
+\colorlet{LightRubineRed}{RubineRed!70}
+\colorlet{Mycolor1}{green!10!orange}
+\definecolor{Mycolor2}{HTML}{00F9DE}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{capt-of}
+\usepackage{lipsum}
+\usepackage{fancyvrb}
+\usepackage{tabularx}
+\usepackage{listings}
+\usepackage[export]{adjustbox}
+\graphicspath{ {./images/} }
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{float}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{capt-of}
+\usepackage{tcolorbox}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{listings}
+\definecolor{deepred}{RGB}{139,0,0}
+\usepackage{hyperref} 
+\usepackage{xcolor} % For custom colors
+\lstset{
+	language=Python,                % Choose the language (e.g., Python, C, R)
+	basicstyle=\ttfamily\small, % Font size and type
+	keywordstyle=\color{blue},  % Keywords color
+	commentstyle=\color{gray},  % Comments color
+	stringstyle=\color{red},    % String color
+	numbers=left,               % Line numbers
+	numberstyle=\tiny\color{gray}, % Line number style
+	stepnumber=1,               % Numbering step
+	breaklines=true,            % Auto line break
+	backgroundcolor=\color{black!5}, % Light gray background
+	frame=single,               % Frame around the code
+}
+\usepackage{float}
+\usepackage[]{amsthm} %lets us use \begin{proof}
+	\usepackage[]{amssymb} %gives us the character \varnothing
+	
+	\title{Homework 1, MATH 4155}
+	\author{Zongyi Liu}
+	\date{Wed, Jan 28, 2026}
+	\begin{document}
+		\maketitle
+		
+		\section{Question 1}
+		
+		For arbitrary events $A_1,\dots,A_n$ on a probability space $(\Omega,\mathcal{F},\mathbb{P})$, prove the so-called \emph{Inclusion--Exclusion Formula}:
+		\[
+		\mathbb{P}\!\left( \bigcup_{i=1}^n A_i \right)
+		= \sum_{i=1}^n \mathbb{P}(A_i)
+		- \sum_{i<j} \mathbb{P}(A_i \cap A_j)
+		+ \sum_{i<j<k} \mathbb{P}(A_i \cap A_j \cap A_k)
+		- \cdots
+		+ (-1)^{n+1} \mathbb{P}\!\left( \bigcap_{i=1}^n A_i \right).
+		\]
+		This formula can be written more compactly as
+		\[
+		\mathbb{P}\!\left( \bigcup_{i=1}^n A_i \right)
+		=
+		\sum_{\substack{\mathcal{J} \subseteq \{1,\dots,n\} \\ \mathcal{J} \neq \emptyset}}
+		(-1)^{|\mathcal{J}|+1}
+		\mathbb{P}\!\left( \bigcap_{j \in \mathcal{J}} A_j \right).
+		\]
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+	
+	\section{Question 2}
+	
+	Let $X,Y$ be real-valued, measurable functions on $(\Omega,\mathcal{F})$.
+	If $c$ is a real number, show that the functions below are also measurable:
+	\[
+	cX, \qquad X^2, \qquad X+Y, \qquad XY, \qquad |X|, \qquad X^{\pm}.
+	\]
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 3}
+		
+		Let $\Omega$ be an arbitrary nonempty set, and denote by $\mathcal{C}$ the
+		collection of all its \emph{singletons}, that is, all subsets that consist of
+		exactly one element of $\Omega$. Show that
+		\[
+		\sigma(\mathcal{C}) = \mathcal{A}
+		:= \bigl\{ A \subset \Omega : A \text{ or } A^c \text{ is countable} \bigr\}.
+		\]
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 4}
+		{\color{deepred}\fontspec{Georgia} Stirling's Formula}
+		
+			Establish the celebrated Stirling formula
+			\[
+			n! \sim \sqrt{2\pi n}\, n^{\,n} e^{-n},
+			\]
+			actually in its stronger version
+			\begin{equation}
+				n! = \sqrt{2\pi}\, n^{\,n+\frac12} e^{-n+\varepsilon_n}
+				\qquad \text{with} \qquad
+				\frac{1}{12n+1} < \varepsilon_n < \frac{1}{12n}.
+				\tag{0.1}
+			\end{equation}
+			
+			\emph{Hint:} Establish the double inequality
+			\[
+			n \log n - n < \log n! < (n+1)\log(n+1) - n,
+			\]
+			which suggests considering the quantity
+			\[
+			C_n := \log n! - \left(n+\frac12\right)\log n + n
+			\]
+			(the difference of the middle term from the average of the upper and lower bounds).
+			Show that
+			\[
+			C := \lim_{n\to\infty} C_n
+			\]
+			exists in $(0,\infty)$, in fact that we have
+			\[
+			C + \frac{1}{12n+1} < C_n < C + \frac{1}{12n},
+			\qquad \forall\, n \in \mathbb{N}.
+			\]
 
-a
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 5}
+		
+		A sub-collection $\mathcal{C} \subseteq \mathcal{B}$ of a $\sigma$-algebra
+		$\mathcal{B}$ is called a \emph{generating system} (for $\mathcal{B}$), if
+		$\mathcal{B} = \sigma(\mathcal{C})$.
+		
+		Show that each of the collections
+		\[
+		\begin{aligned}
+			\mathcal{C}_1 &= \{ (a,b) \mid a \in \mathbb{R},\ b \in \mathbb{R},\ a<b \}, \\
+			\mathcal{C}_2 &= \{ [a,b] \mid a \in \mathbb{R},\ b \in \mathbb{R},\ a<b \}, \\
+			\mathcal{C}_3 &= \{ (a,b] \mid a \in \mathbb{R},\ b \in \mathbb{R},\ a<b \}, \\
+			\mathcal{C}_4 &= \{ [a,b) \mid a \in \mathbb{R},\ b \in \mathbb{R},\ a<b \}, \\
+			\mathcal{C}_5 &= \{ (a,\infty) \mid a \in \mathbb{R} \}, \\
+			\mathcal{C}_6 &= \{ O \subset \mathbb{R} \mid O \text{ open in } \mathbb{R} \}
+		\end{aligned}
+		\]
+		is a generating system for the $\sigma$-algebra of Borel subsets
+		$\mathcal{B}(\mathbb{R})$ of the real line.
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 6}
+		
+		 In a sequence of independent coin tosses, what is the probability that $n$ successes (heads) materialize before $m$ failures (tails) do?
+		 
+		 	\textbf{Answer}
+		 
+		 \clearpage
+		
+		
+		
+		\section{Question 7}
+		{\color{deepred}\fontspec{Georgia} Walsh 1.31} Show that if $B$ is an event of strictly positive probability, then
+		$\mathbb{P}(\,\cdot \mid B)$ is a probability measure on $(\Omega,\mathcal{F})$.
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 8}
+		{\color{deepred}\fontspec{Georgia} Walsh 1.32} Prove the \emph{Sure-Thing Principle}: if $A,B,$ and $C$ are events, and if
+		\[
+		\mathbb{P}(A \mid C) \ge \mathbb{P}(B \mid C)
+		\quad \text{and} \quad
+		\mathbb{P}(A \mid C^c) \ge \mathbb{P}(B \mid C^c),
+		\]
+		then $
+		\mathbb{P}(A) \ge \mathbb{P}(B).$
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 9}
+		
+		{\color{deepred}\fontspec{Georgia} Walsh 1.68 The Birthday Problem} A class has $n$ students. What is the probability that at least two have the same birthday? (Ignore leap years and twins.) Compute the probability for $n = 10, 15, 22, 30$ and $40$. Do you find anything curious about your answers?
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 10}
+		
+		
+		{\color{deepred}\fontspec{Georgia} Walsh 1.69 G. Slade} A gambler is in desperate need of \$1000, but only has \$n. The gambler decides to play roulette, betting \$1 on either red or black each time, until either reaching \$1000 (and then stopping) or going broke. The probability of winning a bet on red or black at a US casino is $18/38$.
+	
+\begin{enumerate}
+\item[(a)] How large must $n$ be for the gambler to have a probability $1/2$ of success?
+\item[(b)] Suppose the gambler starts with this stake. How much can the casino possibly lose?
+\end{enumerate}
+
+[Hint: It is instructive to plot the probability of success as a function of the initial stake $n$.]
+
+\textbf{Answer}
+
+\clearpage
+		
+		\section{Question 11}
+		
+		{\color{deepred}\fontspec{Georgia} Walsh 1.70 Continuation} Suppose the gambler in the preceding problem starts with \$950.
+	
+\begin{enumerate}
+\item[(a)] What is the probability of succeeding---i.e., reaching \$1000 before going broke?
+
+\item[(b)] Suppose the gambler is not restricted to bets of one dollar, but can bet all the money he or she has at any play. (Bets are still on either red or black.) Show that the gambler can succeed more than 92\% of the time.
+
+\end{enumerate}
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 12}
+		
+		{\color{deepred}\fontspec{Georgia} Walsh 1.71} Show that the gambler's ruin eventually ends, i.e. that the gambler's fortune eventually reaches either $0$ or $N$.
+	
+		
+
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 13}
+		
+		{\color{deepred}\fontspec{Georgia} Walsh 1.72} Suppose the gambler's opponent can borrow money at any time, and therefore need never go broke. Suppose that the probability that the gambler wins a given game is $p$.
+	
+\begin{enumerate}
+\item[(a)] If $p \le 1/2$, show that the gambler will eventually go broke.
+\item[(b)] Suppose $p > 1/2$. Find the probability that the gambler eventually goes broke. What do you suppose happens if he does not go broke? Can you prove it?
+\end{enumerate}
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		
+		
+		
+		
+		
+		
+		
+	\end{document}
