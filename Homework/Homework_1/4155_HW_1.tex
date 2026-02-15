@@ -1,0 +1,1012 @@
+\documentclass[letterpaper]{article} 
+\usepackage[utf8]{inputenc}
+\linespread{0.85}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{fontspec}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage[dvipsnames]{xcolor}
+\colorlet{LightRubineRed}{RubineRed!70}
+\colorlet{Mycolor1}{green!10!orange}
+\definecolor{Mycolor2}{HTML}{00F9DE}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{capt-of}
+\usepackage{lipsum}
+\usepackage{fancyvrb}
+\usepackage{tabularx}
+\usepackage{listings}
+\usepackage[export]{adjustbox}
+\graphicspath{ {./images/} }
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{float}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{capt-of}
+\usepackage{tcolorbox}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{listings}
+\definecolor{deepred}{RGB}{139,0,0}
+\usepackage{hyperref} 
+\usepackage{xcolor} % For custom colors
+\lstset{
+	language=Python,                % Choose the language (e.g., Python, C, R)
+	basicstyle=\ttfamily\small, % Font size and type
+	keywordstyle=\color{blue},  % Keywords color
+	commentstyle=\color{gray},  % Comments color
+	stringstyle=\color{red},    % String color
+	numbers=left,               % Line numbers
+	numberstyle=\tiny\color{gray}, % Line number style
+	stepnumber=1,               % Numbering step
+	breaklines=true,            % Auto line break
+	backgroundcolor=\color{black!5}, % Light gray background
+	frame=single,               % Frame around the code
+}
+\usepackage{float}
+\usepackage[]{amsthm} %lets us use \begin{proof}
+	\usepackage[]{amssymb} %gives us the character \varnothing
+	
+	\title{Homework 1, MATH 4155}
+	\author{Zongyi Liu}
+	\date{Wed, Jan 28, 2026}
+	\begin{document}
+		\maketitle
+		
+		\section{Question 1}
+		
+		For arbitrary events $A_1,\dots,A_n$ on a probability space $(\Omega,\mathcal{F},\mathbb{P})$, prove the so-called \emph{Inclusion--Exclusion Formula}:
+		\[
+		\mathbb{P}\!\left( \bigcup_{i=1}^n A_i \right)
+		= \sum_{i=1}^n \mathbb{P}(A_i)
+		- \sum_{i<j} \mathbb{P}(A_i \cap A_j)
+		+ \sum_{i<j<k} \mathbb{P}(A_i \cap A_j \cap A_k)
+		- \cdots
+		+ (-1)^{n+1} \mathbb{P}\!\left( \bigcap_{i=1}^n A_i \right).
+		\]
+		This formula can be written more compactly as
+		\[
+		\mathbb{P}\!\left( \bigcup_{i=1}^n A_i \right)
+		=
+		\sum_{\substack{\mathcal{J} \subseteq \{1,\dots,n\} \\ \mathcal{J} \neq \emptyset}}
+		(-1)^{|\mathcal{J}|+1}
+		\mathbb{P}\!\left( \bigcap_{j \in \mathcal{J}} A_j \right).
+		\]
+		
+		\textbf{Answer}
+		
+			Let $\mathbf{1}_A$ denote the indicator of an event $A$. For $\omega\in\Omega$, set
+			$N(\omega):=\sum_{i=1}^n \mathbf{1}_{A_i}(\omega)$, the number of the events $A_i$
+			that occur at $\omega$. Note that
+			\[
+			\mathbf{1}_{\cup_{i=1}^n A_i}(\omega)=\mathbf{1}\{N(\omega)\ge 1\}.
+			\]
+			
+			For any fixed $\omega$, consider the quantity
+			\[
+			S(\omega):=
+			\sum_{\substack{\mathcal{J}\subseteq\{1,\dots,n\}\\ \mathcal{J}\neq\emptyset}}
+			(-1)^{|\mathcal{J}|+1}\,
+			\mathbf{1}_{\cap_{j\in\mathcal{J}}A_j}(\omega).
+			\]
+			If $N(\omega)=m$, then exactly those $\mathcal{J}$ contained in the set of the
+			$m$ indices for which $\omega\in A_i$ contribute $1$; all other intersections have
+			indicator $0$. Hence
+			\[
+			S(\omega)=\sum_{k=1}^m (-1)^{k+1}\binom{m}{k}.
+			\]
+			Using $\sum_{k=0}^m (-1)^k\binom{m}{k}=(1-1)^m=0$, we get
+			\[
+			\sum_{k=1}^m (-1)^k\binom{m}{k}=-\binom{m}{0}=-1
+			\quad\Longrightarrow\quad
+			\sum_{k=1}^m (-1)^{k+1}\binom{m}{k}=1.
+			\]
+			Therefore $S(\omega)=1$ if $m\ge 1$, and if $m=0$ then $S(\omega)=0$. Thus
+			\[
+			S(\omega)=\mathbf{1}\{N(\omega)\ge 1\}=\mathbf{1}_{\cup_{i=1}^n A_i}(\omega),
+			\qquad \forall\,\omega\in\Omega.
+			\]
+			Taking expectations and using linearity,
+			\begin{align*}
+				\mathbb{P}\!\left(\bigcup_{i=1}^n A_i\right)
+				&=\mathbb{E}\left[\mathbf{1}_{\cup_{i=1}^n A_i}\right]
+				=\mathbb{E}[S]\\
+				&=
+				\sum_{\substack{\mathcal{J}\subseteq\{1,\dots,n\}\\ \mathcal{J}\neq\emptyset}}
+				(-1)^{|\mathcal{J}|+1}\,
+				\mathbb{E}\!\left[\mathbf{1}_{\cap_{j\in\mathcal{J}}A_j}\right]\\
+				&=
+				\sum_{\substack{\mathcal{J}\subseteq\{1,\dots,n\}\\ \mathcal{J} \neq \emptyset}}
+				(-1)^{|\mathcal{J}|+1}\,
+				\mathbb{P}\!\left(\bigcap_{j\in\mathcal{J}}A_j\right),
+			\end{align*}
+			which is the compact inclusion--exclusion formula. Expanding by $|\mathcal{J}|=1,2,\dots,n$
+			yields
+			\[
+			\mathbb{P}\!\left( \bigcup_{i=1}^n A_i \right)
+			= \sum_{i=1}^n \mathbb{P}(A_i)
+			- \sum_{i<j} \mathbb{P}(A_i \cap A_j)
+			+ \sum_{i<j<k} \mathbb{P}(A_i \cap A_j \cap A_k)
+			- \cdots
+			+ (-1)^{n+1}\mathbb{P}\!\left(\bigcap_{i=1}^n A_i\right).
+			\]
+
+		
+		
+		\clearpage
+		
+	
+	\section{Question 2}
+	
+	Let $X,Y$ be real-valued, measurable functions on $(\Omega,\mathcal{F})$.
+	If $c$ is a real number, show that the functions below are also measurable:
+	\[
+	cX, \qquad X^2, \qquad X+Y, \qquad XY, \qquad |X|, \qquad X^{\pm}.
+	\]
+		
+		\textbf{Answer}
+		
+			In the question's setting, $X,Y:(\Omega,\mathcal{F})\to\mathbb{R}$ are measurable and $c\in\mathbb{R}$.
+			
+			\medskip
+			\noindent\underline{(1) $cX$ is measurable.}
+			If $c=0$, then $cX\equiv 0$ is measurable. If $c\neq 0$, for any $a\in\mathbb{R}$,
+			\[
+			\{cX<a\}=
+			\begin{cases}
+				\{X<a/c\}, & c>0,\\
+				\{X>a/c\}, & c<0,
+			\end{cases}
+			\]
+			which lies in $\mathcal{F}$ since $X$ is measurable. Hence $cX$ is measurable.
+			
+			\medskip
+			\noindent\underline{(2) $X^2$ is measurable.}
+			For any $a\in\mathbb{R}$,
+			\[
+			\{X^2<a\}=
+			\begin{cases}
+				\emptyset, & a\le 0,\\
+				\{-\sqrt{a}<X<\sqrt{a}\}
+				=\{X<\sqrt{a}\}\cap\{X>-\sqrt{a}\}, & a>0,
+			\end{cases}
+			\]
+			and the right-hand side is in $\mathcal{F}$ since $X$ is measurable. Thus $X^2$ is measurable.
+			
+			\medskip
+			\noindent\underline{(3) $X+Y$ is measurable.}
+			For any $a\in\mathbb{R}$,
+			\[
+			\{X+Y<a\}=\bigcup_{q\in\mathbb{Q}}\Bigl(\{X<q\}\cap\{Y<a-q\}\Bigr).
+			\]
+			Indeed, $X(\omega)+Y(\omega)<a$ iff there exists $q\in\mathbb{Q}$ with
+			$X(\omega)<q<a-Y(\omega)$ (density of $\mathbb{Q}$).
+			Each set in the union is in $\mathcal{F}$ by measurability of $X,Y$, and the union is countable,
+			so $\{X+Y<a\}\in\mathcal{F}$. Hence $X+Y$ is measurable.
+			
+			\medskip
+			\noindent\underline{(4) $XY$ is measurable.}
+			First note that $X-Y$ is measurable by applying (3) to $X$ and $(-1)Y$ (and using (1)).
+			Then $X^2$ and $Y^2$ are measurable by (2), hence so is $(X-Y)^2$ by (2) applied to $X-Y$.
+			Using the identity
+			\[
+			XY=\frac{X^2+Y^2-(X-Y)^2}{2},
+			\]
+			and the fact that sums and scalar multiples of measurable functions are measurable by (1) and (3),
+			it follows that $XY$ is measurable.
+			
+			\medskip
+			\noindent\underline{(5) $|X|$ is measurable.}
+			Since $X^2$ is measurable and $\sqrt{\cdot}$ is continuous on $[0,\infty)$,
+			\[
+			|X|=\sqrt{X^2}
+			\]
+			is measurable.
+			
+			\medskip
+			\noindent\underline{(6) $X^{\pm}$ are measurable.}
+			We know that
+			\[
+			X^+:=\max\{X,0\}=\frac{X+|X|}{2},
+			\qquad
+			X^-:=\max\{-X,0\}=\frac{-X+|X|}{2}.
+			\]
+			By (1), (3), and (5), the right-hand sides are measurable, hence $X^+$ and $X^-$ are measurable.
+		
+		
+		\clearpage
+		
+		\section{Question 3}
+		
+		Let $\Omega$ be an arbitrary nonempty set, and denote by $\mathcal{C}$ the
+		collection of all its \emph{singletons}, that is, all subsets that consist of
+		exactly one element of $\Omega$. Show that
+		\[
+		\sigma(\mathcal{C}) = \mathcal{A}
+		:= \bigl\{ A \subset \Omega : A \text{ or } A^c \text{ is countable} \bigr\}.
+		\]
+		
+		
+		\textbf{Answer}
+		
+			Let $\Omega$ be a nonempty set and let
+			$\mathcal{C}:=\bigl\{\{\omega\}:\omega\in\Omega\bigr\}$ be the collection of all singletons.
+			Then we define
+			\[
+			\mathcal{A}:=\{A\subseteq\Omega:\ A \text{ is countable or } A^c \text{ is countable}\}.
+			\]
+			We prove that $\sigma(\mathcal{C})=\mathcal{A}$.
+			
+			\medskip
+			\noindent\underline{Step 1: $\mathcal{A}$ is a $\sigma$-algebra.}
+			\begin{itemize}
+				\item $\Omega\in\mathcal{A}$ since $\Omega^c=\varnothing$ is countable.
+				\item If $A\in\mathcal{A}$, then either $A$ is countable or $A^c$ is countable.
+				In either case, $A^c\in\mathcal{A}$ by definition. Hence $\mathcal{A}$ is closed under complements.
+				\item Let $\{A_n\}_{n\ge 1}\subseteq\mathcal{A}$ and set $A:=\bigcup_{n=1}^\infty A_n$.
+				If all $A_n$ are countable, then $A$ is a countable union of countable sets, hence countable,
+				so $A\in\mathcal{A}$.
+				Otherwise, there exists $n_0$ such that $A_{n_0}^c$ is countable. Then
+				\[
+				A^c=\left(\bigcup_{n=1}^\infty A_n\right)^c=\bigcap_{n=1}^\infty A_n^c \subseteq A_{n_0}^c,
+				\]
+				so $A^c$ is countable and thus $A\in\mathcal{A}$.
+				Therefore $\mathcal{A}$ is closed under countable unions.
+			\end{itemize}
+			Hence $\mathcal{A}$ is a $\sigma$-algebra.
+			
+			\medskip
+			\noindent\underline{Step 2: $\sigma(\mathcal{C})\subseteq\mathcal{A}$.}
+			Since every singleton $\{\omega\}$ is countable, we have $\mathcal{C}\subseteq\mathcal{A}$.
+			Because $\mathcal{A}$ is a $\sigma$-algebra containing $\mathcal{C}$, it must contain
+			the smallest such $\sigma$-algebra, namely $\sigma(\mathcal{C})$. Thus
+			$\sigma(\mathcal{C})\subseteq\mathcal{A}$.
+			
+			\medskip
+			\noindent\underline{Step 3: $\mathcal{A}\subseteq\sigma(\mathcal{C})$.}
+			Let $A\in\mathcal{A}$.
+			If $A$ is countable, write $A=\{\omega_1,\omega_2,\dots\}$ (finite or countably infinite).
+			Then
+			\[
+			A=\bigcup_{k\ge 1}\{\omega_k\},
+			\]
+			a countable union of sets in $\mathcal{C}$, hence $A\in\sigma(\mathcal{C})$.
+			If instead $A^c$ is countable, then by the previous case $A^c\in\sigma(\mathcal{C})$,
+			and since $\sigma(\mathcal{C})$ is closed under complements, $A\in\sigma(\mathcal{C})$.
+			
+			Therefore $\mathcal{A}\subseteq\sigma(\mathcal{C})$. Then we combine step 2 and 3 and can get that  $\sigma(\mathcal{C})=\mathcal{A}$.
+
+		
+		
+		\clearpage
+		
+		\section{Question 4}
+		{\color{deepred}\fontspec{Georgia} Stirling's Formula}
+		
+			Establish the celebrated Stirling formula
+			\[
+			n! \sim \sqrt{2\pi n}\, n^{\,n} e^{-n},
+			\]
+			actually in its stronger version
+			
+			$$
+				n! = \sqrt{2\pi}\, n^{\,n+\frac12} e^{-n+\varepsilon_n}
+				\qquad \text{with} \qquad
+				\frac{1}{12n+1} < \varepsilon_n < \frac{1}{12n}.
+			$$
+			
+			\emph{Hint:} Establish the double inequality
+			\[
+			n \log n - n < \log n! < (n+1)\log(n+1) - n,
+			\]
+			which suggests considering the quantity
+			\[
+			C_n := \log n! - \left(n+\frac12\right)\log n + n
+			\]
+			(the difference of the middle term from the average of the upper and lower bounds).
+			Show that
+			\[
+			C := \lim_{n\to\infty} C_n
+			\]
+			exists in $(0,\infty)$, in fact that we have
+			\[
+			C + \frac{1}{12n+1} < C_n < C + \frac{1}{12n},
+			\qquad \forall\, n \in \mathbb{N}.
+			\]
+
+		
+		\textbf{Answer}
+		
+			Since $\log x$ is increasing on $(0,\infty)$, for each $k\in\{1,\dots,n\}$ we have
+			\[
+			\int_{k-1}^{k}\log x\,dx \;<\; \log k \;<\; \int_{k}^{k+1}\log x\,dx .
+			\]
+			Summing over $k=1,\dots,n$ yields
+			\[
+			\int_{0}^{n}\log x\,dx \;<\; \sum_{k=1}^n \log k \;<\; \int_{1}^{n+1}\log x\,dx .
+			\]
+			Using $\int \log x\,dx = x\log x-x$, we obtain
+			\[
+			n\log n - n \;<\; \log(n!) \;<\; (n+1)\log(n+1)-n,
+			\]
+			which is the desired double inequality.
+			
+			
+			Define
+			\[
+			C_n:=\log(n!) -\Bigl(n+\frac12\Bigr)\log n + n.
+			\]
+			A direct computation gives the increment
+			\begin{align*}
+				C_{n+1}-C_n
+				&=\log(n+1)-\Bigl(n+\frac32\Bigr)\log(n+1)+\Bigl(n+\frac12\Bigr)\log n+1 \\
+				&=\Bigl(n+\frac12\Bigr)\log\!\Bigl(\frac{n}{n+1}\Bigr)+1.
+			\end{align*}
+			Using the Taylor expansion $\log(1-x)=-x-\frac{x^2}{2}-\frac{x^3}{3}-\cdots$ with
+			$x=\frac{1}{n+1}$ gives
+			\[
+			\log\!\Bigl(\frac{n}{n+1}\Bigr)=\log\!\Bigl(1-\frac{1}{n+1}\Bigr)
+			=-\frac{1}{n+1}-\frac{1}{2(n+1)^2}-\frac{1}{3(n+1)^3}-\cdots .
+			\]
+			Therefore
+			\[
+			C_{n+1}-C_n
+			=1-\Bigl(n+\frac12\Bigr)\Bigl(\frac{1}{n+1}+\frac{1}{2(n+1)^2}+\frac{1}{3(n+1)^3}+\cdots\Bigr).
+			\]
+			From this one obtains the classical sharp bounds
+			\[
+			-\frac{1}{12n(n+1)} \;<\; C_{n+1}-C_n \;<\; -\frac{1}{12(n+1)(n+2)},
+			\qquad \forall n\in\mathbb{N},
+			\]
+			hence $\{C_n\}$ is decreasing and bounded below, so the limit
+			\[
+			C:=\lim_{n\to\infty} C_n
+			\]
+			exists and is finite. Summing the increment bounds from $k=n$ to $\infty$ yields
+			\[
+			\frac{1}{12n+1} \;<\; C_n-C \;<\; \frac{1}{12n},
+			\qquad \forall n\in\mathbb{N}.
+			\]
+			Equivalently,
+			\[
+			C+\frac{1}{12n+1} \;<\; C_n \;<\; C+\frac{1}{12n},
+			\qquad \forall n\in\mathbb{N}.
+			\]
+			
+			
+			Let
+			\[
+			W_n:=\frac{(2n)!!}{(2n-1)!!}=\prod_{k=1}^n\frac{2k}{2k-1}.
+			\]
+			Wallis' inequality gives
+			\[
+			\frac{2}{\pi}\cdot\frac{1}{2n+1} \;<\; \frac{1}{W_n^2} \;<\; \frac{2}{\pi}\cdot\frac{1}{2n},
+			\qquad \text{hence}\qquad
+			W_n\sim \sqrt{\pi n}.
+			\]
+			Now express $W_n$ using factorials:
+			\[
+			W_n=\frac{2^{2n}(n!)^2}{(2n)!}.
+			\]
+			Taking logs and inserting the definition of $C_n$ at $n$ and $2n$ gives
+			\begin{align*}
+				\log W_n
+				&=2n\log 2 +2\log(n!) -\log(2n)! \\
+				&=2n\log 2 +2\Bigl(C_n+\Bigl(n+\frac12\Bigr)\log n-n\Bigr)
+				-\Bigl(C_{2n}+\Bigl(2n+\frac12\Bigr)\log(2n)-2n\Bigr) \\
+				&=\Bigl(C_n-\frac12 C_{2n}\Bigr) +\frac12\log(\pi n) + o(1),
+			\end{align*}
+			and since $\log W_n\sim \frac12\log(\pi n)$ and $C_n\to C$, we must have
+			$C=\frac12\log(2\pi)$.
+			
+			
+			Rewrite the definition of $C_n$ as $
+			\log(n!)=\Bigl(n+\frac12\Bigr)\log n - n + C_n.$
+			With $C=\frac12\log(2\pi)$ and the bounds from Step 2, define
+			\[
+			\varepsilon_n:=C_n-C,
+			\]
+			so that $\frac{1}{12n+1}<\varepsilon_n<\frac{1}{12n}$. Exponentiating gives
+			\[
+			n!=e^{C_n}\, n^{\,n+\frac12}e^{-n}
+			=e^{C}\,n^{\,n+\frac12}e^{-n+\varepsilon_n}
+			=\sqrt{2\pi}\,n^{\,n+\frac12}e^{-n+\varepsilon_n},
+			\]
+			which is exactly the equation of its stronger version. In particular, $\varepsilon_n\to 0$, hence
+			\[
+			n!\sim \sqrt{2\pi n}\,n^{\,n}e^{-n}.
+			\]
+		
+		
+		\clearpage
+		
+		\section{Question 5}
+		
+		A sub-collection $\mathcal{C} \subseteq \mathcal{B}$ of a $\sigma$-algebra
+		$\mathcal{B}$ is called a \emph{generating system} (for $\mathcal{B}$), if
+		$\mathcal{B} = \sigma(\mathcal{C})$.
+		
+		Show that each of the collections
+		\[
+		\begin{aligned}
+			\mathcal{C}_1 &= \{ (a,b) \mid a \in \mathbb{R},\ b \in \mathbb{R},\ a<b \}, \\
+			\mathcal{C}_2 &= \{ [a,b] \mid a \in \mathbb{R},\ b \in \mathbb{R},\ a<b \}, \\
+			\mathcal{C}_3 &= \{ (a,b] \mid a \in \mathbb{R},\ b \in \mathbb{R},\ a<b \}, \\
+			\mathcal{C}_4 &= \{ [a,b) \mid a \in \mathbb{R},\ b \in \mathbb{R},\ a<b \}, \\
+			\mathcal{C}_5 &= \{ (a,\infty) \mid a \in \mathbb{R} \}, \\
+			\mathcal{C}_6 &= \{ O \subset \mathbb{R} \mid O \text{ open in } \mathbb{R} \}
+		\end{aligned}
+		\]
+		is a generating system for the $\sigma$-algebra of Borel subsets
+		$\mathcal{B}(\mathbb{R})$ of the real line.
+		
+		\textbf{Answer}
+		
+			We know that $\mathcal{B}(\mathbb{R})$ is the $\sigma$-algebra generated by the open sets
+			in $\mathbb{R}$.
+			
+			\medskip
+			\noindent\underline{Part 1: $\sigma(\mathcal{C}_6)=\mathcal{B}(\mathbb{R})$.}
+			This holds by definition, since $\mathcal{C}_6$ is precisely the collection of open sets.
+			
+			\medskip
+			\noindent\underline{Part 2: $\sigma(\mathcal{C}_1)=\sigma(\mathcal{C}_6)$.}
+			Every $(a,b)\in\mathcal{C}_1$ is open, hence $\mathcal{C}_1\subseteq\mathcal{C}_6$ and so
+			$\sigma(\mathcal{C}_1)\subseteq\sigma(\mathcal{C}_6)$.
+			Conversely, every open set $O\subset\mathbb{R}$ can be written as a countable union of
+			open intervals with rational endpoints:
+			\[
+			O=\bigcup_{\substack{p,q\in\mathbb{Q}\\ (p,q)\subset O}} (p,q).
+			\]
+			Thus $O\in\sigma(\mathcal{C}_1)$ for every open $O$, so $\mathcal{C}_6\subseteq\sigma(\mathcal{C}_1)$,
+			hence $\sigma(\mathcal{C}_6)\subseteq\sigma(\mathcal{C}_1)$.
+			Therefore $\sigma(\mathcal{C}_1)=\sigma(\mathcal{C}_6)=\mathcal{B}(\mathbb{R})$.
+			
+			\medskip
+			\noindent\underline{Part 3: $\sigma(\mathcal{C}_5)=\sigma(\mathcal{C}_1)$.}
+			For $a\in\mathbb{R}$,
+			\[
+			(a,\infty)=\bigcup_{n=1}^\infty (a,a+n),
+			\]
+			so $(a,\infty)\in\sigma(\mathcal{C}_1)$ and hence $\mathcal{C}_5\subseteq\sigma(\mathcal{C}_1)$,
+			which implies $\sigma(\mathcal{C}_5)\subseteq\sigma(\mathcal{C}_1)$.
+			On the other hand, for $a<b$,
+			\[
+			(a,b)=(a,\infty)\cap(-\infty,b),
+			\qquad
+			(-\infty,b)=\bigl((b,\infty)\bigr)^c.
+			\]
+			Since $(a,\infty),(b,\infty)\in\mathcal{C}_5$ and $\sigma$-algebras are closed under complements
+			and finite intersections, we have $(a,b)\in\sigma(\mathcal{C}_5)$ for all $a<b$, i.e.
+			$\mathcal{C}_1\subseteq\sigma(\mathcal{C}_5)$, hence $\sigma(\mathcal{C}_1)\subseteq\sigma(\mathcal{C}_5)$.
+			Therefore $\sigma(\mathcal{C}_5)=\sigma(\mathcal{C}_1)=\mathcal{B}(\mathbb{R})$.
+			
+			\medskip
+			\noindent\underline{Part 4: $\sigma(\mathcal{C}_3)=\sigma(\mathcal{C}_1)$.}
+			For $a<b$,
+			\[
+			(a,b]=\bigcap_{n=1}^\infty (a,b+1/n),
+			\]
+			so $\mathcal{C}_3\subseteq\sigma(\mathcal{C}_1)$ and thus $\sigma(\mathcal{C}_3)\subseteq\sigma(\mathcal{C}_1)$.
+			Conversely,
+			\[
+			(a,b)=\bigcup_{n=1}^\infty (a,b-1/n],
+			\]
+			so $\mathcal{C}_1\subseteq\sigma(\mathcal{C}_3)$ and hence $\sigma(\mathcal{C}_1)\subseteq\sigma(\mathcal{C}_3)$.
+			Therefore $\sigma(\mathcal{C}_3)=\sigma(\mathcal{C}_1)=\mathcal{B}(\mathbb{R})$.
+			
+			\medskip
+			\noindent\underline{Part 5: $\sigma(\mathcal{C}_4)=\sigma(\mathcal{C}_1)$.}
+			For $a<b$,
+			\[
+			[a,b)=\bigcap_{n=1}^\infty (a-1/n,b),
+			\]
+			so $\mathcal{C}_4\subseteq\sigma(\mathcal{C}_1)$ and thus $\sigma(\mathcal{C}_4)\subseteq\sigma(\mathcal{C}_1)$.
+			Conversely,
+			\[
+			(a,b)=\bigcup_{n=1}^\infty [a+1/n,b),
+			\]
+			so $\mathcal{C}_1\subseteq\sigma(\mathcal{C}_4)$ and hence $\sigma(\mathcal{C}_1)\subseteq\sigma(\mathcal{C}_4)$.
+			Therefore $\sigma(\mathcal{C}_4)=\sigma(\mathcal{C}_1)=\mathcal{B}(\mathbb{R})$.
+			
+			\medskip
+			\noindent\underline{Part 6: $\sigma(\mathcal{C}_2)=\sigma(\mathcal{C}_1)$.}
+			For $a<b$,
+			\[
+			[a,b]=\bigcap_{n=1}^\infty (a-1/n,b+1/n),
+			\]
+			so $\mathcal{C}_2\subseteq\sigma(\mathcal{C}_1)$ and thus $\sigma(\mathcal{C}_2)\subseteq\sigma(\mathcal{C}_1)$.
+			Conversely,
+			\[
+			(a,b)=\bigcup_{n=1}^\infty [a+1/n,b-1/n],
+			\]
+			so $\mathcal{C}_1\subseteq\sigma(\mathcal{C}_2)$ and hence $\sigma(\mathcal{C}_2)\supseteq\sigma(\mathcal{C}_1)$.
+			Therefore $\sigma(\mathcal{C}_2)=\sigma(\mathcal{C}_1)=\mathcal{B}(\mathbb{R})$.
+			
+			\medskip
+			Combining we can get six parts above we can get $\sigma(\mathcal{C}_i)=\mathcal{B}(\mathbb{R})$ for each $i=1,\dots,6$.
+		
+		
+		\clearpage
+		
+		\section{Question 6}
+		
+		 In a sequence of independent coin tosses, what is the probability that $n$ successes (heads) materialize before $m$ failures (tails) do?
+		 
+		 	\textbf{Answer}
+		 	
+		 	Let the coin have probability $p$ of heads and $q=1-p$ of tails.
+		 	We compute the probability that $n$ successes occur before $m$ failures. This happens if and only if, when the $n$-th head appears, fewer than
+		 	$m$ tails have occurred.
+		 	
+		 	If the $n$-th head occurs at time $n+k$, then among the first $n+k-1$
+		 	tosses there must be:
+		 	
+		 	\begin{itemize}
+		 		\item $n-1$ heads,
+		 		\item $k$ tails,
+		 	\end{itemize}
+		 	
+		 	and the last toss must be a head. Here $k$ can range from $0$ to $m-1$. For a fixed $k$, the number of such sequences is
+		 	\[
+		 	\binom{n+k-1}{k},
+		 	\]
+		 	and the probability of each such sequence followed by a head is
+		 	\[
+		 	\binom{n+k-1}{k} p^{\,n-1} q^{\,k} \cdot p
+		 	=
+		 	\binom{n+k-1}{k} p^{\,n} q^{\,k}.
+		 	\]
+		 	
+		 	Summing over $k=0,\dots,m-1$, we obtain
+		 	\[
+		 	{
+		 		\mathbb{P}(\text{$n$ heads before $m$ tails})
+		 		=
+		 		\sum_{k=0}^{m-1}
+		 		\binom{n+k-1}{k}
+		 		p^{\,n} q^{\,k}
+		 	}
+		 	\]
+		 	
+		 	\medskip
+		 	
+		 	For a fair coin, we have $p=\tfrac12$, i.e.:
+		 	\[
+		 	\mathbb{P}
+		 	=
+		 	\sum_{k=0}^{m-1}
+		 	\binom{n+k-1}{k}
+		 	\left(\frac12\right)^{n+k}.
+		 	\]
+		 	
+		 
+		 \clearpage
+		
+		
+		
+		\section{Question 7}
+		{\color{deepred}\fontspec{Georgia} Walsh 1.31} Show that if $B$ is an event of strictly positive probability, then
+		$\mathbb{P}(\,\cdot \mid B)$ is a probability measure on $(\Omega,\mathcal{F})$.
+		
+		\textbf{Answer}
+		
+			Assume $B\in\mathcal{F}$ with $\mathbb{P}(B)>0$. Define, for each $A\in\mathcal{F}$,
+			\[
+			\mathbb{P}(A\mid B):=\frac{\mathbb{P}(A\cap B)}{\mathbb{P}(B)}.
+			\]
+			We verify the axioms of a probability measure on $(\Omega,\mathcal{F})$.
+			
+			\medskip
+			\noindent\underline{(1) Nonnegativity.}
+			For any $A\in\mathcal{F}$, $\mathbb{P}(A\cap B)\ge 0$, hence
+			$\mathbb{P}(A\mid B)\ge 0$ as following:
+			
+			\medskip
+			\noindent\underline{(2) Normalization.}
+			\[
+			\mathbb{P}(\Omega\mid B)=\frac{\mathbb{P}(\Omega\cap B)}{\mathbb{P}(B)}
+			=\frac{\mathbb{P}(B)}{\mathbb{P}(B)}=1.
+			\]
+			
+			\medskip
+			\noindent\underline{(3) Countable additivity.}
+			Let $\{A_n\}_{n\ge 1}\subseteq\mathcal{F}$ be pairwise disjoint. Then
+			$\{A_n\cap B\}_{n\ge 1}$ are also pairwise disjoint, and $
+			\left(\bigcup_{n=1}^\infty A_n\right)\cap B
+			=\bigcup_{n=1}^\infty (A_n\cap B).$
+			By countable additivity of $\mathbb{P}$, $
+			\mathbb{P}\!\left(\left(\bigcup_{n=1}^\infty A_n\right)\cap B\right)
+			=\sum_{n=1}^\infty \mathbb{P}(A_n\cap B).$
+			Dividing both sides by $\mathbb{P}(B)>0$ yields
+			\[
+			\mathbb{P}\!\left(\bigcup_{n=1}^\infty A_n \mid B\right)
+			=\sum_{n=1}^\infty \mathbb{P}(A_n\mid B).
+			\]
+			
+			\medskip
+			Thus $\mathbb{P}(\cdot\mid B)$ satisfies nonnegativity, normalization, and
+			countable additivity, so it is a probability measure on $(\Omega,\mathcal{F})$.
+		
+		
+		\clearpage
+		
+		\section{Question 8}
+		{\color{deepred}\fontspec{Georgia} Walsh 1.32 Sure-Thing Principle} Prove the \emph{Sure-Thing Principle}: if $A,B,$ and $C$ are events, and if
+		\[
+		\mathbb{P}(A \mid C) \ge \mathbb{P}(B \mid C)
+		\quad \text{and} \quad
+		\mathbb{P}(A \mid C^c) \ge \mathbb{P}(B \mid C^c),
+		\]
+		then $
+		\mathbb{P}(A) \ge \mathbb{P}(B).$
+		
+		\textbf{Answer}
+		
+			Assume $\mathbb{P}(C)>0$ and $\mathbb{P}(C^c)>0$ so that the conditional
+			probabilities are well-defined. Using the law of total probability,
+			\[
+			\mathbb{P}(A)=\mathbb{P}(A\mid C)\mathbb{P}(C)+\mathbb{P}(A\mid C^c)\mathbb{P}(C^c),
+			\]
+			\[
+			\mathbb{P}(B)=\mathbb{P}(B\mid C)\mathbb{P}(C)+\mathbb{P}(B\mid C^c)\mathbb{P}(C^c).
+			\]
+			Subtracting,
+			\[
+			\mathbb{P}(A)-\mathbb{P}(B)
+			=\bigl(\mathbb{P}(A\mid C)-\mathbb{P}(B\mid C)\bigr)\mathbb{P}(C)
+			+\bigl(\mathbb{P}(A\mid C^c)-\mathbb{P}(B\mid C^c)\bigr)\mathbb{P}(C^c).
+			\]
+			By assumption, both bracketed terms are $\ge 0$, and the weights
+			$\mathbb{P}(C),\mathbb{P}(C^c)$ are also $\ge 0$. Hence
+			$\mathbb{P}(A)-\mathbb{P}(B)\ge 0$, i.e. $\mathbb{P}(A)\ge \mathbb{P}(B)$.
+			
+			If $\mathbb{P}(C)=0$, then $\mathbb{P}(A)=\mathbb{P}(A\mid C^c)$ and
+			$\mathbb{P}(B)=\mathbb{P}(B\mid C^c)$, so the conclusion follows from
+			$\mathbb{P}(A\mid C^c)\ge \mathbb{P}(B\mid C^c)$. The case $\mathbb{P}(C^c)=0$
+			is analogous.
+		
+		
+		\clearpage
+		
+		\section{Question 9}
+		
+		{\color{deepred}\fontspec{Georgia} Walsh 1.68 The Birthday Problem} A class has $n$ students. What is the probability that at least two have the same birthday? (Ignore leap years and twins.) Compute the probability for $n = 10, 15, 22, 30$ and $40$. Do you find anything curious about your answers?
+		
+		\textbf{Answer}
+		
+		Assume that each of the $365$ days of the year is equally likely for a birthday,
+		independently for each student.
+		
+		The probability that all $n$ students have different birthdays is
+		\[
+		\mathbb{P}(\text{all different})
+		=
+		\frac{365 \cdot 364 \cdots (365-n+1)}{365^n}
+		=
+		\prod_{k=0}^{n-1} \frac{365-k}{365}.
+		\]
+		
+		Hence, the probability that at least two students share the same birthday is
+		\[
+		\mathbb{P}(\text{at least one match})
+		=
+		1 - \prod_{k=0}^{n-1} \frac{365-k}{365}.
+		\]
+		
+		\medskip
+		
+		Numerical values:
+		
+		\[
+		\begin{aligned}
+			n=10 &: \quad 0.116948, \\
+			n=15 &: \quad 0.252901, \\
+			n=22 &: \quad 0.475695, \\
+			n=30 &: \quad 0.706316, \\
+			n=40 &: \quad 0.891232.
+		\end{aligned}
+		\]
+		
+		\medskip
+		
+		\clearpage
+		
+		\section{Question 10}
+		
+		
+		{\color{deepred}\fontspec{Georgia} Walsh 1.69 G. Slade/Gambler's Ruin} A gambler is in desperate need of \$1000, but only has \$n. The gambler decides to play roulette, betting \$1 on either red or black each time, until either reaching \$1000 (and then stopping) or going broke. The probability of winning a bet on red or black at a US casino is $18/38$.
+	
+\begin{enumerate}
+\item[(a)] How large must $n$ be for the gambler to have a probability $1/2$ of success?
+\item[(b)] Suppose the gambler starts with this stake. How much can the casino possibly lose?
+\end{enumerate}
+
+[Hint: It is instructive to plot the probability of success as a function of the initial stake $n$.]
+
+\textbf{Answer}
+
+Let $N=1000$, and let $S_t$ be the gambler's fortune after $t$ bets, with
+$S_0=n$. Each bet changes the fortune by $\pm 1$:
+\[
+S_{t+1}=S_t+X_{t+1},\qquad 
+\mathbb{P}(X_{t+1}=+1)=p=\frac{18}{38},\quad 
+\mathbb{P}(X_{t+1}=-1)=q=\frac{20}{38}.
+\]
+Let
+\[
+T_0=\inf\{t\ge0:S_t=0\},\qquad T_N=\inf\{t\ge0:S_t=N\}.
+\]
+The probability of success is $\mathbb{P}_n(T_N<T_0)$.
+
+\begin{enumerate}
+	\item[(a)] Since $p\neq \frac12$, the gambler's ruin formula gives
+	\[
+	\mathbb{P}_n(T_N<T_0)=\frac{1-(q/p)^n}{1-(q/p)^N}.
+	\]
+	Let $r:=q/p=\frac{20/38}{18/38}=\frac{10}{9}>1$. Then
+	\[
+	\mathbb{P}_n(T_N<T_0)=\frac{1-r^n}{1-r^N}=\frac{r^n-1}{r^N-1}.
+	\]
+	We want this to be $\ge \frac12$:
+	\[
+	\frac{r^n-1}{r^N-1}\ge \frac12
+	\quad\Longleftrightarrow\quad
+	r^n-1\ge \frac12(r^N-1)
+	\quad\Longleftrightarrow\quad
+	r^n\ge \frac{r^N+1}{2}.
+	\]
+	Thus
+	\[
+	n\ge \frac{\log\!\bigl((r^N+1)/2\bigr)}{\log r}
+	=\frac{\log\!\bigl(((10/9)^{1000}+1)/2\bigr)}{\log(10/9)}
+	\approx 993.421.
+	\]
+	Hence the smallest integer stake giving success probability at least $1/2$ is $
+	{\,n=994\,}.$
+	
+	\item[(b)] If the gambler starts with $n=994$ and succeeds, the casino's net loss is
+	$
+	1000-994=6.
+	$
+	The gambler stops immediately upon reaching \$1000, so the casino can never be down
+	by more than this net amount. Therefore, the casino can possibly lose at most
+	$
+	{\,\$6\,}.
+	$
+\end{enumerate}
+
+
+\clearpage
+		
+		\section{Question 11}
+		
+		{\color{deepred}\fontspec{Georgia} Walsh 1.70 Continuation} Suppose the gambler in the preceding problem starts with \$950.
+	
+\begin{enumerate}
+\item[(a)] What is the probability of succeeding---i.e., reaching \$1000 before going broke?
+
+\item[(b)] Suppose the gambler is not restricted to bets of one dollar, but can bet all the money he or she has at any play. (Bets are still on either red or black.) Show that the gambler can succeed more than 92\% of the time.
+
+\end{enumerate}
+		
+		\textbf{Answer}
+		
+		Let $p=\mathbb{P}(\text{win})=\frac{18}{38}$ and $q=\mathbb{P}(\text{lose})=\frac{20}{38}$.
+		Let $S_t$ be the gambler's fortune after $t$ plays, with $S_0=i$, and at each play
+		$S_{t+1}=S_t+1$ with prob.\ $p$ and $S_{t+1}=S_t-1$ with prob.\ $q$.
+		Let
+		$T_0=\inf\{t:S_t=0\}$ and $T_N=\inf\{t:S_t=N\}$.
+		
+		\begin{enumerate}
+			\item[(a)] Here $N=1000$ and $i=950$. For $p\neq \tfrac12$, the gambler's ruin formula gives
+			\[
+			\mathbb{P}_{i}(T_N<T_0)=\frac{1-(q/p)^i}{1-(q/p)^N}.
+			\]
+			Thus
+			\[
+			\mathbb{P}_{950}(T_{1000}<T_0)
+			=
+			\frac{1-\left(\frac{q}{p}\right)^{950}}{1-\left(\frac{q}{p}\right)^{1000}}
+			=
+			\frac{1-\left(\frac{10}{9}\right)^{950}}{1-\left(\frac{10}{9}\right)^{1000}}
+			\approx 0.005154.
+			\]
+			
+			\item[(b)] Allow variable bets. Consider the \emph{bold} strategy:
+			when the current fortune is $s\in\{1,\dots,999\}$, bet
+			\[
+			b(s)=\min\{s,\,1000-s\},
+			\]
+			so that a win takes you to $s+b(s)$ and a loss to $s-b(s)$.
+			Starting from $950$ this means:
+			bet $50$; if lose bet $100$; if lose bet $200$; if lose bet $400$; etc.
+			
+			Let $u(s)$ be the success probability (reach $1000$ before $0$) starting from fortune $s$.
+			Then $u(0)=0$, $u(1000)=1$, and under this strategy
+			\[
+			u(s)=p\,u(s+b(s))+q\,u(s-b(s)).
+			\]
+			From the reachable states $\{950,900,800,600,400,200,0,1000\}$ we get:
+			\[
+			\begin{aligned}
+				u(950)&=p+q\,u(900),\\
+				u(900)&=p+q\,u(800),\\
+				u(800)&=p+q\,u(600),\\
+				u(600)&=p+q\,u(200),\\
+				u(200)&=p\,u(400),\\
+				u(400)&=p\,u(800).
+			\end{aligned}
+			\]
+			Hence $u(200)=p^2u(800)$ and
+			\[
+			u(600)=p+q p^2 u(800),
+			\qquad
+			u(800)=p+q u(600)=p+q\bigl(p+q p^2 u(800)\bigr)
+			=p(1+q)+q^2p^2u(800).
+			\]
+			Therefore
+			\[
+			u(800)=\frac{p(1+q)}{1-q^2p^2},
+			\qquad
+			u(900)=p+q\,u(800),
+			\qquad
+			u(950)=p+q\,u(900).
+			\]
+			Substituting $p=\frac{18}{38}$ and $q=\frac{20}{38}$ yields
+			\[
+			u(950)=\frac{41321781}{44121781}\approx 0.93654>0.92.
+			\]
+			So by allowing variable bets (and using the bold strategy), the gambler can succeed
+			more than $92\%$ of the time.
+		\end{enumerate}
+		
+		
+		\clearpage
+		
+		\section{Question 12}
+		
+		{\color{deepred}\fontspec{Georgia} Walsh 1.71} Show that the gambler's ruin eventually ends, i.e. that the gambler's fortune eventually reaches either $0$ or $N$.
+	
+		
+
+		
+		\textbf{Answer}
+		
+		Let $\{S_n\}_{n\ge 0}$ be the gambler's fortune with $S_0=i\in\{1,\dots,N-1\}$ and
+		\[
+		S_{n+1}=S_n+X_{n+1},\qquad \mathbb{P}(X_{n+1}=1)=p,\ \mathbb{P}(X_{n+1}=-1)=q=1-p,
+		\]
+		independently. Define the absorption time
+		\[
+		T:=\inf\{n\ge 0:\ S_n\in\{0,N\}\}.
+		\]
+		We show $\mathbb{P}(T<\infty)=1$.
+		
+		For $k\in\{1,\dots,N-1\}$, set
+		\[
+		r_k:=\mathbb{P}_k(T=\infty),
+		\]
+		where $\mathbb{P}_k$ denotes probability given $S_0=k$.
+		
+		By conditioning on the first step and using the Markov property,
+		for each $k=1,\dots,N-1$,
+		\[
+		r_k=\mathbb{P}_k(T=\infty)
+		=p\,\mathbb{P}_{k+1}(T=\infty)+q\,\mathbb{P}_{k-1}(T=\infty)
+		= p\,r_{k+1}+q\,r_{k-1}.
+		\]
+		Also, $r_0=r_N=0$ since if $S_0\in\{0,N\}$ then $T=0$.
+		
+		Let $M:=\max_{0\le k\le N} r_k$ and choose $k^\ast$ with $r_{k^\ast}=M$.
+		Because $r_0=r_N=0$, we have $k^\ast\in\{1,\dots,N-1\}$ if $M>0$.
+		Then the recursion gives
+		\[
+		M=r_{k^\ast}=p\,r_{k^\ast+1}+q\,r_{k^\ast-1}\le p\,M+q\,M=M.
+		\]
+		Hence equality holds, which forces $r_{k^\ast+1}=r_{k^\ast-1}=M$ (since $p,q>0$).
+		Applying the same argument repeatedly, we conclude $r_k=M$ for all $k=0,1,\dots,N$.
+		But $r_0=0$, so $M=0$. Therefore $r_k=0$ for all $k$, i.e.
+		\[
+		\mathbb{P}_k(T=\infty)=0\quad\text{for all }k\in\{1,\dots,N-1\}.
+		\]
+		In particular, $\mathbb{P}_i(T<\infty)=1$, so the gambler's ruin eventually ends:
+		the fortune hits $0$ or $N$ almost surely.
+		
+		
+		\clearpage
+		
+		\section{Question 13}
+		
+		{\color{deepred}\fontspec{Georgia} Walsh 1.72} Suppose the gambler's opponent can borrow money at any time, and therefore need never go broke. Suppose that the probability that the gambler wins a given game is $p$.
+	
+\begin{enumerate}
+\item[(a)] If $p \le 1/2$, show that the gambler will eventually go broke.
+\item[(b)] Suppose $p > 1/2$. Find the probability that the gambler eventually goes broke. What do you suppose happens if he does not go broke? Can you prove it?
+\end{enumerate}
+		
+		\textbf{Answer}
+		
+		Let $\{S_n\}_{n\ge 0}$ be the gambler's fortune after $n$ plays, with $S_0=i\in\mathbb{N}$.
+		Each play changes the fortune by $\pm 1$:
+		$S_{n+1}=S_n+X_{n+1}$ where $\mathbb{P}(X_{n+1}=+1)=p$ and $\mathbb{P}(X_{n+1}=-1)=q:=1-p$,
+		independently. Let
+		\[
+		T_0:=\inf\{n\ge 0:S_n=0\},\qquad
+		T_N:=\inf\{n\ge 0:S_n=N\}.
+		\]
+		
+		\begin{enumerate}
+			\item[(a)] Assume $p\le \tfrac12$ (so $q\ge p$). Fix $N>i$.
+			For the gambler's ruin problem with absorbing barriers at $0$ and $N$,
+			the probability of hitting $N$ before $0$ is
+			\[
+			\mathbb{P}_i(T_N<T_0)=
+			\begin{cases}
+				\dfrac{i}{N}, & p=\tfrac12,\\[8pt]
+				\dfrac{1-(q/p)^i}{1-(q/p)^N}, & p\neq\tfrac12.
+			\end{cases}
+			\]
+			If $p=\tfrac12$, then $\mathbb{P}_i(T_N<T_0)=i/N\to 0$ as $N\to\infty$.
+			If $p<\tfrac12$, then $q/p>1$ and
+			\[
+			\mathbb{P}_i(T_N<T_0)=\frac{1-(q/p)^i}{1-(q/p)^N}\to 0
+			\quad\text{as }N\to\infty,
+			\]
+			since the denominator diverges to $-\infty$ while the numerator is fixed.
+			Now note that $\{T_N<T_0\}$ increases to $\{\sup_n S_n=\infty,\; T_0=\infty\}$ as $N\to\infty$,
+			and in particular
+			\[
+			\mathbb{P}_i(T_0=\infty)\le \lim_{N\to\infty}\mathbb{P}_i(T_N<T_0)=0.
+			\]
+			Hence $\mathbb{P}_i(T_0<\infty)=1$: the gambler eventually goes broke.
+			
+			\item[(b)] Now assume $p>\tfrac12$, so $q/p<1$. For fixed $N>i$ we again have
+			\[
+			\mathbb{P}_i(T_N<T_0)=\frac{1-(q/p)^i}{1-(q/p)^N}.
+			\]
+			Letting $N\to\infty$ and using $(q/p)^N\to 0$, we obtain
+			\[
+			\mathbb{P}_i(T_0=\infty)
+			=\lim_{N\to\infty}\mathbb{P}_i(T_N<T_0)
+			=1-\left(\frac{q}{p}\right)^i.
+			\]
+			Therefore the probability that the gambler eventually goes broke is
+			\[
+			{\;\mathbb{P}_i(T_0<\infty)=\left(\frac{q}{p}\right)^i\; }.
+			\]
+			
+			If the gambler does not go broke, one expects $S_n\to\infty$.
+			Indeed, by the strong law of large numbers,
+			\[
+			\frac{S_n}{n}=\frac{i}{n}+\frac{1}{n}\sum_{k=1}^n X_k \to p-q=2p-1>0
+			\quad\text{a.s.}
+			\]
+			Hence $S_n\to\infty$ almost surely. In particular, on the event $\{T_0=\infty\}$ the
+			fortune diverges to $+\infty$.
+		\end{enumerate}
+		
+		
+		\clearpage
+		
+		
+		
+		
+		
+		
+		
+		
+	\end{document}
