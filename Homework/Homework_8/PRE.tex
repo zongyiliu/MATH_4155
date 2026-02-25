@@ -1,0 +1,109 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage{bbold}
+
+\title{PROBABILITY GU4155: Spring 2026 }
+
+\author{HOMEWORK \#8\\
+Professor Ioannis Karatzas Department of Mathematics, Columbia University}
+\date{}
+
+
+%New command to display footnote whose markers will always be hidden
+\let\svthefootnote\thefootnote
+\newcommand\blfootnotetext[1]{%
+  \let\thefootnote\relax\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \let\thefootnote\svthefootnote%
+}
+
+%Overriding the \footnotetext command to hide the marker if its value is `0`
+\let\svfootnotetext\footnotetext
+\renewcommand\footnotetext[2][?]{%
+  \if\relax#1\relax%
+    \ifnum\value{footnote}=0\blfootnotetext{#2}\else\svfootnotetext{#2}\fi%
+  \else%
+    \if?#1\ifnum\value{footnote}=0\blfootnotetext{#2}\else\svfootnotetext{#2}\fi%
+    \else\svfootnotetext[#1]{#2}\fi%
+  \fi
+}
+
+\begin{document}
+\maketitle
+February 15, 2026
+
+Exercise \# 1: Sometimes, bad news is better than no news at all. Let us consider the simple, symmetric random walk $\left\{S_{n}\right\}_{n \in \mathbb{N}_{0}}$ started at $S_{0}=0$, as a model for the fluctuations of the price of some financial asset in our portfolio (which may well take negative values, if we happen to owe money).
+
+Assume that Martha has been told that at some time $N$ with $N \in\{7,9,11, \cdots\}$ the asset is going to be worth $S_{N}=-1$. Show that by selling the asset at time
+
+$$
+T=\min \left\{n \in \mathbb{N}_{0} \mid S_{n}=1\right\} \wedge N
+$$
+
+(that is, by selling the first moment the asset is worth $\$ 1$ if there is such a moment before time $N$, and selling at time $N$ otherwise), Martha can secure a positive expected resell value
+
+$$
+\mathbb{E}\left(S_{T} \mid S_{N}=-1\right)>0 ;
+$$
+
+and this, despite the fact that initially her asset is worthless ( $S_{0}=0$ ), and despite the fact that she even knows things are going to get 'bad' in the end $\left(S_{N}=-1\right) .^{1}$\\
+(Hint: Recall $\mathbb{E}(X \mid A)=\mathbb{E}\left(X \mathbf{1}_{A}\right) / \mathbb{P}(A)$ and use the reflection principle to rewrite the expression you get when you apply this formula to $S_{T}(\omega)=S_{T(\omega)}(\omega)$. This will allow you to reduce the claim $\mathbb{E}\left(S_{T} \mid S_{N}=-1\right)>0$ to an inequality for the distribution of the random variable $S_{N}$, which you can then verify easily.)
+
+Exercise \# 2: (i) Let $X_{1}, X_{2}, X_{3}, \cdots$ be independent random variables with common exponential distribution with parameter $\lambda>0$. What can you say about the distribution of the random variable
+
+$$
+Y_{n}=\lambda\left(\max _{1 \leq j \leq n} X_{j}\right)-\log n, \quad \text { as } n \rightarrow \infty ?
+$$
+
+(ii) Let $X_{1}, X_{2}, X_{3}, \cdots$ be independent random variables with common "logistic" distribution $\mathbb{P}\left(X_{j} \leq x\right)=F(x)=\left(1+e^{-x}\right)^{-1}, x \in \mathbb{R}$. What can you say about the distribution of the random variable
+
+$$
+Y_{n}=\max _{1 \leq j \leq n} X_{j}-\log n, \quad \text { as } n \rightarrow \infty ?
+$$
+
+\footnotetext{${ }^{1}$ So, in this case at least, "bad news is better than no news" ! And you can capitalize on this piece of bad news, provided you have enough time.
+}Exercise \# 3: Show that
+
+$$
+\lim _{n \rightarrow \infty} e^{-n} \sum_{k=0}^{n} \frac{n^{k}}{k!}=\frac{1}{2} .
+$$
+
+Exercise \# 4: Let $X_{1}, X_{2}, \cdots$ be independent random variables on a given probability space ( $\Omega, \mathcal{F}, \mathbb{P}$ ), with $X_{1}=0$ and
+
+$$
+\mathbb{P}\left(X_{n}= \pm n\right)=\frac{1}{2 n \log n}, \quad \mathbb{P}\left(X_{n}=0\right)=1-\frac{1}{n \log n}, \quad n=2,3, \cdots
+$$
+
+Show that the sequence $\bar{X}_{n}:=(1 / n) \sum_{j=1}^{n} X_{j}, n \in \mathbb{N}$ converges to zero in $\mathbb{L}^{2}$, thus also in probability, but not a.e.
+
+Exercise \# 5: Every time Jim charges an item to his credit card, he rounds the amount to the nearest dollar in his personal records. If he has used his card 300 times in the last 12 months, what is the probability that his personal record differs from the actual total expenditure by no more than 10 dollars?\\
+(Hint: State very precisely your assumptions, as well as the results in probability theory that support your answers. You should use this exercise to familiarize yourself with the tables of the standard normal distribution function.)
+
+Exercise \# 6: Let $X_{1}, X_{2}, \cdots$ be independent random variables with common distribution and $\sigma^{2}=\mathbb{E}\left(X_{1}^{2}\right)<\infty, \mathbb{E}\left(X_{1}\right)=0$. Show that
+
+$$
+n^{-p} S_{n} \longrightarrow 0 \quad \text { in probability, }
+$$
+
+where $p>1 / 2$ and $S_{n}=\sum_{i=1}^{n} X_{i}$.\\
+(Hint: Apply, very carefully, the Central Limit Theorem.)\\
+Exercise \#7: Do Problem 5.11 from Walsh (2012).\\
+Exercise \#8: Do Problems 5.12, 5.13 from Walsh (2012).\\
+(Hint: Recall Theorem $10.1(\mathrm{v})$ from the typed Lecture Notes for the course.)\\
+Exercise \# 9: For any given bounded, continuous function $f:[0, \infty) \rightarrow \mathbb{R}$, compute the limits
+
+$$
+\begin{gathered}
+\lim _{n \rightarrow \infty} \int_{0}^{1} \cdots \int_{0}^{1} f\left(\frac{x_{1}+\cdots+x_{n}}{n}\right) d x_{1} \cdots d x_{n} \\
+\lim _{n \rightarrow \infty} 2^{n} \int_{0}^{\infty} \cdots \int_{0}^{\infty} f\left(\frac{x_{1}+\cdots+x_{n}}{n}\right) e^{-2\left(x_{1}+\cdots+x_{n}\right)} d x_{1} \cdots d x_{n}
+\end{gathered}
+$$
+
+
+\end{document}
