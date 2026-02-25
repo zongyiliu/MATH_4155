@@ -1,0 +1,171 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage{bbold}
+
+\title{PROBABILITY GU 4155: Spring 2026 }
+
+\author{HOMEWORK \#5\\
+Professor Ioannis Karatzas Department of Mathematics, Columbia University}
+\date{}
+
+
+%New command to display footnote whose markers will always be hidden
+\let\svthefootnote\thefootnote
+\newcommand\blfootnotetext[1]{%
+  \let\thefootnote\relax\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \let\thefootnote\svthefootnote%
+}
+
+%Overriding the \footnotetext command to hide the marker if its value is `0`
+\let\svfootnotetext\footnotetext
+\renewcommand\footnotetext[2][?]{%
+  \if\relax#1\relax%
+    \ifnum\value{footnote}=0\blfootnotetext{#2}\else\svfootnotetext{#2}\fi%
+  \else%
+    \if?#1\ifnum\value{footnote}=0\blfootnotetext{#2}\else\svfootnotetext{#2}\fi%
+    \else\svfootnotetext[#1]{#2}\fi%
+  \fi
+}
+
+\begin{document}
+\maketitle
+February 3, 2026
+
+Problems marked (*) are Optional.\\
+Exercise \#1: Consider the coin-toss model with success probability $p \in(0,1)$, that is, take $\Omega=\{0,1\}^{n}$ as your sample space, take $\mathcal{F}=\mathcal{P}(\Omega)$, set $X_{i}(\omega)=\omega_{i}$ for $i=1, \cdots, n$ and construct a probability measure $\mathbb{P}$ such that
+
+$$
+\mathbb{P}\left(X_{1}=x_{1}, \cdots, X_{n}=x_{n}\right)=\left.\left(p^{s}(1-p)^{n-s}\right)\right|_{s=\sum_{i=1}^{n} x_{i}}, \quad \forall\left(x_{1}, \cdots, x_{n}\right) \in\{0,1\}^{n}
+$$
+
+As we saw in class, under $\mathbb{P}$ the random variables $X_{1}, \cdots, X_{n}$ are independent Bernoulli random variables. Set $S_{n}(\omega):=\sum_{i=1}^{n} X_{i}(\omega)$ and fix an integer $0 \leq k \leq n$.\\
+(i) Find the conditional distribution of $X_{1}, \cdots, X_{n}$ given that $k$ successes occur among the $n$ tosses. In other words, compute
+
+$$
+\mathbb{P}\left(X_{1}=x_{1}, \cdots, X_{n}=x_{n} \mid S_{n}=k\right), \quad\left(x_{1}, \cdots, x_{n}\right) \in\{0,1\}^{n}
+$$
+
+(ii) Compute $\mathbb{E}\left(X_{i} \mid S_{n}=k\right), i=1, \cdots, n$.\\
+(iii) For any given $m \in\{1, \cdots, n-1\}$ and $\left(x_{1}, \cdots, x_{m}\right) \in\{0,1\}^{m}$, compute the conditional probabilities
+
+$$
+\mathbb{P}\left(X_{m+1}=1 \mid X_{1}=x_{1}, \cdots, X_{m}=x_{m}, S_{n}=k\right)
+$$
+
+Exercise \#2: Rejection Sampling. Let $X$ and $Y$ be random variables with possible values in the countable set $\mathfrak{Z}=\left\{z_{1}, z_{2}, \cdots\right\}$ and such that
+
+$$
+p(z):=\mathbb{P}(X=z), \quad q(z):=\mathbb{P}(Y=z) \quad \text { satisfy } \quad p(z) \leq c q(z), \quad \forall z \in \mathfrak{Z}
+$$
+
+for some real constant $c>0$. Let $U$ be independent of $Y$ with uniform distribution on $[0,1]$, and set $\lambda(z):=p(z) /(c q(z)), z \in \mathfrak{Z}$.
+
+Show that the conditional distribution of the random variable $Y$ given the event $\{U \leq \lambda(Y)\}$, is the same as the distribution of the random variable $X$; to wit,
+
+$$
+\mathbb{P}(Y=z \mid U \leq \lambda(Y))=\mathbb{P}(X=z), \quad z \in \mathfrak{Z} .
+$$
+
+Exercise \#3: Use the Tonelli theorem to show that, for any random variable $X: \Omega \rightarrow [0, \infty)$,
+
+$$
+\mathbb{E}(X)=\int_{0}^{\infty} \mathbb{P}(X>t) \mathrm{d} t
+$$
+
+or, more generally for any $r \in(0, \infty)$ :
+
+$$
+\mathbb{E}\left(X^{r}\right)=r \int_{0}^{\infty} t^{r-1} \mathbb{P}(X>t) \mathrm{d} t
+$$
+
+Use this expression to compute - painlessly - the moments of the exponential distribution. (Hint: Write $X(\omega)=\int_{0}^{\infty} 1_{[0, X(\omega))} d t$.)
+
+Exercise \#4: (*) For each $n \in \mathbb{N}$, we set
+
+$$
+A_{n}=\left\{\frac{m}{n}: m \in \mathbb{N}\right\}
+$$
+
+Determine the sets
+
+$$
+\left\{A_{n}, \text { ev. }\right\}:=\bigcup_{k \in \mathbb{N}} \bigcap_{n \geq k} A_{n}, \quad\left\{A_{n}, \text { i.o. }\right\}:=\bigcap_{k \in \mathbb{N}} \bigcup_{n \geq k} A_{n}
+$$
+
+("eventually" and "infinitely often", respectively).\\
+Exercise \#5: (*) Let $X_{1}, X_{2}, \cdots$ be random variables with values in [ $0, \infty$ ) and known distribution functions $F_{n}(\xi)=\mathbb{P}\left(X_{n} \leq \xi\right), \xi \in \mathbb{R}$. Find constants $c_{1}>0, c_{2}>0, \cdots$ such that
+
+$$
+\mathbb{P}\left(\lim _{n \rightarrow \infty}\left(X_{n} / c_{n}\right) \quad \text { exists, and equals } 0\right)=1 .
+$$
+
+(Hint: Recall the Borel-Cantelli Lemma; provide a very careful argument.)
+
+\section*{Exercise \#6: (*) Lebesgue measure cannot be extended to the power set $\mathcal{P}([0,1))$ under the Axiom of Choice.}
+Let $\mathbb{P}$ denote Lebesgue measure on $([0,1), \mathcal{B}([0,1)))$. For any given $a \in \mathbb{R}$, define the "shift mapping" $T_{a}(x)=x+a \bmod .1$, for $x \in[0,1)$; for instance, $T_{0.9}(0.3)=0.2$.\\
+(i) Show that each $T_{a}$ is measurable with respect to $\left.\mathcal{B}([0,1))\right)$, and that Lebesgue measure is invariant under $T_{a}$, that is, $\mathbb{P} \circ T_{a}^{-1}=\mathbb{P}$.\\
+(ii) Now let $\mathcal{F}$ be any $\sigma$-algebra of subsets of $[0,1)$ for which $T_{a}$ is measurable, and assume $\mathbb{P}$ is defined and shift-invariant (as in (i) above) on all of $\mathcal{F}$.
+
+Show then, that any set $A \in \mathcal{F}$ with $\mathbb{P}(A)>0$ contains points $x, y$ such that $x \neq y$ and $x-y$ is rational.\\
+(Hint: Show that $\left\{T_{q}^{-1}(A), q \in \mathbf{Q} \cap[0,1)\right\}$ is a family of disjoint sets, and use part (i).)\\
+(iii) Conclude that Lebesgue measure cannot be extended to $\mathcal{P}([0,1))$, the collection of all subsets of the unit interval $[0,1)$, all the while retaining its characteristic property of shift-invariance.\\
+(Hint: Consider the equivalence relation
+
+$$
+x \sim y \quad \Longleftrightarrow \quad x-y \text { rational }
+$$
+
+and invoke the Axiom of Choice ${ }^{1}$ to obtain a set $A \in \mathcal{P}([0,1))$ of representatives from each of the induced equivalence classes. This gives a decomposition
+
+$$
+[0,1)=\bigcup_{r \in \mathbf{Q} \cap[0,1)} T_{r}^{-1}(A)
+$$
+
+what implications for $\mathbb{P}(A)$ does this decomposition have?)\\
+Exercise \#7: (*) Growth of Exponential Random Variables, or The Unreasonable Effectiveness of Borel-Cantelli. Suppose $X_{1}, X_{2}, \cdots$ are independent random variables with common exponential distribution $\mathbb{P}\left(X_{n}>\xi\right)=e^{-\xi}, \xi \geq 0$; let us say, the durations of successive telephone conversations, for which the exponential is a good model.
+
+Let us look at the maximum $M_{n}=\max _{1 \leq k \leq n} X_{k}$ of the first $n$ of these variables. It should be clear that this random variable $M_{n}$ increases to infinity a.e., as $n \rightarrow \infty$ (give a brief argument).
+
+But at what rate? Show that
+
+$$
+\lim _{n \rightarrow \infty}\left(\frac{M_{n}}{\log n}\right)=1, \quad \text { a.e. }
+$$
+
+which provides the answer to this question: the quantity $M_{n}$ increases to infinity, but pretty slowly. (Hint: Use Borel-Cantelli, to establish first
+
+$$
+\limsup _{n \rightarrow \infty}\left(\frac{X_{n}}{\log n}\right)=1
+$$
+
+In fact, show that for every $\varepsilon \in(0,1)$ we have
+
+$$
+\begin{array}{ll}
+\mathbb{P}\left(X_{n}>(1-\varepsilon) \log n,\right. & \text { i.o. })=1 \\
+\mathbb{P}\left(X_{n}>(1+\varepsilon) \log n,\right. & \text { i.o. })=0 \\
+\mathbb{P}\left(M_{n}<(1-\varepsilon) \log n,\right. & \text { i.o. })=0
+\end{array}
+$$
+
+Deduce from all this the double a.e. inequality
+
+$$
+\limsup _{n \rightarrow \infty}\left(\frac{M_{n}}{\log n}\right) \leq 1 \leq \liminf _{n \rightarrow \infty}\left(\frac{M_{n}}{\log n}\right),
+$$
+
+and argue that this settles the claim.)\\
+Exercise \#8: Do Problem 3.9, page 38 of the typed Lecture Notes.\\
+Exercise \#9: Do Problem 3.10, page 38 of the typed Lecture Notes.\\
+Exercise \#10: (*) Do Problem 5.23 in Walsh (2012).
+
+\footnotetext{${ }^{1}$ To wit: "For any given nonempty collection $\left\{X_{\alpha}\right\}_{\alpha \in I}$ of nonempty sets, the Cartesian product $\prod_{\alpha \in I} X_{\alpha}$ is nonempty".
+}
+\end{document}
