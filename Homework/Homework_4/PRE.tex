@@ -1,1 +1,126 @@
-a+
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage{bbold}
+
+\title{PROBABILITY GU4155: Spring 2026 }
+
+\author{ASSIGNMENT \# 4\\
+Professor Ioannis Karatzas Department of Mathematics, Columbia University}
+\date{}
+
+
+\begin{document}
+\maketitle
+January 7, 2026
+
+Exercise \#1: Let $X: \Omega \rightarrow(0, \infty)$ be a random variable that satisfies
+
+$$
+\mathbb{P}(X>t+s \mid X>s)=\mathbb{P}(X>t), \quad \forall t \geq 0, \quad s \geq 0
+$$
+
+Show that $X$ has an exponential distribution.\\
+Exercise \#2: Blossoms on an Apple Tree. Assume that the number $B$ of blossoms on an apple tree is a random variable with $\operatorname{Poisson}(\lambda)$ distribution; and that, independently of all others, each blossom will yield fruit with probability $p \in(0,1)$.\\
+(i) Compute the distribution of the random variable $A$, which denotes the number of apples on the tree.\\
+(ii) Suppose we are told that a tree has a number $a$ of apples. What is the (conditional) distribution
+
+$$
+\mathbb{P}(B=b \mid A=a), \quad b=a, a+1, \cdots
+$$
+
+of the number of blossoms that yielded these many apples?\\
+(We can certainly have no more apples than we had blossoms.)\\
+Exercise \#3: (i) Establish the identity
+
+$$
+\int_{\mathbb{R}} e^{-x^{2} / 2} d x=\sqrt{2 \pi}
+$$
+
+(ii) Let the random variable $Z$ have Gaussian $\mathcal{N}\left(m, \sigma^{2}\right)$ distribution, that is
+
+$$
+\mathbb{P}(Z \in A)=\int_{A}\left(2 \pi \sigma^{2}\right)^{-1 / 2} e^{-(x-m)^{2} / 2 \sigma^{2}} d x, \quad A \in \mathcal{B}(\mathbb{R})
+$$
+
+for some $m \in \mathbb{R}$ and $\sigma>0$. Show that
+
+$$
+\mathbb{E}(Z)=m, \quad \mathbb{E}\left(Z^{2}\right)=m^{2}+\sigma^{2}, \quad \operatorname{Var}(Z)=\sigma^{2} .
+$$
+
+Compute also the Laplace transform
+
+$$
+\mathbb{E}\left(e^{\xi Z}\right)=e^{m \xi+\left(\sigma^{2} \xi^{2}\right) / 2}, \quad \xi \in \mathbb{R} .
+$$
+
+(Hint: Reduce the results to those for the standard Gaussian $\mathcal{N}(0,1)$.)\\
+(iii) Let $X$ be a random variable on a probability space ( $\Omega, \mathcal{F}, \mathbb{P}$ ), such that the Laplace transform
+
+$$
+\phi(\xi):=\mathbb{E}\left(e^{\xi X}\right) \quad \text { is well defined and finite, for all } \xi \in \mathbb{R} .
+$$
+
+Show that
+
+$$
+\mathbb{E}\left(X^{n}\right)=\left.\frac{\mathrm{d}^{n}}{\mathrm{~d} \xi^{n}} \phi(\xi)\right|_{\xi=0}, \quad n \in \mathbb{N}_{0}
+$$
+
+which justifies the terminology "moment generating function" for this Laplace transform.\\
+Can you verify the results of Exercise 2 using this?\\
+Can you find an expression for the higher-order moments of the standard Gaussian?\\
+(Hint: Use Lebesgue's Dominated Convergence Theorem and a Taylor series.)\\
+Exercise \#4: The Emergence of the Poisson Distribution. There was a time, and I remember it very well, when every self-respecting gentleman had to wear a hat in "polite society".
+
+Suppose now that each of $n$ (not very well-behaved) gentlemen, upon arriving at a party, throws his hat at random in the center of the room. The hats at then mixed up (shuffled) thoroughly; and at the end of the party each gentleman is assigned, at random, a hat from the big pile. What is the probability that exactly $m$ (for some $m \in\{0,1, \cdots, n\}$ ) gentlemen are assigned their own hats? What happens to this probability in the limit as $n \rightarrow \infty$ ?\\
+(Hint: Recall the answer for the case $m=0$, which is discussed in § 3.1 of the typed Lecture Notes, and build on it.)
+
+Exercise \#5: Do Problem 4.4 in Walsh (2012).\\
+Exercise \#6: Convergence in Probability is Metrizable. Let $\mathbb{L}^{0}$ denote the space of (equivalence classes of) random variables $X: \Omega \rightarrow \mathbb{R}$ on a given probability space ( $\Omega, \mathcal{F}, \mathbb{P}$ ), and define
+
+$$
+\rho(X, Y):=\mathbb{E}(|X-Y| \wedge 1)
+$$
+
+for any two elements $X, Y$ of $\mathbb{L}^{0}$.\\
+(i) Show that this recipe defines a metric on the space $\mathbb{L}^{0}$, and that convergence under this metric is equivalent to convergence in probability.\\
+(ii) Show that the same is true, if we replace $\rho$ above, by
+
+$$
+\varrho(X, Y):=\mathbb{E}\left(\frac{|X-Y|}{1+|X-Y|}\right)
+$$
+
+(iii) Optional: This is all very well and good. But is it possible also for a.e. convergence?
+
+In other words: Does there exist a metric on the space $\mathbb{L}^{0}$, such that convergence under this metric is equivalent to a.e. convergence?\\
+(See also Problems 4.6 and 4.19 in Walsh (2012).)
+
+Exercise \#7: Do Problem 4.12 in Walsh (2012).\\
+Exercise \#8: Do Problem 4.14 in Walsh (2012).\\
+Exercise \#9: Do Problem 4.26 in Walsh (2012).\\
+Exercise \#10: Do Problem 4.28 in Walsh (2012).\\
+Exercise \#11: Do Problem 4.31 in Walsh (2012).\\
+Exercise \#12: Do Problem 4.13 in Walsh (2012).\\
+Exercise \#13: Positive Correlations. For any two monotone increasing functions $f$ : $\mathbb{R} \rightarrow \mathbb{R}$ and $g: \mathbb{R} \rightarrow \mathbb{R}$, and for any random variable $X$ on a probability space ( $\Omega, \mathcal{F}, \mathbb{P}$ ), we have
+
+$$
+\mathbb{E}[f(X) g(X)] \geq \mathbb{E}[f(X)] \cdot \mathbb{E}[g(X)]
+$$
+
+whenever all indicated expectations are well defined and finite. In particular, we have then
+
+$$
+\operatorname{Cov}(f(X), g(X)) \geq 0
+$$
+
+(Hint: You may find it useful to consider on the same probability space-by enlarging it, if necessary - an "independent copy" $Y$ of the random variable $X$; that is, a random variable $Y$ which has the same distribution as $X$, and such that $X, Y$ are independent.)
+
+
+\end{document}
