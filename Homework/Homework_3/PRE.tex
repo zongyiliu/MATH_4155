@@ -1,1 +1,434 @@
+\documentclass[letterpaper]{article} 
+\usepackage[utf8]{inputenc}
+\linespread{0.85}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{fontspec}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage[dvipsnames]{xcolor}
+\colorlet{LightRubineRed}{RubineRed!70}
+\colorlet{Mycolor1}{green!10!orange}
+\definecolor{Mycolor2}{HTML}{00F9DE}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{capt-of}
+\usepackage{lipsum}
+\usepackage{fancyvrb}
+\usepackage{tabularx}
+\usepackage{listings}
+\usepackage[export]{adjustbox}
+\graphicspath{ {./images/} }
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{float}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{capt-of}
+\usepackage{tcolorbox}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{listings}
+\definecolor{deepred}{RGB}{139,0,0}
+\usepackage{hyperref} 
+\usepackage{xcolor} % For custom colors
+\lstset{
+	language=Python,                % Choose the language (e.g., Python, C, R)
+	basicstyle=\ttfamily\small, % Font size and type
+	keywordstyle=\color{blue},  % Keywords color
+	commentstyle=\color{gray},  % Comments color
+	stringstyle=\color{red},    % String color
+	numbers=left,               % Line numbers
+	numberstyle=\tiny\color{gray}, % Line number style
+	stepnumber=1,               % Numbering step
+	breaklines=true,            % Auto line break
+	backgroundcolor=\color{black!5}, % Light gray background
+	frame=single,               % Frame around the code
+}
+\usepackage{float}
+\usepackage[]{amsthm} %lets us use \begin{proof}
+	\usepackage[]{amssymb} %gives us the character \varnothing
 
+	\title{Homework 3, MATH 4155}
+	\author{Zongyi Liu}
+	\date{Wed, Jan 28, 2026}
+	\begin{document}
+		\maketitle
+		
+		\section{Question 1}
+		
+		{\color{deepred}\fontspec{Georgia} Big Expected Returns} 
+		
+		On a suitable probability space $(\Omega, \mathcal{F}, \mathbb{P})$ construct a
+		sequence $\{Z_n\}$ of random variables with
+		\[
+		\lim_{n\to\infty} Z_n(\omega) = -\infty,
+		\qquad \text{for a.e. } \omega \in \Omega,
+		\]
+		and
+		\[
+		\lim_{n\to\infty} \mathbb{E}(Z_n) = +\infty.
+		\]
+		
+		(\textit{Hint:} Recall the geometric random variable $T$ discussed in class
+		(section 3.4 of Lecture Notes, for instance), and construct each $Z_n$ by a
+		simple modification of this $T$.)
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+	
+	\section{Question 2}
+	
+	{\color{deepred}\fontspec{Georgia} The Cantor Set ($\ast$)} 
+	
+	The \textsc{Cantor} set is defined as the set of all points in the unit interval
+	$[0,1]$ whose ternary expansion has no $1$'s in it. (See below a discussion of
+	ternary expansions.) If a point has two expansions, put it in the set if one of
+	them has no $1$'s. It follows that the \textsc{Cantor} middle-third set is
+	uncountable. It is also a classic example of a fractal, in that it is
+	self-similar. (Dilate it by a factor of $3$, then take the intersection with
+	$[0,1]$; you get the same set.)
+	
+	\begin{enumerate}
+		\item[(a)] Show that the \textsc{Cantor} set is \textsc{Borel}.
+		(\textit{Hint:} You can construct this set starting with $[0,1]$ and removing
+		successively the disjoint open intervals in the collection
+		$\{G_n^j : 1 \le j \le 2^{n-1}\}_{n\in\mathbb{N}}$ given by
+		$G_1^1 = (1/3,2/3)$,
+		\[
+		G_2^1 = (1/9,2/9), \qquad G_2^2 = (7/9,8/9),
+		\]
+		\[
+		G_3^1 = (1/27,2/27), \qquad G_3^2 = (7/27,8/27), \qquad
+		G_3^3 = (19/27,20/27), \qquad G_3^4 = (25/27,26/27), \ldots
+		\]
+		et cetera. To wit, remove first $(1/3,2/3)$; then remove $(1/9,2/9)$ and
+		$(7/9,8/9)$; and so on, removing the middle-third of each remaining interval at
+		each step. Use the fact that open intervals are \textsc{Borel} sets.)
+		
+		\item[(b)] Denoting by $\lambda$ the \textsc{Lebesgue} measure on $\mathcal{B}([0,1])$,
+		compute $\lambda(C)$, the \textsc{Lebesgue} measure of the \textsc{Cantor} set.
+		
+		\textit{Ternary expansions:}
+		This is the base-three analogue of the decimal or binary expansion.
+		Any number $x \in [0,1]$ can be written as
+		\[
+		x = \sum_{n\in\mathbb{N}} \frac{a_n}{3^n},
+		\]
+		where $a_n \in \{0,1,2\}$.
+		The resulting sequence $\{a_n\}_{n\in\mathbb{N}}$ is determined uniquely,
+		unless $x = q3^{-n}$ for some integers $q$ and $n$, in which case there are
+		exactly two such sequences. This is analogous to the decimal situation,
+		where any terminating decimal can also be written as a decimal ending in
+		an infinite string of 9's. One writes sometimes the ternary expansion like
+		a decimal, so that $1/3 = 0.1 = 0.0222\ldots$, for example (thus the number
+		$1/3$ belongs to the \textsc{Cantor} set, because it has this second
+		expansion).
+		
+	\end{enumerate}
+	
+			
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 3}
+		
+		{\color{deepred}\fontspec{Georgia} The Devil's Staircase}
+		
+		In the setting of Exercise 2, let us imagine that, instead of ``throwing out''
+		the interval $G_n^m$, $m = 1,\ldots,2^{n-1}$ that you have to delete at stage
+		$n \in \mathbb{N}$ in order to form the \textsc{Cantor} set, you ``displace it
+		vertically and hoist it'' instead at height $(2m-1)/2^n$: namely, the middle
+		interval $(1/3,2/3)$ is hoisted at height $1/2$; the interval $(1/9,2/9)$ at
+		height $1/4$; the interval $(7/9,8/9)$ at height $3/4$; and so on.
+		
+		This way, you define a function $F(\cdot)$ on the open set
+		\[
+		G := \bigcup_{n\in\mathbb{N}}
+		\left( \bigcup_{j=1}^{2^{n-1}} G_n^j \right), \tag{0.1}
+		\]
+		the complement of the \textsc{Cantor} set
+		\[
+		C := \left\{ x \in [0,1] \;\middle|\;
+		x = \sum_{k\in\mathbb{N}} \frac{a_k}{3^k},
+		\ \text{where } a_k = 0 \text{ or } 2,\ \forall k \in \mathbb{N}
+		\right\}
+		= [0,1]\setminus G. \tag{0.2}
+		\]
+		
+		Whereas on the \textsc{Cantor} set itself, you set
+		\[
+		F(x) = \sum_{k\in\mathbb{N}} \frac{b_k}{2^k}
+		\quad \text{with } b_k = \frac{a_k}{2} \in \{0,1\},
+		\ \text{for } x = \sum_{k\in\mathbb{N}} \frac{a_k}{3^k} \in C
+		\text{ and } a_k \in \{0,2\}. \tag{0.3}
+		\]
+		
+		To begin to get a feel for this definition, note that
+		$x=0$ is of the form (0.2) with $a_k=0$ for all $k\in\mathbb{N}$;
+		the number $x=1/3$ is of this form with $a_1=0$ and
+		$a_k=2$ for all $k\ge 2$;
+		the number $x=2/3$ is again of the form (0.2) with $a_1=2$
+		and $a_k=0$ for all $k\ge 2$;
+		and $x=1$ is of this form with $a_k=2$ for all $k\in\mathbb{N}$.
+		For these numbers, the values of the function $F(\cdot)$ are given as
+		\[
+		F(0)=0, \qquad
+		F(1/3)=\sum_{k\ge 2}\frac{1}{2^k}=\frac12=F(2/3),
+		\qquad
+		F(1)=\sum_{k\in\mathbb{N}}\frac{1}{2^k}=1.
+		\]
+		
+		Finally, set $F(x):=0$ for $x<0$ and $F(x):=1$ for $x>1$.
+		
+		\begin{itemize}
+			\item[(i)] Show that this recipe defines a function
+			$F:\mathbb{R}\to[0,1]$ which is \textit{continuous}, and flat on the
+			set $G$ with $\lambda(G)=1$.
+		
+		
+			{\footnotesize\color{Gray}\fontspec{Georgia}  This function is called the \textsc{Cantor} function. Its derivative
+				$F'(\cdot)$ exists and is equal to zero everywhere on the set $G$, which has full
+				\textsc{Lebesgue} measure; thus it is impossible to write $F(\cdot)$ in the form
+				$F(x)=\int_0^x f(u)\,du$ for some \textsc{Borel}-measurable $f:[0,1]\to[0,\infty)$
+				(because this would imply $f=0$, $\lambda$-a.e.\ on $[0,1]$, and thus $F(1)=0$,
+				violating $F(1)=1$).
+			
+			
+			{Remark:} Suppose that $X_1,X_2,\ldots$ are independent random variables with
+			$\mathbb{P}(X_k=0)=\mathbb{P}(X_k=1)=1/2$ for all $k\in\mathbb{N}$. Then the
+			distribution of the random variable
+			\[
+			W=\sum_{k\in\mathbb{N}} 2X_k\,3^{-k}
+			\]
+			is precisely the \textsc{Cantor} function
+			\[
+			\mathbb{P}(W\le x)=F(x), \qquad x\in\mathbb{R}.
+			\]
+		}
+			\item[(ii)] Show that the \textsc{Cantor} function satisfies the recursion
+			\[
+			2F(x)=F(3x)+F(3x-2), \qquad x\in\mathbb{R}.
+			\]
+			This gives, in particular: $F(x)=1/2$ for $1/3 \le x \le 2/3$;
+			$F(x)=F(3x)/2$ for $0 \le x \le 1/3$; and $2F(x)=1+F(3x-2)$ for $2/3 \le x \le 1$.
+			(\textit{Hint:} You may use freely the representation of the previous remark.)
+		\end{itemize}
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 4}
+		
+		{\color{deepred}\fontspec{Georgia}Absolute Continuity}
+		
+		
+		Let $X:\Omega\to[0,\infty)$ be a random variable with $\mathbb{E}(X)=1$ on the
+		probability space $(\Omega,\mathcal{F},\mathbb{P})$. Show carefully that the
+		mapping $Q:\mathcal{F}\to[0,1]$ defined by
+		\[
+		Q(A):=\int_A X\,d\mathbb{P}=\mathbb{E}(X\mathbf{1}_A), \qquad A\in\mathcal{F},
+		\]
+		is a probability measure with the property
+		\[
+		Q(A)=0 \ \text{for every } A\in\mathcal{F}\ \text{with } \mathbb{P}(A)=0,
+		\]
+		and that for every random variable $Y:\Omega\to[0,\infty)$ we have
+		\[
+		\int_\Omega Y\,dQ=\int_\Omega XY\,d\mathbb{P}.
+		\]
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 5}
+		
+			{\color{deepred}\fontspec{Georgia} Walsh 3.44 and 3.45}
+		
+		\subsection{Part 1}
+		\textbf{3.44.} The Cantor set $C$ is the subset of $[0,1]$ formed by removing successive
+		“open middle thirds”. It can be succinctly defined using the ternary expansion:
+		write $x \in [0,1]$ in the base $3$: $x = \sum_{n=1}^{\infty} a_n 3^{-n}$, where each
+		$a_n$ equals zero, one or two. The Cantor set is the set of all $x$ for which
+		$a_n \neq 1$ for all $n$. (If $x$ has two expansions, put it in the Cantor set if
+		\emph{one} of them has no ones.)
+		
+		\begin{enumerate}
+			\item[(a)] Show that $C$ is a closed set and that it is obtained by first removing the
+			open middle third $(1/3, 2/3)$, then the two middle thirds of the remaining
+			intervals $(1/9, 2/9)$ and $(7/9, 8/9)$, and so on.
+			
+			\item[(b)] Show that the Cantor set can be put into one-to-one correspondence with
+			$[0,1]$, and is therefore uncountable.
+			
+			\item[(c)] Let $X$ be a random variable on the probability space
+			$([0,1], \mathcal{B}([0,1]), dx)$ (see Example 1.14.2) defined by
+			$X(x) = 1$ if $x \in C$, $X = 0$ otherwise. Show that
+			$P\{X = 1\} = 0$.
+		\end{enumerate}
+	
+	\textbf{Answer}
+	
+	\clearpage
+		
+		\subsection{Part 2}
+		\textbf{3.45.} Not all continuous distribution functions have densities. Here is an example,
+		called the Cantor function. It is defined on $[0,1]$ as follows. Let $x \in [0,1]$
+		and let $(a_n)$ be the coefficients in its ternary expansion:
+		$x = \sum_n a_n 3^{-n}$. Let $N = \infty$ if none of the $a_n = 1$, and otherwise,
+		let $N$ be the smallest $n$ for which $a_n = 1$. Set $b_n = a_n/2$ if $n < N$,
+		and set $b_N = 1$. Then set
+		\[
+		F(x) = \sum_{n=1}^{N} b_n 2^{-n}.
+		\]
+		
+		\begin{enumerate}
+			\item[(a)] Show that $F$ is constant on each interval in the complement of the Cantor
+			set (Exercise 3.44), and that it maps the Cantor set \emph{onto} $[0,1]$.
+			
+			\item[(b)] Deduce that $F$ (extended to $\mathbb{R}$ in the obvious way) is a continuous
+			distribution function, and the corresponding measure puts all its mass on
+			the Cantor set.
+			
+			\item[(c)] Conclude that $F$ has no density, i.e.\ there is no function $f(x)$ for which
+			\[
+			F(x) = \int_0^x f(y)\,dy
+			\]
+			for all $x \in [0,1]$. $F$ is a \emph{purely singular} distribution function.
+		\end{enumerate}
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 6}
+		
+		{\color{deepred}\fontspec{Georgia}Sigma-Algebra generated by a Random Variable}
+		
+		Let $X,Y$ be real-valued, measurable functions on the measurable space
+		$(\Omega,\mathcal{F})$. Observe that the collection
+		\[
+		\sigma(X) := X^{-1}(\mathcal{B}(\mathbb{R}))
+		\]
+		is a $\sigma$-algebra, and $\sigma(X)\subseteq \mathcal{F}$. It is called the
+		$\sigma$-algebra generated by $X$, and is the smallest $\sigma$-algebra with
+		respect to which $X$ is measurable.
+		
+		Show that, in order for $\sigma(Y)\subseteq \sigma(X)$ to hold, it is necessary
+		and sufficient that there exist a Borel-measurable function $h:\mathbb{R}\to\mathbb{R}$
+		such that
+		\[
+		Y(\omega)=h(X(\omega)), \qquad \omega\in\Omega.
+		\]
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		
+		\section{Question 7}
+		{\color{deepred}\fontspec{Georgia}Medians and Means as Solutions of Optimization Problems ($\ast$)}
+		
+		For every random variable $X$ there exists a real number $\rho$, the ``median''
+		of its distribution, for which
+		\[
+		\frac12 \le \mathbb{P}(X\ge \rho),
+		\qquad
+		\frac12 \le \mathbb{P}(X\le \rho).
+		\]
+		If $X$ is integrable, then $\rho$ attains the infimum
+		\[
+		\inf_{a\in\mathbb{R}} \mathbb{E}\bigl(|X-a|\bigr).
+		\]
+		Whereas, if $X$ is square-integrable, the expectation $m=\mathbb{E}(X)$ attains
+		the infimum
+		\[
+		\inf_{a\in\mathbb{R}} \mathbb{E}\bigl((X-a)^2\bigr).
+		\]
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 8}
+	
+	Establish carefully the property
+	\[
+	\mathbb{E}(cX)=c\,\mathbb{E}(X)
+	\]
+	of the \textsc{Lebesgue} integral; first for measurable $X:\Omega\to[0,\infty)$
+	and $c\in[0,\infty)$ (equation (2.10) in the typed lecture notes), then for any
+	integrable $X:\Omega\to\mathbb{R}$ and $c\in\mathbb{R}$ (equation (2.13) in the
+	typed lecture notes).
+
+	
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 9}
+		
+		{\color{deepred}\fontspec{Georgia} Walsh 3.48}
+		
+		Let $X$ and $Y$ be independent random variables. Suppose that $X$ has an absolutely continuous distribution. Show that $X + Y$ also has an absolutely continuous distribution.
+		
+		[Hint: The interchange of order of integration holds for iterated Stieltjes integrals, too.]
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		
+		\section{Question 10}
+		
+		{\color{deepred}\fontspec{Georgia} Walsh 3.49}
+		
+		A family decides that they will continue to have children until the first boy is born, then they will stop. Assume that boys and girls are equally likely, and that successive births are independent. What is the expected total number of girls born in the family? What is the expected number of children?
+		
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 11}
+		
+		{\color{deepred}\fontspec{Georgia} Walsh 3.50}
+		
+		Flip a coin with $P\{\text{heads}\} = p$. Let $X_n$ be the number of flips it takes to get a run of $n$ successive heads. (If the first flip is tail and the next $n$ flips are heads, then $X_n = n + 1$.)
+		
+		\begin{enumerate}
+			\item[(a)] Consider $E\{X_{n+1} \mid X_n = k\}$ and relate $E\{X_n\}$ and $E\{X_{n+1}\}$.
+			
+			\item[(b)] Show that $E\{X_n\} = \sum_{k=1}^n \frac{1}{p^k}$.
+		\end{enumerate}
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		
+		
+		
+		
+	\end{document}
