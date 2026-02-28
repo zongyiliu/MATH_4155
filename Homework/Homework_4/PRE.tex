@@ -1,126 +1,340 @@
-\documentclass[10pt]{article}
+\documentclass[letterpaper]{article} 
 \usepackage[utf8]{inputenc}
+\linespread{0.85}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{array}
+\usepackage{fontspec}
+\usepackage{booktabs}
+\usepackage{hyperref}
 \usepackage[version=4]{mhchem}
 \usepackage{stmaryrd}
-\usepackage{bbold}
+\usepackage[dvipsnames]{xcolor}
+\colorlet{LightRubineRed}{RubineRed!70}
+\colorlet{Mycolor1}{green!10!orange}
+\definecolor{Mycolor2}{HTML}{00F9DE}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{capt-of}
+\usepackage{lipsum}
+\usepackage{fancyvrb}
+\usepackage{tabularx}
+\usepackage{listings}
+\usepackage[export]{adjustbox}
+\graphicspath{ {./images/} }
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{float}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{capt-of}
+\usepackage{tcolorbox}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{listings}
+\definecolor{deepred}{RGB}{139,0,0}
+\usepackage{hyperref} 
+\usepackage{xcolor} % For custom colors
+\lstset{
+	language=Python,                % Choose the language (e.g., Python, C, R)
+	basicstyle=\ttfamily\small, % Font size and type
+	keywordstyle=\color{blue},  % Keywords color
+	commentstyle=\color{gray},  % Comments color
+	stringstyle=\color{red},    % String color
+	numbers=left,               % Line numbers
+	numberstyle=\tiny\color{gray}, % Line number style
+	stepnumber=1,               % Numbering step
+	breaklines=true,            % Auto line break
+	backgroundcolor=\color{black!5}, % Light gray background
+	frame=single,               % Frame around the code
+}
+\usepackage{float}
+\usepackage[]{amsthm} %lets us use \begin{proof}
+	\usepackage[]{amssymb} %gives us the character \varnothing
 
-\title{PROBABILITY GU4155: Spring 2026 }
+	\title{Homework 4, MATH 4155}
+	\author{Zongyi Liu}
+	\date{Tue, Feb 24, 2026}
+	\begin{document}
+		\maketitle
+		\section{Question 1}
+		
+		Let $X: \Omega \rightarrow(0, \infty)$ be a random variable that satisfies
+		
+		$$
+		\mathbb{P}(X>t+s \mid X>s)=\mathbb{P}(X>t), \quad \forall t \geq 0, \quad s \geq 0
+		$$
+		
+		Show that $X$ has an exponential distribution.
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 2}
+		
+		{\color{deepred}\fontspec{Georgia} Blossoms on an Apple Tree}
+		
+		Assume that the number $B$ of blossoms on an apple tree is a random variable with $\operatorname{Poisson}(\lambda)$ distribution; and that, independently of all others, each blossom will yield fruit with probability $p \in(0,1)$.
+		\begin{itemize}
+			\item[(i)] Compute the distribution of the random variable $A$, which denotes the number of apples on the tree.
+			
+			\item[(ii)] Suppose we are told that a tree has a number $a$ of apples. What is the (conditional) distribution
 
-\author{ASSIGNMENT \# 4\\
-Professor Ioannis Karatzas Department of Mathematics, Columbia University}
-\date{}
+		
+		$$
+		\mathbb{P}(B=b \mid A=a), \quad b=a, a+1, \cdots
+		$$
+		
+		of the number of blossoms that yielded these many apples (we can certainly have no more apples than we had blossoms)? 
+				\end{itemize}
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 3}
+		
+		\begin{itemize}
+			
+			\item[(i)] Establish the identity
+			\[
+			\int_{\mathbb{R}} e^{-x^{2}/2}\,dx = \sqrt{2\pi}.
+			\]
+			
+			\item[(ii)] Let the random variable $Z$ have Gaussian $\mathcal{N}(m,\sigma^{2})$ distribution, that is
+			\[
+			\mathbb{P}(Z \in A)
+			=
+			\int_{A} (2\pi\sigma^{2})^{-1/2}
+			e^{-(x-m)^{2}/(2\sigma^{2})}\,dx,
+			\qquad
+			A \in \mathcal{B}(\mathbb{R}),
+			\]
+			for some $m \in \mathbb{R}$ and $\sigma > 0$. Show that
+			\[
+			\mathbb{E}(Z) = m,
+			\qquad
+			\mathbb{E}(Z^{2}) = m^{2} + \sigma^{2},
+			\qquad
+			\operatorname{Var}(Z) = \sigma^{2}.
+			\]
+			Compute also the Laplace transform
+			\[
+			\mathbb{E}\!\left(e^{\xi Z}\right)
+			=
+			e^{m\xi + (\sigma^{2}\xi^{2})/2},
+			\qquad
+			\xi \in \mathbb{R}.
+			\]
+			(\emph{Hint}: Reduce the results to those for the standard Gaussian $\mathcal{N}(0,1)$.)
+			
+			\item[(iii)] Let $X$ be a random variable on a probability space $(\Omega,\mathcal{F},\mathbb{P})$, such that the Laplace transform
+			\[
+			\phi(\xi) := \mathbb{E}\!\left(e^{\xi X}\right)
+			\quad \text{is well defined and finite, for all } \xi \in \mathbb{R}.
+			\]
+			Show that
+			\[
+			\mathbb{E}\!\left(X^{n}\right)
+			=
+			\left.
+			\frac{d^{n}}{d\xi^{n}} \phi(\xi)
+			\right|_{\xi=0},
+			\qquad
+			n \in \mathbb{N}_{0},
+			\]
+			which justifies the terminology ``moment generating function'' for this Laplace transform. Can you verify the results of Exercise 2 using this? Can you find an expression for the higher-order moments of the standard Gaussian? (\emph{Hint}: Use Lebesgue's Dominated Convergence Theorem and a Taylor series.)
+			
+			
+			
+		\end{itemize}
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 4}
+		
+		{\color{deepred}\fontspec{Georgia} The Emergence of the Poisson Distribution}
+		
+		There was a time, and I remember it very well, when every self-respecting gentleman had to wear a hat in "polite society".
+		
+		Suppose now that each of $n$ (not very well-behaved) gentlemen, upon arriving at a party, throws his hat at random in the center of the room. The hats at then mixed up (shuffled) thoroughly; and at the end of the party each gentleman is assigned, at random, a hat from the big pile. What is the probability that exactly $m$ (for some $m \in\{0,1, \cdots, n\}$ ) gentlemen are assigned their own hats? What happens to this probability in the limit as $n \rightarrow \infty$? (\emph{Hint}: Recall the answer for the case $m=0$, which is discussed in § 3.1 of the typed Lecture Notes, and build on it.)
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 5}
+		
+		{\color{deepred}\fontspec{Georgia} Walsh 4.4} 
+		
+		Let $(X_n)$ and $(Y_n)$ be sequences of random variables and let $a$ be a constant. Show that the following are true for convergence in probability and convergence a.e. Show that (a) and (b) hold for convergence in $L^1$, too. Give examples in which (c) and (d) do not hold for $L^1$ convergence.
+		
+		Suppose that $X_n \to X$ and $Y_n \to Y$. Then
+		\begin{enumerate}
+			\item[(a)] $X_n + Y_n \to X + Y$.
+			\item[(b)] $aX_n \to aX$.
+			\item[(c)] $X_n Y_n \to XY$.
+			\item[(d)] If $P\{X = 0\} = 0$, $\dfrac{Y_n}{X_n} \to \dfrac{Y}{X}$.
+		\end{enumerate}
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 6}
+		
+		{\color{deepred}\fontspec{Georgia} Convergence in Probability is Metrizable}
+		
+		
+		Let $\mathbb{L}^{0}$ denote the space of (equivalence classes of) random variables
+		$X:\Omega\to\mathbb{R}$ on a probability space $(\Omega,\mathcal{F},\mathbb{P})$,
+		and define
+		\[
+		\rho(X,Y):=\mathbb{E}(|X-Y|\wedge 1), \qquad X,Y\in\mathbb{L}^{0}.
+		\]
+		
+		\begin{enumerate}
+			\item[(i)] Show that $\rho$ defines a metric on $\mathbb{L}^{0}$, and that convergence under $\rho$ is equivalent to convergence in probability.
+			
+			\item[(ii)] Show the same holds if $\rho$ is replaced by
+			\[
+			\varrho(X,Y):=\mathbb{E}\!\left(\frac{|X-Y|}{1+|X-Y|}\right).
+			\]
+			
+			\item[(iii)] (Optional) Does there exist a metric on $\mathbb{L}^{0}$ such that convergence under this metric is equivalent to a.e.\ convergence?
+		\end{enumerate}
+		
+		(See also Problems 4.6 and 4.19 in Walsh (2012))
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		
+		
+		\section{Question 7}
+		
+		{\color{deepred}\fontspec{Georgia} Walsh 4.12} 
+		
+		The following statements are either true or false. Say which. If true, give a (short) proof. If false, give a counterexample. In all cases, $X$ and $X_1, X_2, \ldots$ are random variables on a given probability space, and $C$ is a constant.
+	
+\begin{enumerate}
+\item[(a)] If $X_n \to C$ in probability, then $X_n^2 \to C^2$ in distribution.
 
+\item[(b)] If $X_n \to 0$ in distribution, then $X_n \to 0$ in probability.
 
-\begin{document}
-\maketitle
-January 7, 2026
+\item[(c)] If $X_n \to X$ in distribution, then $X_n \to X$ in probability.
 
-Exercise \#1: Let $X: \Omega \rightarrow(0, \infty)$ be a random variable that satisfies
+\item[(d)] $\displaystyle \limsup_{n\to\infty} X_n \le \limsup_{n\to\infty} E\{X_n\}.$
 
-$$
-\mathbb{P}(X>t+s \mid X>s)=\mathbb{P}(X>t), \quad \forall t \geq 0, \quad s \geq 0
-$$
-
-Show that $X$ has an exponential distribution.\\
-Exercise \#2: Blossoms on an Apple Tree. Assume that the number $B$ of blossoms on an apple tree is a random variable with $\operatorname{Poisson}(\lambda)$ distribution; and that, independently of all others, each blossom will yield fruit with probability $p \in(0,1)$.\\
-(i) Compute the distribution of the random variable $A$, which denotes the number of apples on the tree.\\
-(ii) Suppose we are told that a tree has a number $a$ of apples. What is the (conditional) distribution
-
-$$
-\mathbb{P}(B=b \mid A=a), \quad b=a, a+1, \cdots
-$$
-
-of the number of blossoms that yielded these many apples?\\
-(We can certainly have no more apples than we had blossoms.)\\
-Exercise \#3: (i) Establish the identity
-
-$$
-\int_{\mathbb{R}} e^{-x^{2} / 2} d x=\sqrt{2 \pi}
-$$
-
-(ii) Let the random variable $Z$ have Gaussian $\mathcal{N}\left(m, \sigma^{2}\right)$ distribution, that is
-
-$$
-\mathbb{P}(Z \in A)=\int_{A}\left(2 \pi \sigma^{2}\right)^{-1 / 2} e^{-(x-m)^{2} / 2 \sigma^{2}} d x, \quad A \in \mathcal{B}(\mathbb{R})
-$$
-
-for some $m \in \mathbb{R}$ and $\sigma>0$. Show that
-
-$$
-\mathbb{E}(Z)=m, \quad \mathbb{E}\left(Z^{2}\right)=m^{2}+\sigma^{2}, \quad \operatorname{Var}(Z)=\sigma^{2} .
-$$
-
-Compute also the Laplace transform
-
-$$
-\mathbb{E}\left(e^{\xi Z}\right)=e^{m \xi+\left(\sigma^{2} \xi^{2}\right) / 2}, \quad \xi \in \mathbb{R} .
-$$
-
-(Hint: Reduce the results to those for the standard Gaussian $\mathcal{N}(0,1)$.)\\
-(iii) Let $X$ be a random variable on a probability space ( $\Omega, \mathcal{F}, \mathbb{P}$ ), such that the Laplace transform
-
-$$
-\phi(\xi):=\mathbb{E}\left(e^{\xi X}\right) \quad \text { is well defined and finite, for all } \xi \in \mathbb{R} .
-$$
-
-Show that
-
-$$
-\mathbb{E}\left(X^{n}\right)=\left.\frac{\mathrm{d}^{n}}{\mathrm{~d} \xi^{n}} \phi(\xi)\right|_{\xi=0}, \quad n \in \mathbb{N}_{0}
-$$
-
-which justifies the terminology "moment generating function" for this Laplace transform.\\
-Can you verify the results of Exercise 2 using this?\\
-Can you find an expression for the higher-order moments of the standard Gaussian?\\
-(Hint: Use Lebesgue's Dominated Convergence Theorem and a Taylor series.)\\
-Exercise \#4: The Emergence of the Poisson Distribution. There was a time, and I remember it very well, when every self-respecting gentleman had to wear a hat in "polite society".
-
-Suppose now that each of $n$ (not very well-behaved) gentlemen, upon arriving at a party, throws his hat at random in the center of the room. The hats at then mixed up (shuffled) thoroughly; and at the end of the party each gentleman is assigned, at random, a hat from the big pile. What is the probability that exactly $m$ (for some $m \in\{0,1, \cdots, n\}$ ) gentlemen are assigned their own hats? What happens to this probability in the limit as $n \rightarrow \infty$ ?\\
-(Hint: Recall the answer for the case $m=0$, which is discussed in § 3.1 of the typed Lecture Notes, and build on it.)
-
-Exercise \#5: Do Problem 4.4 in Walsh (2012).\\
-Exercise \#6: Convergence in Probability is Metrizable. Let $\mathbb{L}^{0}$ denote the space of (equivalence classes of) random variables $X: \Omega \rightarrow \mathbb{R}$ on a given probability space ( $\Omega, \mathcal{F}, \mathbb{P}$ ), and define
-
-$$
-\rho(X, Y):=\mathbb{E}(|X-Y| \wedge 1)
-$$
-
-for any two elements $X, Y$ of $\mathbb{L}^{0}$.\\
-(i) Show that this recipe defines a metric on the space $\mathbb{L}^{0}$, and that convergence under this metric is equivalent to convergence in probability.\\
-(ii) Show that the same is true, if we replace $\rho$ above, by
-
-$$
-\varrho(X, Y):=\mathbb{E}\left(\frac{|X-Y|}{1+|X-Y|}\right)
-$$
-
-(iii) Optional: This is all very well and good. But is it possible also for a.e. convergence?
-
-In other words: Does there exist a metric on the space $\mathbb{L}^{0}$, such that convergence under this metric is equivalent to a.e. convergence?\\
-(See also Problems 4.6 and 4.19 in Walsh (2012).)
-
-Exercise \#7: Do Problem 4.12 in Walsh (2012).\\
-Exercise \#8: Do Problem 4.14 in Walsh (2012).\\
-Exercise \#9: Do Problem 4.26 in Walsh (2012).\\
-Exercise \#10: Do Problem 4.28 in Walsh (2012).\\
-Exercise \#11: Do Problem 4.31 in Walsh (2012).\\
-Exercise \#12: Do Problem 4.13 in Walsh (2012).\\
-Exercise \#13: Positive Correlations. For any two monotone increasing functions $f$ : $\mathbb{R} \rightarrow \mathbb{R}$ and $g: \mathbb{R} \rightarrow \mathbb{R}$, and for any random variable $X$ on a probability space ( $\Omega, \mathcal{F}, \mathbb{P}$ ), we have
-
-$$
-\mathbb{E}[f(X) g(X)] \geq \mathbb{E}[f(X)] \cdot \mathbb{E}[g(X)]
-$$
-
-whenever all indicated expectations are well defined and finite. In particular, we have then
-
-$$
-\operatorname{Cov}(f(X), g(X)) \geq 0
-$$
-
-(Hint: You may find it useful to consider on the same probability space-by enlarging it, if necessary - an "independent copy" $Y$ of the random variable $X$; that is, a random variable $Y$ which has the same distribution as $X$, and such that $X, Y$ are independent.)
-
-
-\end{document}
+\item[(e)] If every subsequence of $(X_n)$ contains a further subsequence which converges a.s., then $(X_n)$ converges in probability.
+\end{enumerate}
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 8}
+		
+		{\color{deepred}\fontspec{Georgia} Walsh4.14} 
+		
+		Let $(X_n)$ be a sequence of random variables which converge in probability to $X$. Show that if $f$ is a continuous function on $\mathbb{R}$, then $f(X_n) \to f(X)$ in probability. (Careful: $f$ may not be uniformly continuous, or even bounded. Try truncating at $\pm A$ for large $A$.)
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 9}
+		
+		{\color{deepred}\fontspec{Georgia} Walsh 4.26} 
+		
+		Let $(X_n)$ be a sequence of positive integrable random variables which converges a.e.\ to an integrable random variable $X$. Suppose $E\{X_n\} \to E\{X\}$. Show that for all bounded random variables $Y$, $E\{Y X_n\} \to E\{Y X\}$. Show by example that the conclusion may be false if the $X_n$ are not positive.
+		
+		
+		
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 10}
+		
+		{\color{deepred}\fontspec{Georgia} Walsh 4.28} 
+		
+		The following extends the dominated convergence theorem. Let $(X_n)$ be a sequence of random variables which converges a.e.\ or in probability to a random variable $X$. Suppose $(X_n)$ is dominated by a sequence $(Y_n)$: $|X_n| \le Y_n$ a.s.\ for all $n$. Suppose that $(Y_n)$ converges a.e.\ to a random variable $Y$, and that $\lim_{n} E\{Y_n\} = E\{Y\}$. Show that $E\{X_n\} \to E\{X\}$.
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 11}
+		
+		{\color{deepred}\fontspec{Georgia} Walsh 4.31} 
+		
+		Let $R = [a,b] \times [c,d]$ be a rectangle, and let $f$ be a real-valued function on $R$. Use the dominated convergence theorem to prove the following standard theorem from advanced calculus which justifies interchanging the order of differentiation and integration.
+		
+		\medskip
+		
+		\textbf{Theorem} Suppose $f$ and $\dfrac{\partial f}{\partial x}$ are continuous on $R$. Define
+		\[
+		G(x) \stackrel{\mathrm{def}}{=} \int_c^d f(x,y)\,dy.
+		\]
+		Then $G$ is differentiable, and
+		\[
+		G'(x) = \int_c^d \frac{\partial f}{\partial x}(x,y)\,dy.
+		\]
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 12}
+		
+		{\color{deepred}\fontspec{Georgia} Walsh 4.13} 
+		
+		Show that $(X_n)$ converges in probability to $X$ if and only if every subsequence $(X_{n_k})$ contains a further subsequence that converges a.e.\ to $X$.
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 13}
+		
+		{\color{deepred}\fontspec{Georgia} Positive Correlations}
+		
+		For any two monotone increasing functions $f$ : $\mathbb{R} \rightarrow \mathbb{R}$ and $g: \mathbb{R} \rightarrow \mathbb{R}$, and for any random variable $X$ on a probability space ( $\Omega, \mathcal{F}, \mathbb{P}$ ), we have
+		
+		$$
+		\mathbb{E}[f(X) g(X)] \geq \mathbb{E}[f(X)] \cdot \mathbb{E}[g(X)]
+		$$
+		
+		whenever all indicated expectations are well defined and finite. In particular, we have then
+		
+		$$
+		\operatorname{Cov}(f(X), g(X)) \geq 0
+		$$
+		
+		(\emph{Hint}: You may find it useful to consider on the same probability space-by enlarging it, if necessary - an "independent copy" $Y$ of the random variable $X$; that is, a random variable $Y$ which has the same distribution as $X$, and such that $X, Y$ are independent.)
+		
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		
+	\end{document}
