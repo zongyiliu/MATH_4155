@@ -1,1 +1,326 @@
+\documentclass[letterpaper]{article} 
+\usepackage[utf8]{inputenc}
+\linespread{0.85}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{fontspec}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage[dvipsnames]{xcolor}
+\colorlet{LightRubineRed}{RubineRed!70}
+\colorlet{Mycolor1}{green!10!orange}
+\definecolor{Mycolor2}{HTML}{00F9DE}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{capt-of}
+\usepackage{lipsum}
+\usepackage{fancyvrb}
+\usepackage{tabularx}
+\usepackage{listings}
+\usepackage[export]{adjustbox}
+\graphicspath{ {./images/} }
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{float}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{capt-of}
+\usepackage{tcolorbox}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{listings}
+\definecolor{deepred}{RGB}{139,0,0}
+\usepackage{hyperref} 
+\usepackage{xcolor} % For custom colors
+\lstset{
+	language=Python,                % Choose the language (e.g., Python, C, R)
+	basicstyle=\ttfamily\small, % Font size and type
+	keywordstyle=\color{blue},  % Keywords color
+	commentstyle=\color{gray},  % Comments color
+	stringstyle=\color{red},    % String color
+	numbers=left,               % Line numbers
+	numberstyle=\tiny\color{gray}, % Line number style
+	stepnumber=1,               % Numbering step
+	breaklines=true,            % Auto line break
+	backgroundcolor=\color{black!5}, % Light gray background
+	frame=single,               % Frame around the code
+}
+\usepackage{float}
+\usepackage[]{amsthm} %lets us use \begin{proof}
+\usepackage[]{amssymb} %gives us the character \varnothing
 
+	\title{Homework 2, MATH 4155}
+	\author{Zongyi Liu}
+	\date{Sun, Feb 15, 2026}
+	\begin{document}
+		\maketitle
+		
+		\section{Question 1}
+		
+		Construct a distribution function which is discontinuous at every rational point, and continuous at all irrational points on the real line. Conversely: is there a distribution function which is discontinuous at every irrational point, and continuous at all rational points on the real line?
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+	
+	\section{Question 2}
+	
+	{\color{deepred}\fontspec{Georgia} Distribution and CDF}
+	
+	\begin{enumerate}
+		
+		
+		
+		\item[(i)] Suppose $\mu$ is a probability measure on the Borel subsets of the real line.
+		We use it to define a function $F : \mathbb{R} \to [0,1]$ via
+		\[
+		F(x) := \mu\bigl((-\infty,x]\bigr), \qquad x \in \mathbb{R}.
+		\]
+		Show that this function is nondecreasing and right continuous; that it satisfies
+		$F(-\infty)=0$ and $F(\infty)=1$; and that for any real numbers $a<b$ we have
+		\begin{equation}
+			\mu((a,b]) = F(b)-F(a), \qquad
+			\mu([a,b)) = F(b-)-F(a-), \qquad
+			\mu(\{a\}) = F(a)-F(a-),
+			\tag{0.1}
+		\end{equation}
+		and
+		\begin{equation}
+			\mu([a,b]) = F(b)-F(a-), \qquad
+			\mu((a,b)) = F(b-)-F(a).
+			\tag{0.2}
+		\end{equation}
+		
+		\item[(ii)] Given a random variable $X:\Omega \to \mathbb{R}$ on a probability space
+		$(\Omega,\mathcal{F},\mathbb{P})$, consider the induced measure
+		$\mu_X = \mathbb{P}\circ X^{-1}$.
+		Show that the function
+		\[
+		F_X(x) := \mu_X\bigl((-\infty,x]\bigr) = \mathbb{P}(X \le x),
+		\qquad x \in \mathbb{R},
+		\]
+		is nondecreasing and right continuous, and satisfies
+		$F_X(-\infty)=0$, $F_X(\infty)=1$ as well as the properties
+		\textup{(0.1)}, \textup{(0.2)} above.
+	\end{enumerate}
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 3}
+		
+		{\color{deepred}\fontspec{Georgia} De Moivre-Laplace for Coin Tossing} 
+		
+		Let $X_1,X_2,\dots$ be independent random variables with
+			\[
+			\mathbb{P}(X_j=1)=1-\mathbb{P}(X_j=0)=p\in(0,1)
+			\quad \text{for all } j\in\mathbb{N},
+			\]
+			and denote by
+			\[
+			S_n=\sum_{j=1}^n X_j
+			\]
+			the ``number of successes in the first $n$ tosses.'' Show that
+			\begin{equation}
+				\mathbb{P}\!\left[
+				a \le \frac{S_n-np}{\sqrt{np(1-p)}} \le b
+				\right]
+				\;\longrightarrow\;
+				\Phi(b)-\Phi(a),
+				\qquad a<b \text{ in } \mathbb{R},
+				\tag{0.3}
+			\end{equation}
+			as $n\to\infty$, where
+			\[
+			\Phi(x):=\int_{-\infty}^x \varphi(\xi)\,d\xi,
+			\qquad
+			\varphi(x):=\frac{e^{-x^2/2}}{\sqrt{2\pi}},
+			\]
+			is the so-called \emph{standard Normal distribution function}.
+			\medskip
+			
+			\noindent
+			(\emph{Hint:} With the help of the Stirling formula
+			\[
+			n! \sim \sqrt{2\pi n}\,n^n e^{-n},
+			\]
+			actually in its stronger form
+			\begin{equation}
+				n! = \sqrt{2\pi}\, n^{\,n+\frac12} e^{-n+\varepsilon_n}
+				\qquad \text{with} \qquad
+				\frac{1}{12n+1}<\varepsilon_n<\frac{1}{12n},
+				\tag{0.4}
+			\end{equation}
+			from the previous assignment, show first the ``local'' form
+			\[
+			\lim_{n\to\infty}
+			\left(
+			\sqrt{npq}\,
+			\frac{n!}{k_n!(n-k_n)!}\,
+			p^{k_n}(1-p)^{n-k_n}
+			\right)
+			=
+			\frac{e^{-x^2/2}}{\sqrt{2\pi}}
+			=\varphi(x),
+			\]
+			of this result, where $x\in\mathbb{R}$ is fixed and
+			\[
+			k_n := x\sqrt{np(1-p)}+np;
+			\]
+			then observe that this convergence is uniform over $x$ in the bounded
+			interval $[a,b]$, as the next step towards \textup{(0.3)}.)
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 4}
+		Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space,
+			and consider a set $\mathcal{J}$ which is (at most) countable.
+			For every $j \in \mathcal{J}$ we are given two events
+			$B_j \subseteq A_j$ in $\mathcal{F}$. Show that
+			\[
+			\mathbb{P}\!\left(\bigcup_{j \in \mathcal{J}} A_j\right)
+			-
+			\mathbb{P}\!\left(\bigcup_{j \in \mathcal{J}} B_j\right)
+			\;\le\;
+			\sum_{j \in \mathcal{J}}
+			\bigl[\mathbb{P}(A_j) - \mathbb{P}(B_j)\bigr].
+			\]
+			
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 5}
+		{\color{deepred}\fontspec{Georgia} Coin Tossing} 
+		
+		Use (0.3) to establish the \textsc{Bernoulli Weak Law of Large Numbers}
+		\[
+		\lim_{n \to \infty}
+		\mathbb{P}\!\left(\left|\overline{X}_n - p\right| > \varepsilon\right)
+		=
+		0,
+		\qquad \forall \,\varepsilon > 0,
+		\]
+		in the Coin-Tossing context of Exercise 3.
+		Here $\overline{X}_n := S_n/n$ is the relative frequency of $1$’s
+		in the first $n$ independent tosses of the coin.
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 6}
+		
+		{\color{deepred}\fontspec{Georgia} Walsh 3.46} 
+		
+		Let $X_1, X_2, \ldots, X_n$ be independent random variables with mean zero and
+		variance one. Let $Y$ be a square-integrable random variable.
+		Let $a_j = E\{Y X_j\}$.
+		Prove Bessel's inequality:
+		\[
+		E\{Y^2\} \ge \sum_{j=1}^n a_j^2.
+		\]
+		Show that Bessel's inequality holds if the $X_j$ are only uncorrelated,
+		not necessarily independent.
+		Show that this extends to an infinite sequence of $X_n$.
+		
+		\medskip
+		
+		\textit{Hint:} Take the expectation of
+		\[
+		\left( Y - \sum_{j=1}^n E\{Y X_j\} X_j \right)^2.
+		\]
+		
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		
+		\section{Question 7}
+		
+		
+		{\color{deepred}\fontspec{Georgia} Walsh 3.47} 
+		
+		Let $X_1, X_2, \ldots$ be independent mean zero, variance one random variables.
+		Let $Y$ be a square-integrable random variable.
+		Show that
+		\[
+		E\{Y X_n\} \longrightarrow 0
+		\quad \text{as } n \to \infty.
+		\]
+		
+		\medskip
+		
+		\textit{Hint:} Use the previous problem.
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 8}
+		
+		
+		{\color{deepred}\fontspec{Georgia} Walsh 3.37}
+		 
+		Two light fixtures hang in different hallways of an apartment building.
+		For each fixture, a given light bulb lasts an exponential time with mean
+		$\lambda > 0$ before it has to be replaced ($\lambda$ is the same for both).
+		There is a stack of $n$ replacement bulbs in a closet in hallway $A$,
+		and $k$ replacement bulbs in the corresponding closet in hallway $B$.
+		What is the probability that hallway $A$ runs out of bulbs before $B$ does?
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 9}
+		
+		{\color{deepred}\fontspec{Georgia} Walsh 2.51} 
+		
+		It is said that many are called and few are chosen. Suppose that the number called is Poisson $(\lambda)$. Each person called is chosen, independently, with probability $p$. Show that the distribution of the number chosen is Poisson $(p\lambda)$.
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 10}
+		
+		{\color{deepred}\fontspec{Georgia} Binomial Probability} 
+		
+		In the context of Exercise 3, compute the probability
+		\[
+		\mathbb{P}(S_n \text{ is even}).
+		\]
+		(\textit{Hint}: Recall the Binomial Theorem $(x + y)^n = \sum_{k=0}^n (n!/k!(n - k)!) \, x^k y^{n-k}$.)
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		
+		
+		
+	\end{document}
