@@ -1,216 +1,355 @@
-\documentclass[10pt]{article}
+\documentclass[letterpaper]{article} 
 \usepackage[utf8]{inputenc}
+\linespread{0.85}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{array}
+\usepackage{fontspec}
+\usepackage{booktabs}
+\usepackage{hyperref}
 \usepackage[version=4]{mhchem}
 \usepackage{stmaryrd}
-\usepackage{bbold}
-
-%New command to display footnote whose markers will always be hidden
-\let\svthefootnote\thefootnote
-\newcommand\blfootnotetext[1]{%
-  \let\thefootnote\relax\footnote{#1}%
-  \addtocounter{footnote}{-1}%
-  \let\thefootnote\svthefootnote%
+\usepackage[dvipsnames]{xcolor}
+\colorlet{LightRubineRed}{RubineRed!70}
+\colorlet{Mycolor1}{green!10!orange}
+\definecolor{Mycolor2}{HTML}{00F9DE}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{capt-of}
+\usepackage{lipsum}
+\usepackage{fancyvrb}
+\usepackage{tabularx}
+\usepackage{listings}
+\usepackage[export]{adjustbox}
+\graphicspath{ {./images/} }
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{float}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{capt-of}
+\usepackage{tcolorbox}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{listings}
+\definecolor{deepred}{RGB}{139,0,0}
+\usepackage{hyperref} 
+\usepackage{xcolor} % For custom colors
+\lstset{
+	language=Python,                % Choose the language (e.g., Python, C, R)
+	basicstyle=\ttfamily\small, % Font size and type
+	keywordstyle=\color{blue},  % Keywords color
+	commentstyle=\color{gray},  % Comments color
+	stringstyle=\color{red},    % String color
+	numbers=left,               % Line numbers
+	numberstyle=\tiny\color{gray}, % Line number style
+	stepnumber=1,               % Numbering step
+	breaklines=true,            % Auto line break
+	backgroundcolor=\color{black!5}, % Light gray background
+	frame=single,               % Frame around the code
 }
-
-%Overriding the \footnotetext command to hide the marker if its value is `0`
-\let\svfootnotetext\footnotetext
-\renewcommand\footnotetext[2][?]{%
-  \if\relax#1\relax%
-    \ifnum\value{footnote}=0\blfootnotetext{#2}\else\svfootnotetext{#2}\fi%
-  \else%
-    \if?#1\ifnum\value{footnote}=0\blfootnotetext{#2}\else\svfootnotetext{#2}\fi%
-    \else\svfootnotetext[#1]{#2}\fi%
-  \fi
-}
-
-\begin{document}
-\section*{PROBABILITY GU 4155: Spring 2026}
-\section*{HOMEWORK \#6 \\
- DO PROBLEMS 1, 3, 4, 9, 12 \\
- TO BE SUBMITTED BY 9:00 PM ON SATURDAY MARCH 14, 2026}
-Professor Ioannis Karatzas\\
-Department of Mathematics, Columbia University\\
-February 3, 2026
-
-Exercise \#1: Lyapunov Inequality. If $X$ is a measurable function on a probability space $(\Omega, \mathcal{F}, \mathbb{P})$ and $0<p<q<\infty$, then
-
-$$
-\|X\|_{p} \leq\|X\|_{q}
-$$
-
-In particular, for $0<p<q<\infty$ we have $\mathbb{L}^{q} \subseteq \mathbb{L}^{p}$ on a probability space.\\
-(This kind of inclusion can fail, and rather dramatically, on a general measure space.)\\
-Exercise \#2: Bernštein polynomials. For a given continuous function $f:[0,1] \rightarrow \mathbb{R}$, recall from class the "Bernštein polynomials"
-
-
-\begin{equation*}
-B_{n}(x)=\sum_{k=0}^{n} f(k / n) \cdot\binom{n}{k} x^{k}(1-x)^{n-k}, \quad 0 \leq x \leq 1, \quad n \in \mathbb{N} \tag{0.1}
-\end{equation*}
-
-
-which, as we mentioned in class, converge to $f(\cdot)$ uniformly over the unit interval. Suppose now that the function $f(\cdot)$ satisfies for some $K \in(0, \infty)$ the so-called Lipschitz condition
-
-$$
-|f(x)-f(y)| \leq K|x-y|, \quad \forall x, y \in[0,1]
-$$
-
-Show that the BernŠtein polynomials of (0.1) satisfy then
-
-$$
-\sup _{0 \leq x \leq 1}\left|B_{n}(x)-f(x)\right| \leq \frac{K}{2 \sqrt{n}}, \text { for all } n \in \mathbb{N}
-$$
-
-In other words: the Lipschitz condition allows you to get some idea about how fast this uniform convergence happens.
-
-Exercise \#3: An Extended Monotone Convergence Theorem. Suppose $X_{1} \leq \cdots \leq X_{n} \leq X_{n+1} \leq \cdots$ are integrable random variables, monotonically increasing pointwise to the random variable $X=\lim _{n \rightarrow \infty} X_{n}$.
-
-If $\sup _{n \in \mathbb{N}} \mathbb{E}\left(X_{n}\right)<\infty$, show that $X$ is integrable and that we have
-
-$$
-\lim _{n \rightarrow \infty} \mathbb{E}\left(X_{n}\right)=\mathbb{E}(X)
-$$
-
-Exercise \#4: Riemann-Zeta Calculus. For $s>1$ fixed, let $X: \Omega \rightarrow \mathbb{N}$ be a random variable with the "zeta distribution"
-
-$$
-\mathbb{P}(X=n)=\frac{1}{\zeta(s) \cdot n^{s}}, \quad n \in \mathbb{N}, \quad \text { where } \quad \zeta(s):=\sum_{n \in \mathbb{N}} \frac{1}{n^{s}}
-$$
-
-is the Riemann zeta-function. For each $m \in \mathbb{N}$, consider the event\\
-$A_{m}:=\{\omega \in \Omega: m$ is a factor of $X(\omega)\}=\{\omega \in \Omega: X(\omega)=m k(\omega)$, for some $k(\omega) \in \mathbb{N}\}$.\\
-(i) Show that $\mathbb{P}\left(A_{m}\right)=1 / m^{s}$.\\
-(ii) With $\mathfrak{P}$ denoting the set of prime numbers, conclude from (i) that the events in the collection $\left\{A_{p}\right\}_{p \in \mathfrak{P}}$ are independent,\\
-(iii) Use (i) and (ii) to derive the celebrated Euler formula
-
-$$
-\frac{1}{\zeta(s)}=\prod_{p \in \mathfrak{P}}\left(1-\frac{1}{p^{s}}\right)
-$$
-
-Exercise \#5: Conditional Independence: (i) Show that if the events $A$ and $B$ are independent, so are $A$ and $B^{c}$; that so are $B$ and $A^{c}$; and that so are $A^{c}$ and $B^{c}$.\\
-(ii) Two events $A, B$ are said to be conditionally independent given a third event $C$ with $\mathbb{P}(C)>0$, if
-
-$$
-\mathbb{P}(A \cap B \mid C)=\mathbb{P}(A \mid C) \cdot \mathbb{P}(B \mid C)
-$$
-
-When $\mathbb{P}(C \cap B)>0$, argue that this property is equivalent to
-
-$$
-\mathbb{P}(A \mid C \cap B)=\mathbb{P}(A \mid C)
-$$
-
-Exercise \#6: For a sequence of subsets $\left\{E_{n}\right\}_{n \in \mathbb{N}}$ of the real line, determine the sets
-
-$$
-\left\{E_{n}, \text { ev. }\right\}:=\bigcup_{k \in \mathbb{N}} \bigcap_{n \geq k} E_{n}, \quad\left\{E_{n}, \text { i.o. }\right\}:=\bigcap_{k \in \mathbb{N}} \bigcup_{n \geq k} E_{n}
-$$
-
-when the sets $E_{n}$ are specified as follows:\\
-(i): $E_{n}=\left[a_{n}, b_{n}\right)$ with $0<a_{n}<b_{n}, b_{n}>1$ and $\lim _{n \rightarrow \infty} a_{n}=0, \lim _{n \rightarrow \infty} b_{n}=1$.\\
-(ii): $E_{n}=\{m / n: m \in \mathbb{N}\}$ for each $n \in \mathbb{N}$.
-
-Exercise \#7: Suppose the real-valued random variables $X, Y$ are identically distributed and we have $X \geq Y$ pointwise. Show then $X=Y$ a.e.
-
-Exercise \#8: Suppose that $X_{1}, X_{2}, \cdots$ are independent random variables with common, standard normal (Gaussian) distribution. Find a sequence $\left\{\mathfrak{a}_{n}\right\}_{n \geq 2}$ of positive real numbers with $\lim _{n \rightarrow \infty} \mathfrak{a}_{n}=\infty$ and such that
-
-$$
-\limsup _{n \rightarrow \infty}\left(\frac{\left|X_{n}\right|}{\mathfrak{a}_{n}}\right)=1 \quad \text { holds almost surely. }
-$$
-
-Hint: The "tail" $\mathbb{P}\left(X_{1}>x\right)=\int_{x}^{\infty} \varphi(u) d u, x \in(0, \infty)$ of the standard normal distribution satisfies the so-called Mill's ratio asymptotics
-
-$$
-\lim _{x \rightarrow \infty} \frac{\mathbb{P}\left(X_{1}>x\right)}{\varphi(x) / x}=1, \quad \text { where } \quad \varphi(x):=(2 \pi)^{-1 / 2} e^{-x^{2} / 2}
-$$
-
-Problem \#9: On a suitable probability space, construct\\
-(i) a sequence of random variables that converges in probability, but not almost surely;\\
-(ii) a sequence of random variables that converges almost surely, but does not exhibit fast convergence in probability; and\\
-(iii) a sequence of random variables that converges almost surely, but not in $\mathbb{L}^{1}$.\\
-(Hint: All these sequences can be constructed on the space $\Omega=(0,1]$ with Lebesgue measure $\mathbb{P}$ on its Borel sets.)
-
-Exercise \#10: A strengthening of Borel-Cantelli: If $A_{1}, A_{2}, \cdots$ are pairwise-independent events with $\sum_{n \in \mathbb{N}} \mathbb{P}\left(A_{n}\right)=\infty$, then for
-
-$$
-Q_{n}:=\frac{\sum_{j=1}^{n} \mathbf{1}_{A_{j}}}{\sum_{j=1}^{n} \mathbb{P}\left(A_{j}\right)} \quad \text { we have } \lim _{n \rightarrow \infty} Q_{n}=1 \quad \text { a.e. }
-$$
-
-(Hint: Establish convergence in probability first. Then proceed to show almost-everywhere convergence: first for the subsequence $\left\{Q_{n_{k}}\right\}_{k \in \mathbb{N}}$ defined via
-
-$$
-n_{k}=\inf \left\{n \geq 1: \sum_{j=1}^{n} \mathbb{P}\left(A_{j}\right) \geq k^{2}\right\}, \quad k \in \mathbb{N}
-$$
-
-and then for the entire sequence.)\\
-Exercise \#11: In his proof of the the Strong Law of Large Numbers, ${ }^{1}$ why does Etemadi use a "pliant" (expanding) Procrustean bed, whose length increases by one unit on each successive day, and not a Procrustean bed of fixed length?
-
-To wit: why does he define, for each $j \in \mathbb{N}$, the random variable
-
-
-\begin{equation*}
-Z_{j}:=h_{j}\left(X_{j}\right), \quad \text { with } \quad h_{j}(u):=u \cdot \mathbf{1}_{[0, j]}(u), \quad u \in[0, \infty) \tag{0.2}
-\end{equation*}
-
-
-and not, say,
-
-
-\begin{equation*}
-\widehat{Z}_{j}:=h\left(X_{j}\right), \quad \text { with } \quad h(u):=u \cdot \mathbf{1}_{[0, M]}(u), \quad u \in[0, \infty) \tag{0.3}
-\end{equation*}
-
-
-for some fixed $M \in \mathbb{N}$ ? What is achieved by the choise (0.2) that fails for the choice (0.3)?
-
-\footnotetext{${ }^{1}$ Discussed in detail in class.
-}Exercise \#12: The Concentration of Measure Phenomenon. (i) Suppose $X_{1}, X_{2}, \cdots$ are square-integrable random variables with
-
-$$
-m=\mathbb{E}\left(X_{j}\right), \quad \mathbb{E}\left[\left(X_{i}-m\right)\left(X_{j}-m\right)\right]=0, \quad \operatorname{Var}\left(X_{j}\right):=\mathbb{E}\left[\left(X_{j}-m\right)^{2}\right] \leq C
-$$
-
-valid for all natural numbers $j$ and $i \neq j$, and some real constants $m$ and $C>0$.\\
-(i) Show that we have, both in $\mathbb{L}^{2}$ and in probability:
-
-
-\begin{equation*}
-\lim _{n \rightarrow \infty} \frac{1}{n} \sum_{j=1}^{n} X_{j}=m \tag{0.4}
-\end{equation*}
-
-
-(ii) Suppose now that $Y_{1}, Y_{2}, \cdots$ are independent random variables, and have a common distribution which is uniform (i.e., normalized Lebesgue measure) on the interval ( $-1,1$ ). Argue that
-
-
-\begin{equation*}
-\lim _{n \rightarrow \infty} \frac{1}{n} \sum_{j=1}^{n} Y_{j}^{2}=\frac{1}{3} \tag{0.5}
-\end{equation*}
-
-
-holds in probability. (Does this hold also in a stronger sense, perhaps?)\\
-(iii) Consider now the cube $\mathbb{K}^{n}:=(-1,1)^{n}$ in Euclidean space $\mathbb{R}^{n}$. Justify the statement:\\
-"For n large, most of the volume of this cube is concentrated very near the sphere (i.e., the boundary of the ball) of radius $\sqrt{n / 3}$ in $\mathbb{R}^{n}$ ".\\
-Do this, by establishing for every $\varepsilon \in(0,1)$ the property
-
-
-\begin{equation*}
-\lim _{n \rightarrow \infty} \frac{1}{2^{n}} \cdot \lambda_{n}\left(A_{n, \varepsilon} \cap \mathbb{K}^{n}\right)=1 \tag{0.6}
-\end{equation*}
-
-
-Here $\lambda_{n}$ is Lebesgue measure (i.e., Euclidean volume) in $\mathbb{R}^{n}$, so $\lambda_{n}\left(\mathbb{K}^{n}\right)=2^{n}$; and
-
-
-\begin{equation*}
-A_{n, \varepsilon}:=\left\{y \in \mathbb{R}^{n}: \frac{n}{3}(1-\varepsilon) \leq y_{1}^{2}+\cdots+y_{n}^{2} \leq \frac{n}{3}(1+\varepsilon)\right\} \tag{0.7}
-\end{equation*}
-
-
-is a "thin crust" around the sphere of radius $\sqrt{n / 3} \cdot{ }^{2}$
-
-\footnotetext{${ }^{2}$ In dimension $n=300$ and with $\varepsilon=.02$, the thin crust becomes $A_{n, \varepsilon}=\left\{y \in \mathbb{R}^{n}: 9.9 \leq\|y\| \leq 10.1\right\}$, so the part $\mathbb{K}^{n} \backslash A_{n, \varepsilon}$ of the cube outside the thin crust is essentially "empty"!
-}
-\end{document}
+\usepackage{float}
+\usepackage[]{amsthm} %lets us use \begin{proof}
+	\usepackage[]{amssymb} %gives us the character \varnothing
+
+	\title{Homework 6, MATH 4155}
+	\author{Zongyi Liu}
+	\date{Tue, Feb 24, 2026}
+	\begin{document}
+		\maketitle
+		\section{Question 1}
+		
+		{\color{deepred}\fontspec{Georgia} Lyapunov Inequality}
+		
+		 If $X$ is a measurable function on a probability space $(\Omega, \mathcal{F}, \mathbb{P})$ and $0<p<q<\infty$, then
+		
+		$$
+		\|X\|_{p} \leq\|X\|_{q}
+		$$
+		
+		In particular, for $0<p<q<\infty$ we have $\mathbb{L}^{q} \subseteq \mathbb{L}^{p}$ on a probability space. (This kind of inclusion can fail, and rather dramatically, on a general measure space.)
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 2}
+		
+		{\color{deepred}\fontspec{Georgia} Bernštein Polynomials}
+		
+		 For a given continuous function $f:[0,1] \rightarrow \mathbb{R}$, recall from class the "Bernštein polynomials"
+		
+		
+		\begin{equation*}
+			B_{n}(x)=\sum_{k=0}^{n} f(k / n) \cdot\binom{n}{k} x^{k}(1-x)^{n-k}, \quad 0 \leq x \leq 1, \quad n \in \mathbb{N} \tag{0.1}
+		\end{equation*}
+		
+		
+		which, as we mentioned in class, converge to $f(\cdot)$ uniformly over the unit interval. Suppose now that the function $f(\cdot)$ satisfies for some $K \in(0, \infty)$ the so-called Lipschitz condition
+		
+		$$
+		|f(x)-f(y)| \leq K|x-y|, \quad \forall x, y \in[0,1]
+		$$
+		
+		Show that the Bernštein polynomials of (0.1) satisfy then
+		
+		$$
+		\sup _{0 \leq x \leq 1}\left|B_{n}(x)-f(x)\right| \leq \frac{K}{2 \sqrt{n}}, \text { for all } n \in \mathbb{N}
+		$$
+		
+		In other words: the Lipschitz condition allows you to get some idea about how fast this uniform convergence happens.
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 3}
+		
+		{\color{deepred}\fontspec{Georgia} An Extended Monotone Convergence Theorem}
+		
+		Suppose $X_{1} \leq \cdots \leq X_{n} \leq X_{n+1} \leq \cdots$ are integrable random variables, monotonically increasing pointwise to the random variable $X=\lim _{n \rightarrow \infty} X_{n}$.
+		
+		If $\sup _{n \in \mathbb{N}} \mathbb{E}\left(X_{n}\right)<\infty$, show that $X$ is integrable and that we have
+		
+		$$
+		\lim _{n \rightarrow \infty} \mathbb{E}\left(X_{n}\right)=\mathbb{E}(X)
+		$$
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 4}
+		
+		{\color{deepred}\fontspec{Georgia} Riemann-Zeta Calculus} 
+		
+		For $s>1$ fixed, let $X:\Omega\to\mathbb{N}$ be a random variable with the ``zeta distribution''
+		\[
+		\mathbb{P}(X=n)=\frac{1}{\zeta(s)\cdot n^{s}}, \qquad n\in\mathbb{N}, 
+		\qquad \text{where} \qquad 
+		\zeta(s):=\sum_{n\in\mathbb{N}}\frac{1}{n^{s}}
+		\]
+		is the Riemann zeta-function. For each $m\in\mathbb{N}$, consider the event
+		\[
+		A_m:=\{\omega\in\Omega: m \text{ is a factor of } X(\omega)\}
+		=\{\omega\in\Omega: X(\omega)=m k(\omega), \text{ for some } k(\omega)\in\mathbb{N}\}.
+		\]
+		
+		\begin{enumerate}
+			\item[(i)] Show that $\mathbb{P}(A_m)=1/m^{s}$.
+			
+			\item[(ii)] With $\mathfrak{P}$ denoting the set of prime numbers, conclude from (i) that the events in the collection $\{A_p\}_{p\in\mathfrak{P}}$ are independent,
+			
+			\item[(iii)] Use (i) and (ii) to derive the celebrated Euler formula
+			\[
+			\frac{1}{\zeta(s)}=\prod_{p\in\mathfrak{P}}\left(1-\frac{1}{p^{s}}\right).
+			\]
+		\end{enumerate}
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 5}
+		
+		{\color{deepred}\fontspec{Georgia} Conditional Independence}
+		
+		\begin{itemize}
+			\item[(i)] Show that if the events $A$ and $B$ are independent, so are $A$ and $B^{c}$; that so are $B$ and $A^{c}$; and that so are $A^{c}$ and $B^{c}$.
+			
+			\item[(ii)] Two events $A,B$ are said to be conditionally independent given a third event $C$ with $\mathbb{P}(C)>0$, if
+			\[
+			\mathbb{P}(A\cap B\mid C)=\mathbb{P}(A\mid C)\cdot \mathbb{P}(B\mid C).
+			\]
+			When $\mathbb{P}(C\cap B)>0$, argue that this property is equivalent to
+			\[
+			\mathbb{P}(A\mid C\cap B)=\mathbb{P}(A\mid C).
+			\]
+		\end{itemize}
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 6}
+		
+		For a sequence of subsets $\{E_n\}_{n\in\mathbb{N}}$ of the real line, determine the sets
+		\[
+		\{E_n,\ \text{ev.}\}:=\bigcup_{k\in\mathbb{N}} \bigcap_{n\ge k} E_n,
+		\qquad
+		\{E_n,\ \text{i.o.}\}:=\bigcap_{k\in\mathbb{N}} \bigcup_{n\ge k} E_n
+		\]
+		when the sets $E_n$ are specified as follows:
+		\begin{itemize}
+			\item[(i)] $E_n=[a_n,b_n)$ with $0<a_n<b_n$, $b_n>1$ and $\lim_{n\to\infty} a_n=0$, $\lim_{n\to\infty} b_n=1$.
+			
+			\item[(ii)] $E_n=\{m/n:\ m\in\mathbb{N}\}$ for each $n\in\mathbb{N}$.
+		\end{itemize}
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 7}
+		
+		Suppose the real-valued random variables $X, Y$ are identically distributed and we have $X \geq Y$ pointwise. Show then $X=Y$ a.e.
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 8}
+		
+		Suppose that $X_{1}, X_{2}, \cdots$ are independent random variables with common, standard normal (Gaussian) distribution. Find a sequence $\left\{\mathfrak{a}_{n}\right\}_{n \geq 2}$ of positive real numbers with $\lim _{n \rightarrow \infty} \mathfrak{a}_{n}=\infty$ and such that
+		
+		$$
+		\limsup _{n \rightarrow \infty}\left(\frac{\left|X_{n}\right|}{\mathfrak{a}_{n}}\right)=1 \quad \text { holds almost surely. }
+		$$
+		
+		(\emph{Hint}: The "tail" $\mathbb{P}\left(X_{1}>x\right)=\int_{x}^{\infty} \varphi(u) d u, x \in(0, \infty)$ of the standard normal distribution satisfies the so-called Mill's ratio asymptotics
+		$$
+		\lim _{x \rightarrow \infty} \frac{\mathbb{P}\left(X_{1}>x\right)}{\varphi(x) / x}=1, \quad \text { where } \quad \varphi(x):=(2 \pi)^{-1 / 2} e^{-x^{2} / 2}
+		$$)
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 9}
+		
+		On a suitable probability space, construct
+		\begin{enumerate}
+			\item[(i)] a sequence of random variables that converges in probability, but not almost surely;
+			
+			\item[(ii)] a sequence of random variables that converges almost surely, but does not exhibit fast convergence in probability; and
+			
+			\item[(iii)] a sequence of random variables that converges almost surely, but not in $\mathbb{L}^{1}$.
+		\end{enumerate}
+		
+		(\emph{Hint}: All these sequences can be constructed on the space $\Omega=(0,1]$ with Lebesgue measure $\mathbb{P}$ on its Borel sets)
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 10}
+		{\color{deepred}\fontspec{Georgia} A Strengthening of Borel-Cantelli}
+		
+		 If $A_{1}, A_{2}, \cdots$ are pairwise-independent events with $\sum_{n \in \mathbb{N}} \mathbb{P}\left(A_{n}\right)=\infty$, then for
+		
+		$$
+		Q_{n}:=\frac{\sum_{j=1}^{n} \mathbf{1}_{A_{j}}}{\sum_{j=1}^{n} \mathbb{P}\left(A_{j}\right)} \quad \text { we have } \lim _{n \rightarrow \infty} Q_{n}=1 \quad \text { a.e. }
+		$$
+		
+		(\emph{Hint}: Establish convergence in probability first. Then proceed to show almost-everywhere convergence: first for the subsequence $\left\{Q_{n_{k}}\right\}_{k \in \mathbb{N}}$ defined via
+		
+		$$
+		n_{k}=\inf \left\{n \geq 1: \sum_{j=1}^{n} \mathbb{P}\left(A_{j}\right) \geq k^{2}\right\}, \quad k \in \mathbb{N}
+		$$
+		
+		and then for the entire sequence.)
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 11}
+		
+		In his proof of the the Strong Law of Large Numbers, ${ }^{1}$ why does Etemadi use a "pliant" (expanding) Procrustean bed, whose length increases by one unit on each successive day, and not a Procrustean bed of fixed length?
+		
+		To wit: why does he define, for each $j \in \mathbb{N}$, the random variable
+		
+		
+		\begin{equation*}
+			Z_{j}:=h_{j}\left(X_{j}\right), \quad \text { with } \quad h_{j}(u):=u \cdot \mathbf{1}_{[0, j]}(u), \quad u \in[0, \infty) \tag{0.2}
+		\end{equation*}
+		
+		
+		and not, say,
+		
+		
+		\begin{equation*}
+			\widehat{Z}_{j}:=h\left(X_{j}\right), \quad \text { with } \quad h(u):=u \cdot \mathbf{1}_{[0, M]}(u), \quad u \in[0, \infty) \tag{0.3}
+		\end{equation*}
+		
+		
+		for some fixed $M \in \mathbb{N}$ ? What is achieved by the choise (0.2) that fails for the choice (0.3)?
+
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 12}
+		
+		{\color{deepred}\fontspec{Georgia} The Concentration of Measure Phenomenon}
+		
+		(i) Suppose $X_1,X_2,\cdots$ are square-integrable random variables with
+		\[
+		m=\mathbb{E}(X_j), 
+		\qquad 
+		\mathbb{E}\!\left[(X_i-m)(X_j-m)\right]=0,
+		\qquad 
+		\operatorname{Var}(X_j):=\mathbb{E}\!\left[(X_j-m)^2\right]\le C
+		\]
+		valid for all natural numbers $j$ and $i\ne j$, and some real constants $m$ and $C>0$.
+		
+		Show that we have, both in $\mathbb{L}^2$ and in probability,
+		\begin{equation*}
+			\lim_{n\to\infty}\frac{1}{n}\sum_{j=1}^n X_j = m.
+			\tag{0.4}
+		\end{equation*}
+		
+		(ii) Suppose now that $Y_1,Y_2,\cdots$ are independent random variables, and have a common distribution which is uniform (i.e., normalized Lebesgue measure) on the interval $(-1,1)$. Argue that
+		\begin{equation*}
+			\lim_{n\to\infty}\frac{1}{n}\sum_{j=1}^n Y_j^2 = \frac{1}{3}
+			\tag{0.5}
+		\end{equation*}
+		holds in probability. (Does this hold also in a stronger sense, perhaps?)
+		
+		(iii) Consider now the cube $\mathbb{K}^n := (-1,1)^n$ in Euclidean space $\mathbb{R}^n$. Justify the statement:
+		
+		\emph{``For $n$ large, most of the volume of this cube is concentrated very near the sphere (i.e., the boundary of the ball) of radius $\sqrt{n/3}$ in $\mathbb{R}^n$.''}
+		
+		Do this by establishing for every $\varepsilon\in(0,1)$ the property
+		\begin{equation*}
+			\lim_{n\to\infty} \frac{1}{2^n}\cdot \lambda_n\!\left(A_{n,\varepsilon}\cap \mathbb{K}^n\right)=1,
+			\tag{0.6}
+		\end{equation*}
+		where $\lambda_n$ is Lebesgue measure (i.e., Euclidean volume) in $\mathbb{R}^n$, so $\lambda_n(\mathbb{K}^n)=2^n$, and
+		\begin{equation*}
+			A_{n,\varepsilon}
+			:=
+			\left\{
+			y\in\mathbb{R}^n:
+			\frac{n}{3}(1-\varepsilon)
+			\le
+			y_1^2+\cdots+y_n^2
+			\le
+			\frac{n}{3}(1+\varepsilon)
+			\right\}
+			\tag{0.7}
+		\end{equation*}
+		is a ``thin crust'' around the sphere of radius $\sqrt{n/3}\,^{2}$.
+		
+		\footnotetext{${}^2$ In dimension $n=300$ and with $\varepsilon=.02$, the thin crust becomes
+			$A_{n,\varepsilon}=\{y\in\mathbb{R}^n: 9.9\le\|y\|\le 10.1\}$,
+			so the part $\mathbb{K}^n\setminus A_{n,\varepsilon}$ of the cube outside the thin crust is essentially ``empty''!}
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		
+	\end{document}
