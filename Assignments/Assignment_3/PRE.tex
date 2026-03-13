@@ -1,0 +1,216 @@
+\documentclass[letterpaper]{article} 
+\usepackage[utf8]{inputenc}
+\linespread{0.85}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{fontspec}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage[dvipsnames]{xcolor}
+\colorlet{LightRubineRed}{RubineRed!70}
+\colorlet{Mycolor1}{green!10!orange}
+\definecolor{Mycolor2}{HTML}{00F9DE}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{capt-of}
+\usepackage{lipsum}
+\usepackage{fancyvrb}
+\usepackage{tabularx}
+\usepackage{listings}
+\usepackage[export]{adjustbox}
+\graphicspath{ {./images/} }
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{float}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{capt-of}
+\usepackage{tcolorbox}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{listings}
+\definecolor{deepred}{RGB}{139,0,0}
+\usepackage{hyperref} 
+\usepackage{xcolor} % For custom colors
+\lstset{
+	language=Python,                % Choose the language (e.g., Python, C, R)
+	basicstyle=\ttfamily\small, % Font size and type
+	keywordstyle=\color{blue},  % Keywords color
+	commentstyle=\color{gray},  % Comments color
+	stringstyle=\color{red},    % String color
+	numbers=left,               % Line numbers
+	numberstyle=\tiny\color{gray}, % Line number style
+	stepnumber=1,               % Numbering step
+	breaklines=true,            % Auto line break
+	backgroundcolor=\color{black!5}, % Light gray background
+	frame=single,               % Frame around the code
+}
+\usepackage{float}
+\usepackage[]{amsthm} %lets us use \begin{proof}
+	\usepackage[]{amssymb} %gives us the character \varnothing
+	
+	\title{Assignment 3, MATH 4155}
+	\author{Zongyi Liu}
+	\date{Wed, Feb 25, 2026}
+	\begin{document}
+		\maketitle
+		
+		\section{Question 1}
+		
+		{\color{deepred}\fontspec{Georgia} HW6 Q1 Lyapunov Inequality}
+		
+		If $X$ is a measurable function on a probability space $(\Omega, \mathcal{F}, \mathbb{P})$ and $0<p<q<\infty$, then
+		
+		$$
+		\|X\|_{p} \leq\|X\|_{q}
+		$$
+		
+		In particular, for $0<p<q<\infty$ we have $\mathbb{L}^{q} \subseteq \mathbb{L}^{p}$ on a probability space. (This kind of inclusion can fail, and rather dramatically, on a general measure space.)
+		
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 2}
+		
+		{\color{deepred}\fontspec{Georgia} HW6 Q3 An Extended Monotone Convergence Theorem}
+		
+		Suppose $X_{1} \leq \cdots \leq X_{n} \leq X_{n+1} \leq \cdots$ are integrable random variables, monotonically increasing pointwise to the random variable $X=\lim _{n \rightarrow \infty} X_{n}$.
+		
+		If $\sup _{n \in \mathbb{N}} \mathbb{E}\left(X_{n}\right)<\infty$, show that $X$ is integrable and that we have
+		
+		$$
+		\lim _{n \rightarrow \infty} \mathbb{E}\left(X_{n}\right)=\mathbb{E}(X)
+		$$
+		
+		\textbf{Answer}
+		
+			
+		
+		\clearpage
+		
+		\section{Question 3}
+		
+		{\color{deepred}\fontspec{Georgia} HW6 Q4 Riemann-Zeta Calculus} 
+		
+		For $s>1$ fixed, let $X:\Omega\to\mathbb{N}$ be a random variable with the ``zeta distribution''
+		\[
+		\mathbb{P}(X=n)=\frac{1}{\zeta(s)\cdot n^{s}}, \qquad n\in\mathbb{N}, 
+		\qquad \text{where} \qquad 
+		\zeta(s):=\sum_{n\in\mathbb{N}}\frac{1}{n^{s}}
+		\]
+		is the Riemann zeta-function. For each $m\in\mathbb{N}$, consider the event
+		\[
+		A_m:=\{\omega\in\Omega: m \text{ is a factor of } X(\omega)\}
+		=\{\omega\in\Omega: X(\omega)=m k(\omega), \text{ for some } k(\omega)\in\mathbb{N}\}.
+		\]
+		
+		\begin{enumerate}
+			\item[(i)] Show that $\mathbb{P}(A_m)=1/m^{s}$.
+			
+			\item[(ii)] With $\mathfrak{P}$ denoting the set of prime numbers, conclude from (i) that the events in the collection $\{A_p\}_{p\in\mathfrak{P}}$ are independent,
+			
+			\item[(iii)] Use (i) and (ii) to derive the celebrated Euler formula
+			\[
+			\frac{1}{\zeta(s)}=\prod_{p\in\mathfrak{P}}\left(1-\frac{1}{p^{s}}\right).
+			\]
+		\end{enumerate}
+		
+		\textbf{Answer}
+		
+			
+		
+		\clearpage
+		
+		\section{Question 4}
+		
+		{\color{deepred}\fontspec{Georgia} HW6 Q9 Modes of Convergence of Random Variables}
+		
+		On a suitable probability space, construct
+		\begin{enumerate}
+			\item[(i)] a sequence of random variables that converges in probability, but not almost surely;
+			
+			\item[(ii)] a sequence of random variables that converges almost surely, but does not exhibit fast convergence in probability; and
+			
+			\item[(iii)] a sequence of random variables that converges almost surely, but not in $\mathbb{L}^{1}$.
+		\end{enumerate}
+		
+		(\emph{Hint}: All these sequences can be constructed on the space $\Omega=(0,1]$ with Lebesgue measure $\mathbb{P}$ on its Borel sets)
+		
+		
+		\textbf{Answer} 
+		
+		
+		
+		\clearpage
+		
+		\section{Question 5}
+		
+		{\color{deepred}\fontspec{Georgia} HW6 Q12 The Concentration of Measure Phenomenon}
+			
+			\begin{itemize}
+				
+				\item[(i)] Suppose $X_1,X_2,\cdots$ are square-integrable random variables with
+				$m=\mathbb{E}(X_j)$,
+				$\mathbb{E}[(X_i-m)(X_j-m)]=0$ for $i\ne j$, and
+				$\operatorname{Var}(X_j)=\mathbb{E}[(X_j-m)^2]\le C$
+				for all $j$ and some constants $m$ and $C>0$.
+				
+				Show that, both in $\mathbb{L}^2$ and in probability,
+				\[
+				\lim_{n\to\infty}\frac{1}{n}\sum_{j=1}^n X_j = m.
+				\]
+				
+				\item[(ii)] Suppose now that $Y_1,Y_2,\cdots$ are independent random variables with
+				common distribution uniform on $(-1,1)$.
+				Argue that
+				\[
+				\lim_{n\to\infty}\frac{1}{n}\sum_{j=1}^n Y_j^2=\frac{1}{3}
+				\]
+				holds in probability. (Does this hold also in a stronger sense?)
+				
+				\item[(iii)] Consider the cube $\mathbb{K}^n := (-1,1)^n$ in $\mathbb{R}^n$.
+				Justify the statement:
+				
+				\emph{``For $n$ large, most of the volume of this cube is concentrated very
+					near the sphere of radius $\sqrt{n/3}$ in $\mathbb{R}^n$.''}
+				
+				Establish for every $\varepsilon\in(0,1)$ that
+				\[
+				\lim_{n\to\infty}
+				\frac{1}{2^n}\lambda_n\!\left(A_{n,\varepsilon}\cap\mathbb{K}^n\right)=1,
+				\]
+				where $\lambda_n$ denotes Lebesgue measure in $\mathbb{R}^n$ and
+				$\lambda_n(\mathbb{K}^n)=2^n$, and
+				\[
+				A_{n,\varepsilon}
+				=
+				\left\{
+				y\in\mathbb{R}^n:
+				\frac{n}{3}(1-\varepsilon)
+				\le
+				y_1^2+\cdots+y_n^2
+				\le
+				\frac{n}{3}(1+\varepsilon)
+				\right\}.
+				\]
+				
+			\end{itemize}
+		
+		\textbf{Answer} 
+		
+		
+	\end{document}
