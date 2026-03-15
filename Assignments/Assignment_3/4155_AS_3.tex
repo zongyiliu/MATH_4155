@@ -1,0 +1,581 @@
+\documentclass[letterpaper]{article} 
+\usepackage[utf8]{inputenc}
+\linespread{0.85}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{fontspec}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage[dvipsnames]{xcolor}
+\colorlet{LightRubineRed}{RubineRed!70}
+\colorlet{Mycolor1}{green!10!orange}
+\definecolor{Mycolor2}{HTML}{00F9DE}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{capt-of}
+\usepackage{lipsum}
+\usepackage{fancyvrb}
+\usepackage{tabularx}
+\usepackage{listings}
+\usepackage[export]{adjustbox}
+\graphicspath{ {./images/} }
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{float}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{capt-of}
+\usepackage{tcolorbox}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{listings}
+\definecolor{deepred}{RGB}{139,0,0}
+\usepackage{hyperref} 
+\usepackage{xcolor} % For custom colors
+\lstset{
+	language=Python,                % Choose the language (e.g., Python, C, R)
+	basicstyle=\ttfamily\small, % Font size and type
+	keywordstyle=\color{blue},  % Keywords color
+	commentstyle=\color{gray},  % Comments color
+	stringstyle=\color{red},    % String color
+	numbers=left,               % Line numbers
+	numberstyle=\tiny\color{gray}, % Line number style
+	stepnumber=1,               % Numbering step
+	breaklines=true,            % Auto line break
+	backgroundcolor=\color{black!5}, % Light gray background
+	frame=single,               % Frame around the code
+}
+\usepackage{float}
+\usepackage[]{amsthm} %lets us use \begin{proof}
+	\usepackage[]{amssymb} %gives us the character \varnothing
+	
+	\title{Assignment 3, MATH 4155}
+	\author{Zongyi Liu}
+	\date{Wed, Feb 25, 2026}
+	\begin{document}
+		\maketitle
+		
+		\section{Question 1}
+		
+		{\color{deepred}\fontspec{Georgia} HW6 Q1 Lyapunov Inequality}
+		
+		If $X$ is a measurable function on a probability space $(\Omega, \mathcal{F}, \mathbb{P})$ and $0<p<q<\infty$, then
+		
+		$$
+		\|X\|_{p} \leq\|X\|_{q}
+		$$
+		
+		In particular, for $0<p<q<\infty$ we have $\mathbb{L}^{q} \subseteq \mathbb{L}^{p}$ on a probability space. (This kind of inclusion can fail, and rather dramatically, on a general measure space.)
+		
+		
+		
+		\textbf{Answer}
+		
+			Let $0<p<q<\infty$ and suppose $\|X\|_q<\infty$. Then
+			$\|X\|_p^p=\mathbb E(|X|^p)$.
+			Set $r=\frac{q}{p}>1$ and $r'=\frac{q}{q-p}$ so that $\frac1r+\frac1{r'}=1$.
+			Applying Hölder's inequality to $|X|^p$ and $1$ gives
+			$
+			\mathbb E(|X|^p)
+			=\mathbb E(|X|^p\cdot 1)
+			\le
+			\left(\mathbb E(|X|^{pr})\right)^{1/r}
+			\left(\mathbb E(1^{r'})\right)^{1/r'} .
+			$
+			
+			Since $pr=q$ and $\mathbb P(\Omega)=1$, we obtain
+			$
+			\mathbb E(|X|^p)
+			\le
+			\left(\mathbb E(|X|^q)\right)^{1/r}
+			=
+			\left(\mathbb E(|X|^q)\right)^{p/q}.
+			$ Taking the $p$-th root yields
+			$
+			\|X\|_p
+			=
+			\left(\mathbb E(|X|^p)\right)^{1/p}
+			\le
+			\left(\mathbb E(|X|^q)\right)^{1/q}
+			=
+			\|X\|_q .
+			$ 
+			Hence $\|X\|_p\le \|X\|_q$. In particular, if $X\in\mathbb L^q$ then
+			$\|X\|_q<\infty$ implies $\|X\|_p<\infty$, so $\mathbb L^q\subseteq\mathbb L^p$
+			on a probability space.
+		
+		\clearpage
+		
+		\section{Question 2}
+		
+		{\color{deepred}\fontspec{Georgia} HW6 Q3 An Extended Monotone Convergence Theorem}
+		
+		Suppose $X_{1} \leq \cdots \leq X_{n} \leq X_{n+1} \leq \cdots$ are integrable random variables, monotonically increasing pointwise to the random variable $X=\lim _{n \rightarrow \infty} X_{n}$.
+		
+		If $\sup _{n \in \mathbb{N}} \mathbb{E}\left(X_{n}\right)<\infty$, show that $X$ is integrable and that we have
+		
+		$$
+		\lim _{n \rightarrow \infty} \mathbb{E}\left(X_{n}\right)=\mathbb{E}(X)
+		$$
+		
+		\textbf{Answer}
+		
+		Since $X_1 \le X_n \le X$ for all $n$, we have
+		$0 \le X_n - X_1 \uparrow X - X_1$ pointwise. Let $Y_n := X_n - X_1$. Then $Y_n \ge 0$ and $Y_n \uparrow X - X_1$.  
+		By the Monotone Convergence Theorem,
+		$\mathbb{E}[X - X_1] = \mathbb{E}[\lim_{n\to\infty} (X_n - X_1)]
+		= \lim_{n\to\infty} \mathbb{E}[X_n - X_1]
+		= \lim_{n\to\infty}(\mathbb{E}[X_n] - \mathbb{E}[X_1])$.
+		
+		Because $\sup_{n\in\mathbb{N}} \mathbb{E}[X_n] < \infty$, the right-hand side is finite, hence
+		$\mathbb{E}[X - X_1] < \infty$. Since $X_1$ is integrable and $|X| \le |X_1| + (X - X_1)$, we obtain
+		$\mathbb{E}[|X|] \le \mathbb{E}[|X_1|] + \mathbb{E}[X - X_1] < \infty$.
+		Thus $X \in L^1$. Finally, again by the Monotone Convergence Theorem (MCT) applied to $X_n - X_1 \uparrow X - X_1$,
+		$\lim_{n\to\infty} \mathbb{E}[X_n - X_1] = \mathbb{E}[X - X_1]$. Therefore
+		$\lim_{n\to\infty} \mathbb{E}[X_n]
+		= \mathbb{E}[X - X_1] + \mathbb{E}[X_1]
+		= \mathbb{E}[X]$.
+			
+		
+		\clearpage
+		
+		\section{Question 3}
+		
+		{\color{deepred}\fontspec{Georgia} HW6 Q4 Riemann-Zeta Calculus} 
+		
+		For $s>1$ fixed, let $X:\Omega\to\mathbb{N}$ be a random variable with the ``zeta distribution''
+		\[
+		\mathbb{P}(X=n)=\frac{1}{\zeta(s)\cdot n^{s}}, \qquad n\in\mathbb{N}, 
+		\qquad \text{where} \qquad 
+		\zeta(s):=\sum_{n\in\mathbb{N}}\frac{1}{n^{s}}
+		\]
+		is the Riemann zeta-function. For each $m\in\mathbb{N}$, consider the event
+		\[
+		A_m:=\{\omega\in\Omega: m \text{ is a factor of } X(\omega)\}
+		=\{\omega\in\Omega: X(\omega)=m k(\omega), \text{ for some } k(\omega)\in\mathbb{N}\}.
+		\]
+		
+		\begin{enumerate}
+			\item[(i)] Show that $\mathbb{P}(A_m)=1/m^{s}$.
+			
+			\item[(ii)] With $\mathfrak{P}$ denoting the set of prime numbers, conclude from (i) that the events in the collection $\{A_p\}_{p\in\mathfrak{P}}$ are independent,
+			
+			\item[(iii)] Use (i) and (ii) to derive the celebrated Euler formula
+			\[
+			\frac{1}{\zeta(s)}=\prod_{p\in\mathfrak{P}}\left(1-\frac{1}{p^{s}}\right).
+			\]
+		\end{enumerate}
+		
+		\textbf{Answer}
+		
+		\begin{enumerate}
+			
+			\item[(i)] We compute directly, and can get the result that
+			$
+			\mathbb{P}(A_m)
+			=
+			\sum_{k=1}^{\infty}\mathbb{P}(X=mk)
+			=
+			\sum_{k=1}^{\infty}\frac{1}{\zeta(s)(mk)^s}
+			=
+			\frac{1}{\zeta(s)m^s}\sum_{k=1}^{\infty}\frac{1}{k^s}
+			=
+			\frac{1}{\zeta(s)m^s}\zeta(s)
+			=
+			\frac{1}{m^s}.
+			$
+			
+			\item[(ii)] Let $p_1,\dots,p_r$ be distinct primes. Then
+			$
+			A_{p_1}\cap\cdots\cap A_{p_r}
+			=
+			A_{p_1\cdots p_r},
+			$
+			since a positive integer is divisible by each $p_j$ iff it is divisible by their product.
+			Thus by (i),
+			$
+			\mathbb{P}(A_{p_1}\cap\cdots\cap A_{p_r})
+			=
+			\mathbb{P}(A_{p_1\cdots p_r})
+			=
+			\frac{1}{(p_1\cdots p_r)^s}
+			=
+			\prod_{j=1}^r \frac{1}{p_j^s}
+			=
+			\prod_{j=1}^r \mathbb{P}(A_{p_j}).
+			$
+			Hence $\{A_p\}_{p\in\mathfrak P}$ are independent.
+			
+			\item[(iii)] For any finite set of primes $F$,
+			$
+			\mathbb{P}\!\left(\bigcap_{p\in F}A_p^c\right)
+			=
+			\prod_{p\in F}\mathbb{P}(A_p^c)
+			=
+			\prod_{p\in F}\left(1-\frac{1}{p^s}\right),
+			$
+			with (i) and independence. Then we let $F_N=\{p\in\mathfrak P: p\le N\}$. Then the events decrease and
+			$
+			\bigcap_{p\in\mathfrak P}A_p^c
+			=
+			\{X\text{ divisible by no prime}\}
+			=
+			\{X=1\}.
+			$
+			
+			By continuity from above,
+			$
+			\mathbb{P}(X=1)
+			=
+			\lim_{N\to\infty}
+			\mathbb{P}\!\left(\bigcap_{p\in F_N}A_p^c\right)
+			=
+			\lim_{N\to\infty}
+			\prod_{p\le N}\left(1-\frac{1}{p^s}\right).
+			$
+			But
+			$
+			\mathbb{P}(X=1)=\frac{1}{\zeta(s)}.
+			$
+			Therefore
+			$
+			\frac{1}{\zeta(s)}
+			=
+			\prod_{p\in\mathfrak P}\left(1-\frac{1}{p^s}\right).
+			$
+			
+		\end{enumerate}
+		
+		\clearpage
+		
+		\section{Question 4}
+		
+		{\color{deepred}\fontspec{Georgia} HW6 Q9 Modes of Convergence of Random Variables}
+		
+		On a suitable probability space, construct
+		\begin{enumerate}
+			\item[(i)] a sequence of random variables that converges in probability, but not almost surely;
+			
+			\item[(ii)] a sequence of random variables that converges almost surely, but does not exhibit fast convergence in probability; and
+			
+			\item[(iii)] a sequence of random variables that converges almost surely, but not in $\mathbb{L}^{1}$.
+		\end{enumerate}
+		
+		(\emph{Hint}: All these sequences can be constructed on the space $\Omega=(0,1]$ with Lebesgue measure $\mathbb{P}$ on its Borel sets)
+		
+		
+		\textbf{Answer} 
+		
+		\begin{enumerate}
+			
+			\item[(i)] \emph{Convergence in probability, but not almost surely.}
+			
+			Let $\Omega=(0,1]$ with $\mathbb{P}$ equal to Lebesgue measure, and define
+			$
+			X_n(\omega):=\mathbf{1}_{I_n}(\omega),
+			$
+			where the intervals $I_n$ are arranged as follows. For each $m\geq 0$ and $1\leq k\leq 2^m$, let
+			$
+			I_{2^m+k-1}:=\left(\frac{k-1}{2^m},\frac{k}{2^m}\right].
+			$
+			This is the usual “typewriter sequence.”
+			
+			For each $n$, the interval $I_n$ has length
+			$
+			\mathbb{P}(I_n)=2^{-m}
+			$
+			for some $m\to\infty$, hence
+			$
+			\mathbb{P}(|X_n|>\varepsilon)=\mathbb{P}(X_n=1)=\mathbb{P}(I_n)\to 0
+			$
+			for every $\varepsilon\in(0,1]$. Thus $X_n\to 0$ in probability.
+			
+			However, for each fixed $\omega\in(0,1]$ and each $m$, there is exactly one dyadic interval of length $2^{-m}$ containing $\omega$, so along the block
+			$
+			n=2^m,\dots,2^{m+1}-1
+			$
+			there is exactly one index with $X_n(\omega)=1$. Hence for every $\omega$,
+			$
+			X_n(\omega)=1 \text{ infinitely often, and } X_n(\omega)=0 \text{ infinitely often}.
+			$
+			So $X_n(\omega)$ does not converge for any $\omega\in(0,1]$. Therefore $X_n$ does {not} converge almost surely.
+			
+			\item[(ii)] \emph{Almost sure convergence, but not fast convergence in probability.}
+			
+			Define
+			$
+			X_n(\omega):=\mathbf{1}_{(0,1/n]}(\omega).
+			$
+			Then for every $\omega>0$, we have $X_n(\omega)=0$ for all sufficiently large $n$, because eventually $1/n<\omega$. Hence
+			$
+			X_n(\omega)\to 0
+			$
+			for every $\omega\in(0,1]$, so $X_n\to 0$ almost surely. On the other hand, for $\varepsilon\in(0,1]$,
+			$
+			\mathbb{P}(|X_n|>\varepsilon)=\mathbb{P}(X_n=1)=\frac{1}{n}.
+			$
+			Thus
+			$
+			\sum_{n=1}^\infty \mathbb{P}(|X_n|>\varepsilon)
+			=
+			\sum_{n=1}^\infty \frac{1}{n}
+			=
+			\infty.
+			$
+			So the convergence is not fast in probability.
+			
+			\item[(iii)] \emph{Almost sure convergence, but not convergence in $\mathbb{L}^1$.}
+			
+			Define
+			$
+			X_n(\omega):=n\,\mathbf{1}_{(0,1/n]}(\omega).
+			$
+			Again, for each fixed $\omega>0$, we have $X_n(\omega)=0$ for all sufficiently large $n$, so
+			$
+			X_n(\omega)\to 0
+			$
+			for every $\omega\in(0,1]$. Hence $X_n\to 0$ almost surely. But
+			$
+			\mathbb{E}[|X_n|]
+			=
+			\int_0^1 n\,\mathbf{1}_{(0,1/n]}(\omega)\,d\omega
+			=
+			n\cdot \frac{1}{n}
+			=
+			1
+			$
+			for all $n$. Therefore
+			$
+			\mathbb{E}[|X_n-0|]=1 \not\to 0,
+			$
+			so $X_n$ does not converge to $0$ in $\mathbb{L}^1$.
+			
+		\end{enumerate}
+		
+		
+		\clearpage
+		
+		\section{Question 5}
+		
+		{\color{deepred}\fontspec{Georgia} HW6 Q12 The Concentration of Measure Phenomenon}
+			
+			\begin{itemize}
+				
+				\item[(i)] Suppose $X_1,X_2,\cdots$ are square-integrable random variables with
+				$m=\mathbb{E}(X_j)$,
+				$\mathbb{E}[(X_i-m)(X_j-m)]=0$ for $i\ne j$, and
+				$\operatorname{Var}(X_j)=\mathbb{E}[(X_j-m)^2]\le C$
+				for all $j$ and some constants $m$ and $C>0$.
+				
+				Show that, both in $\mathbb{L}^2$ and in probability,
+				\[
+				\lim_{n\to\infty}\frac{1}{n}\sum_{j=1}^n X_j = m.
+				\]
+				
+				\item[(ii)] Suppose now that $Y_1,Y_2,\cdots$ are independent random variables with
+				common distribution uniform on $(-1,1)$.
+				Argue that
+				\[
+				\lim_{n\to\infty}\frac{1}{n}\sum_{j=1}^n Y_j^2=\frac{1}{3}
+				\]
+				holds in probability. (Does this hold also in a stronger sense?)
+				
+				\item[(iii)] Consider the cube $\mathbb{K}^n := (-1,1)^n$ in $\mathbb{R}^n$.
+				Justify the statement:
+				
+				\emph{``For $n$ large, most of the volume of this cube is concentrated very
+					near the sphere of radius $\sqrt{n/3}$ in $\mathbb{R}^n$.''}
+				
+				Establish for every $\varepsilon\in(0,1)$ that
+				\[
+				\lim_{n\to\infty}
+				\frac{1}{2^n}\lambda_n\!\left(A_{n,\varepsilon}\cap\mathbb{K}^n\right)=1,
+				\]
+				where $\lambda_n$ denotes Lebesgue measure in $\mathbb{R}^n$ and
+				$\lambda_n(\mathbb{K}^n)=2^n$, and
+				\[
+				A_{n,\varepsilon}
+				=
+				\left\{
+				y\in\mathbb{R}^n:
+				\frac{n}{3}(1-\varepsilon)
+				\le
+				y_1^2+\cdots+y_n^2
+				\le
+				\frac{n}{3}(1+\varepsilon)
+				\right\}.
+				\]
+				
+			\end{itemize}
+		
+		is a ``thin crust'' around the sphere of radius $\sqrt{n/3}$.
+		
+		\textbf{Answer} 
+		
+		\begin{enumerate}
+			
+			\item[(i)] Let
+			$
+			\overline{X}_n:=\frac{1}{n}\sum_{j=1}^n X_j.
+			$
+			We show that $\overline{X}_n\to m$ in $\mathbb{L}^2$, hence also in probability. First,
+			$
+			\mathbb{E}(\overline{X}_n)=\frac{1}{n}\sum_{j=1}^n \mathbb{E}(X_j)=m.
+			$
+			So it suffices to estimate the variance:
+			$
+			\mathbb{E}\bigl[(\overline{X}_n-m)^2\bigr]
+			=
+			\operatorname{Var}(\overline{X}_n).
+			$
+			Now
+			$
+			\overline{X}_n-m=\frac{1}{n}\sum_{j=1}^n (X_j-m),
+			$
+			hence
+			$
+			\operatorname{Var}(\overline{X}_n)
+			=
+			\mathbb{E}\!\left[\left(\frac{1}{n}\sum_{j=1}^n (X_j-m)\right)^2\right]
+			=
+			\frac{1}{n^2}\sum_{i=1}^n\sum_{j=1}^n
+			\mathbb{E}\bigl[(X_i-m)(X_j-m)\bigr].
+			$
+			By assumption, the mixed terms vanish for $i\ne j$, so
+			$
+			\operatorname{Var}(\overline{X}_n)
+			=
+			\frac{1}{n^2}\sum_{j=1}^n \operatorname{Var}(X_j)
+			\le
+			\frac{1}{n^2}\sum_{j=1}^n C
+			=
+			\frac{C}{n}.
+			$
+			Therefore
+			$
+			\mathbb{E}\bigl[(\overline{X}_n-m)^2\bigr]\le \frac{C}{n}\to 0,
+			$
+			which proves $\overline{X}_n\to m$ in $\mathbb{L}^2$.
+			Since $\mathbb{L}^2$ convergence implies convergence in probability
+			(by Chebyshev's inequality: for every $\varepsilon>0$,
+			$
+			\mathbb{P}(|\overline{X}_n-m|>\varepsilon)
+			\le
+			\frac{\mathbb{E}[|\overline{X}_n-m|^2]}{\varepsilon^2}
+			=
+			\frac{\operatorname{Var}(\overline{X}_n)}{\varepsilon^2}
+			\le
+			\frac{C}{n\varepsilon^2}
+			\to 0),
+			$
+			we also conclude $\overline{X}_n\to m$ in probability.
+			
+			\item[(ii)] Let $X_j:=Y_j^2$. Since $Y_j\sim \mathrm{Unif}(-1,1)$, the variables $X_j$ are independent and identically distributed, and
+			$
+			\mathbb{E}(X_j)=\mathbb{E}(Y_j^2)
+			=
+			\frac{1}{2}\int_{-1}^1 y^2\,dy
+			=
+			\frac{1}{2}\left[\frac{y^3}{3}\right]_{-1}^{1}
+			=
+			\frac{1}{2}\cdot\frac{2}{3}
+			=
+			\frac{1}{3}.
+			$
+			Also $0\le X_j\le 1$, so in particular $X_j\in\mathbb{L}^2$.
+			
+			Thus part (i) applies with $m=\frac{1}{3}$, and gives
+			$
+			\frac{1}{n}\sum_{j=1}^n Y_j^2
+			=
+			\frac{1}{n}\sum_{j=1}^n X_j
+			\to
+			\frac{1}{3}
+			$
+			in $\mathbb{L}^2$, hence in probability. In fact, this holds in a stronger sense: since $(X_j)$ are i.i.d.\ and integrable, the Strong Law of Large Numbers yields
+			$
+			\frac{1}{n}\sum_{j=1}^n Y_j^2 \to \frac{1}{3}
+			$
+			almost surely.
+			
+			\item[(iii)] Let $Y_1,\dots,Y_n$ be i.i.d. uniform on $(-1,1)$. Then the random vector
+			$
+			Y=(Y_1,\dots,Y_n)
+			$
+			is uniformly distributed on $\mathbb{K}^n=(-1,1)^n$, with density
+			$
+			\frac{1}{2^n}\mathbf{1}_{\mathbb{K}^n}(y).
+			$
+			Hence for any Borel set $B\subseteq \mathbb{R}^n$,
+			$
+			\mathbb{P}(Y\in B)=\frac{1}{2^n}\lambda_n(B\cap \mathbb{K}^n).
+			$
+			
+			Now
+			$
+			Y\in A_{n,\varepsilon}
+			$
+			iff
+			$
+			\frac{n}{3}(1-\varepsilon)
+			\le
+			Y_1^2+\cdots+Y_n^2
+			\le
+			\frac{n}{3}(1+\varepsilon),
+			$
+			that is,
+			$
+			Y\in A_{n,\varepsilon}
+			$
+			iff
+			$
+			\left|
+			\frac{1}{n}\sum_{j=1}^n Y_j^2-\frac13
+			\right|
+			\le
+			\frac{\varepsilon}{3}.
+			$
+			Therefore
+			$
+			\frac{1}{2^n}\lambda_n(A_{n,\varepsilon}\cap \mathbb{K}^n)
+			=
+			\mathbb{P}(Y\in A_{n,\varepsilon})
+			=
+			\mathbb{P}\!\left(
+			\left|
+			\frac{1}{n}\sum_{j=1}^n Y_j^2-\frac13
+			\right|
+			\le
+			\frac{\varepsilon}{3}
+			\right).
+			$
+			By part (ii), $\frac1n\sum_{j=1}^n Y_j^2\to \frac13$ in probability, so the right-hand side tends to $1$. Hence
+			$
+			\lim_{n\to\infty}
+			\frac{1}{2^n}\lambda_n(A_{n,\varepsilon}\cap \mathbb{K}^n)=1.
+			$
+			
+			This proves the quoted statement: for large $n$, with probability close to $1$ under the uniform distribution on $\mathbb{K}^n$, one has
+			$
+			Y_1^2+\cdots+Y_n^2\approx \frac{n}{3}.
+			$
+			So most of the volume of the cube lies in the thin spherical shell where the radius satisfies
+			$
+			\|y\|\approx \sqrt{\frac{n}{3}}.
+			$
+			
+		\end{enumerate}
+		
+		
+	\end{document}
