@@ -1,109 +1,255 @@
-\documentclass[10pt]{article}
+\documentclass[letterpaper]{article} 
 \usepackage[utf8]{inputenc}
+\linespread{0.85}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{array}
+\usepackage{fontspec}
+\usepackage{booktabs}
+\usepackage{hyperref}
 \usepackage[version=4]{mhchem}
 \usepackage{stmaryrd}
-\usepackage{bbold}
-
-\title{PROBABILITY GU4155: Spring 2026 }
-
-\author{HOMEWORK \#8\\
-Professor Ioannis Karatzas Department of Mathematics, Columbia University}
-\date{}
-
-
-%New command to display footnote whose markers will always be hidden
-\let\svthefootnote\thefootnote
-\newcommand\blfootnotetext[1]{%
-  \let\thefootnote\relax\footnote{#1}%
-  \addtocounter{footnote}{-1}%
-  \let\thefootnote\svthefootnote%
+\usepackage[dvipsnames]{xcolor}
+\colorlet{LightRubineRed}{RubineRed!70}
+\colorlet{Mycolor1}{green!10!orange}
+\definecolor{Mycolor2}{HTML}{00F9DE}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{capt-of}
+\usepackage{lipsum}
+\usepackage{fancyvrb}
+\usepackage{tabularx}
+\usepackage{listings}
+\usepackage[export]{adjustbox}
+\graphicspath{ {./images/} }
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{float}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{capt-of}
+\usepackage{tcolorbox}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{listings}
+\definecolor{deepred}{RGB}{139,0,0}
+\usepackage{hyperref} 
+\usepackage{xcolor} % For custom colors
+\lstset{
+	language=Python,                % Choose the language (e.g., Python, C, R)
+	basicstyle=\ttfamily\small, % Font size and type
+	keywordstyle=\color{blue},  % Keywords color
+	commentstyle=\color{gray},  % Comments color
+	stringstyle=\color{red},    % String color
+	numbers=left,               % Line numbers
+	numberstyle=\tiny\color{gray}, % Line number style
+	stepnumber=1,               % Numbering step
+	breaklines=true,            % Auto line break
+	backgroundcolor=\color{black!5}, % Light gray background
+	frame=single,               % Frame around the code
 }
+\usepackage{float}
+\usepackage[]{amsthm} %lets us use \begin{proof}
+	\usepackage[]{amssymb} %gives us the character \varnothing
+	
+	\title{Homework 8, MATH 4155}
+	\author{Zongyi Liu}
+	\date{Tue, Feb 24, 2026}
+	\begin{document}
+		\maketitle
+		\section{Question 1}
+		
+		
+		
+		Sometimes, bad news is better than no news at all. Let us consider the simple, symmetric random walk $\left\{S_{n}\right\}_{n \in \mathbb{N}_{0}}$ started at $S_{0}=0$, as a model for the fluctuations of the price of some financial asset in our portfolio (which may well take negative values, if we happen to owe money).
+		
+		Assume that Martha has been told that at some time $N$ with $N \in\{7,9,11, \cdots\}$ the asset is going to be worth $S_{N}=-1$. Show that by selling the asset at time
+		
+		$$
+		T=\min \left\{n \in \mathbb{N}_{0} \mid S_{n}=1\right\} \wedge N
+		$$
+		
+		(that is, by selling the first moment the asset is worth $\$ 1$ if there is such a moment before time $N$, and selling at time $N$ otherwise), Martha can secure a positive expected resell value
+		
+		$$
+		\mathbb{E}\left(S_{T} \mid S_{N}=-1\right)>0 ;
+		$$
+		
+		and this, despite the fact that initially her asset is worthless ( $S_{0}=0$ ), and despite the fact that she even knows things are going to get 'bad' in the end $\left(S_{N}=-1\right) .^{1}$\\
+		(\emph{Hint}: Recall $\mathbb{E}(X \mid A)=\mathbb{E}\left(X \mathbf{1}_{A}\right) / \mathbb{P}(A)$ and use the reflection principle to rewrite the expression you get when you apply this formula to $S_{T}(\omega)=S_{T(\omega)}(\omega)$. This will allow you to reduce the claim $\mathbb{E}\left(S_{T} \mid S_{N}=-1\right)>0$ to an inequality for the distribution of the random variable $S_{N}$, which you can then verify easily.)
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 2}
+		
+		\begin{itemize}
+			\item[(i)] Let $X_1,X_2,X_3,\cdots$ be independent random variables with common exponential distribution with parameter $\lambda>0$. What can you say about the distribution of the random variable
+			\[
+			Y_n=\lambda\left(\max_{1\le j\le n} X_j\right)-\log n,
+			\qquad \text{as } n\to\infty?
+			\]
+			
+			\item[(ii)] Let $X_1,X_2,X_3,\cdots$ be independent random variables with common ``logistic'' distribution
+			\[
+			\mathbb{P}(X_j\le x)=F(x)=\frac{1}{1+e^{-x}},\qquad x\in\mathbb{R}.
+			\]
+			What can you say about the distribution of the random variable
+			\[
+			Y_n=\max_{1\le j\le n} X_j-\log n,
+			\qquad \text{as } n\to\infty?
+			\]
+		\end{itemize}
+	
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 3}
+		
+		Show that
+		
+		$$
+		\lim _{n \rightarrow \infty} e^{-n} \sum_{k=0}^{n} \frac{n^{k}}{k!}=\frac{1}{2} .
+		$$
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 4}
+		
+		Let $X_{1}, X_{2}, \cdots$ be independent random variables on a given probability space ( $\Omega, \mathcal{F}, \mathbb{P}$ ), with $X_{1}=0$ and
+		
+		$$
+		\mathbb{P}\left(X_{n}= \pm n\right)=\frac{1}{2 n \log n}, \quad \mathbb{P}\left(X_{n}=0\right)=1-\frac{1}{n \log n}, \quad n=2,3, \cdots
+		$$
+		
+		Show that the sequence $\bar{X}_{n}:=(1 / n) \sum_{j=1}^{n} X_{j}, n \in \mathbb{N}$ converges to zero in $\mathbb{L}^{2}$, thus also in probability, but not a.e.
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 5}
+		
+		Every time Jim charges an item to his credit card, he rounds the amount to the nearest dollar in his personal records. If he has used his card 300 times in the last 12 months, what is the probability that his personal record differs from the actual total expenditure by no more than 10 dollars? (\emph{Hint}: State very precisely your assumptions, as well as the results in probability theory that support your answers. You should use this exercise to familiarize yourself with the tables of the standard normal distribution function.)
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 6}
+		
+		Let $X_{1}, X_{2}, \cdots$ be independent random variables with common distribution and $\sigma^{2}=\mathbb{E}\left(X_{1}^{2}\right)<\infty, \mathbb{E}\left(X_{1}\right)=0$. Show that
+		
+		$$
+		n^{-p} S_{n} \longrightarrow 0 \quad \text { in probability, }
+		$$
+		
+		where $p>1 / 2$ and $S_{n}=\sum_{i=1}^{n} X_{i}$. (\emph{Hint}: Apply, very carefully, the Central Limit Theorem.)
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 7}
+		
+		{\color{deepred}\fontspec{Georgia}  Walsh 5.11}
+		
+		Let $X_1,X_2,\ldots$ be independent random variables with mean zero and finite variance. Put $S_n=X_1+\cdots+X_n$.
+		\begin{enumerate}
+			\item[(a)] Let $\varepsilon>0$ and set
+			\[
+			\Lambda=\{\omega:\max_{1\le k\le n}|S_k(\omega)|\ge \varepsilon\}.
+			\]
+			Define
+			\[
+			\Lambda_k=\{\omega:\max_{1\le j\le k-1}|S_j(\omega)|<\varepsilon,\ |S_k(\omega)|\ge \varepsilon\},
+			\qquad k=1,\ldots,n.
+			\]
+			Show that the $\Lambda_k$ are disjoint and $\Lambda=\bigcup_{k=1}^n \Lambda_k$.
+			
+			\item[(b)] Show that $S_n-S_k$ is independent of $S_k$.
+			
+			\item[(c)] Show that
+			\[
+			\int_{\Lambda_k} S_n^2\,dP \ge \int_{\Lambda_k} S_k^2\,dP.
+			\]
+			[Hint: $S_n=S_k+(S_n-S_k)$.]
+			
+			\item[(d)] Deduce that
+			\[
+			E\{S_n^2\}\ge \sum_{k=1}^n \int_{\Lambda_k} X_k^2\,dP
+			\ge \varepsilon^2 P\{\Lambda\}.
+			\]
+			
+			\item[(e)] Conclude {Kolmogorov's Inequality}:
+			\begin{equation}
+				P\left\{\max_{1\le k\le n}|S_k|\ge \varepsilon\right\}
+				\le \frac{1}{\varepsilon^2} E\{S_n^2\}.
+				\tag{5.4}
+			\end{equation}
+		\end{enumerate}
+		
+		Note that if $\max_{1\le k\le n}|S_k|$ is replaced by $|S_n|$ itself, this is just Chebyshev's inequality. So Kolmogorov's inequality is a significant extension of Chebyshev's inequality. Inequalities like this will reappear in Chapter~9.
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 8}
+		
+		\subsection{Part 1}
+			{\color{deepred}\fontspec{Georgia}  Walsh 5.12 Convergence of Series}
+			
+			 Let $X_1,X_2,\ldots$ be independent random variables with mean zero and finite variance. Put $S_n=X_1+\cdots+X_n$. Show that if $\sum_{n=1}^{\infty} E\{X_n^2\}<\infty$, then $\sum_{n=1}^{\infty} X_n$ converges a.s.
+				
+			
+		
+		(\emph{Hint}: Use Kolmogorov's inequality (Exercise 5.11).)
+		
 
-%Overriding the \footnotetext command to hide the marker if its value is `0`
-\let\svfootnotetext\footnotetext
-\renewcommand\footnotetext[2][?]{%
-  \if\relax#1\relax%
-    \ifnum\value{footnote}=0\blfootnotetext{#2}\else\svfootnotetext{#2}\fi%
-  \else%
-    \if?#1\ifnum\value{footnote}=0\blfootnotetext{#2}\else\svfootnotetext{#2}\fi%
-    \else\svfootnotetext[#1]{#2}\fi%
-  \fi
-}
-
-\begin{document}
-\maketitle
-February 15, 2026
-
-Exercise \# 1: Sometimes, bad news is better than no news at all. Let us consider the simple, symmetric random walk $\left\{S_{n}\right\}_{n \in \mathbb{N}_{0}}$ started at $S_{0}=0$, as a model for the fluctuations of the price of some financial asset in our portfolio (which may well take negative values, if we happen to owe money).
-
-Assume that Martha has been told that at some time $N$ with $N \in\{7,9,11, \cdots\}$ the asset is going to be worth $S_{N}=-1$. Show that by selling the asset at time
-
-$$
-T=\min \left\{n \in \mathbb{N}_{0} \mid S_{n}=1\right\} \wedge N
-$$
-
-(that is, by selling the first moment the asset is worth $\$ 1$ if there is such a moment before time $N$, and selling at time $N$ otherwise), Martha can secure a positive expected resell value
-
-$$
-\mathbb{E}\left(S_{T} \mid S_{N}=-1\right)>0 ;
-$$
-
-and this, despite the fact that initially her asset is worthless ( $S_{0}=0$ ), and despite the fact that she even knows things are going to get 'bad' in the end $\left(S_{N}=-1\right) .^{1}$\\
-(Hint: Recall $\mathbb{E}(X \mid A)=\mathbb{E}\left(X \mathbf{1}_{A}\right) / \mathbb{P}(A)$ and use the reflection principle to rewrite the expression you get when you apply this formula to $S_{T}(\omega)=S_{T(\omega)}(\omega)$. This will allow you to reduce the claim $\mathbb{E}\left(S_{T} \mid S_{N}=-1\right)>0$ to an inequality for the distribution of the random variable $S_{N}$, which you can then verify easily.)
-
-Exercise \# 2: (i) Let $X_{1}, X_{2}, X_{3}, \cdots$ be independent random variables with common exponential distribution with parameter $\lambda>0$. What can you say about the distribution of the random variable
-
-$$
-Y_{n}=\lambda\left(\max _{1 \leq j \leq n} X_{j}\right)-\log n, \quad \text { as } n \rightarrow \infty ?
-$$
-
-(ii) Let $X_{1}, X_{2}, X_{3}, \cdots$ be independent random variables with common "logistic" distribution $\mathbb{P}\left(X_{j} \leq x\right)=F(x)=\left(1+e^{-x}\right)^{-1}, x \in \mathbb{R}$. What can you say about the distribution of the random variable
-
-$$
-Y_{n}=\max _{1 \leq j \leq n} X_{j}-\log n, \quad \text { as } n \rightarrow \infty ?
-$$
-
-\footnotetext{${ }^{1}$ So, in this case at least, "bad news is better than no news" ! And you can capitalize on this piece of bad news, provided you have enough time.
-}Exercise \# 3: Show that
-
-$$
-\lim _{n \rightarrow \infty} e^{-n} \sum_{k=0}^{n} \frac{n^{k}}{k!}=\frac{1}{2} .
-$$
-
-Exercise \# 4: Let $X_{1}, X_{2}, \cdots$ be independent random variables on a given probability space ( $\Omega, \mathcal{F}, \mathbb{P}$ ), with $X_{1}=0$ and
-
-$$
-\mathbb{P}\left(X_{n}= \pm n\right)=\frac{1}{2 n \log n}, \quad \mathbb{P}\left(X_{n}=0\right)=1-\frac{1}{n \log n}, \quad n=2,3, \cdots
-$$
-
-Show that the sequence $\bar{X}_{n}:=(1 / n) \sum_{j=1}^{n} X_{j}, n \in \mathbb{N}$ converges to zero in $\mathbb{L}^{2}$, thus also in probability, but not a.e.
-
-Exercise \# 5: Every time Jim charges an item to his credit card, he rounds the amount to the nearest dollar in his personal records. If he has used his card 300 times in the last 12 months, what is the probability that his personal record differs from the actual total expenditure by no more than 10 dollars?\\
-(Hint: State very precisely your assumptions, as well as the results in probability theory that support your answers. You should use this exercise to familiarize yourself with the tables of the standard normal distribution function.)
-
-Exercise \# 6: Let $X_{1}, X_{2}, \cdots$ be independent random variables with common distribution and $\sigma^{2}=\mathbb{E}\left(X_{1}^{2}\right)<\infty, \mathbb{E}\left(X_{1}\right)=0$. Show that
-
-$$
-n^{-p} S_{n} \longrightarrow 0 \quad \text { in probability, }
-$$
-
-where $p>1 / 2$ and $S_{n}=\sum_{i=1}^{n} X_{i}$.\\
-(Hint: Apply, very carefully, the Central Limit Theorem.)\\
-Exercise \#7: Do Problem 5.11 from Walsh (2012).\\
-Exercise \#8: Do Problems 5.12, 5.13 from Walsh (2012).\\
-(Hint: Recall Theorem $10.1(\mathrm{v})$ from the typed Lecture Notes for the course.)\\
-Exercise \# 9: For any given bounded, continuous function $f:[0, \infty) \rightarrow \mathbb{R}$, compute the limits
-
-$$
-\begin{gathered}
-\lim _{n \rightarrow \infty} \int_{0}^{1} \cdots \int_{0}^{1} f\left(\frac{x_{1}+\cdots+x_{n}}{n}\right) d x_{1} \cdots d x_{n} \\
-\lim _{n \rightarrow \infty} 2^{n} \int_{0}^{\infty} \cdots \int_{0}^{\infty} f\left(\frac{x_{1}+\cdots+x_{n}}{n}\right) e^{-2\left(x_{1}+\cdots+x_{n}\right)} d x_{1} \cdots d x_{n}
-\end{gathered}
-$$
-
-
-\end{document}
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\subsection{Part 2}
+		{\color{deepred}\fontspec{Georgia}  Walsh 5.13 Random Signs Problem}
+		
+		 Let $(a_n)$ be a sequence of real numbers. Choose the sign, positive or negative, of $a_n$ at random. Does $\sum_n \pm a_n$ converge? To answer this, let $X_1,X_2,\ldots$ be i.i.d.\ with $P\{X_n=1\}=P\{X_n=-1\}=1/2$. Let $(a_n)$ be a sequence of real numbers. Show that if $\sum_n a_n^2<\infty$, then $\sum_n a_n X_n$ converges a.s. Note: The random series actually converges if and only if the sum of squares converges, but the converse is slightly harder. The definitive result on the convergence of random series is Kolmogorov's Three Series Theorem.
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 9}
+		
+		For any given bounded, continuous function $f:[0, \infty) \rightarrow \mathbb{R}$, compute the limits
+		
+		$$
+		\begin{gathered}
+			\lim _{n \rightarrow \infty} \int_{0}^{1} \cdots \int_{0}^{1} f\left(\frac{x_{1}+\cdots+x_{n}}{n}\right) d x_{1} \cdots d x_{n} \\
+			\lim _{n \rightarrow \infty} 2^{n} \int_{0}^{\infty} \cdots \int_{0}^{\infty} f\left(\frac{x_{1}+\cdots+x_{n}}{n}\right) e^{-2\left(x_{1}+\cdots+x_{n}\right)} d x_{1} \cdots d x_{n}
+		\end{gathered}
+		$$
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		
+	\end{document}
