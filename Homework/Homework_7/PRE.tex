@@ -1,151 +1,277 @@
-\documentclass[10pt]{article}
+\documentclass[letterpaper]{article} 
 \usepackage[utf8]{inputenc}
+\linespread{0.85}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{array}
+\usepackage{fontspec}
+\usepackage{booktabs}
+\usepackage{hyperref}
 \usepackage[version=4]{mhchem}
 \usepackage{stmaryrd}
-\usepackage{bbold}
+\usepackage[dvipsnames]{xcolor}
+\colorlet{LightRubineRed}{RubineRed!70}
+\colorlet{Mycolor1}{green!10!orange}
+\definecolor{Mycolor2}{HTML}{00F9DE}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{capt-of}
+\usepackage{lipsum}
+\usepackage{fancyvrb}
+\usepackage{tabularx}
+\usepackage{listings}
+\usepackage[export]{adjustbox}
+\graphicspath{ {./images/} }
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{float}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{capt-of}
+\usepackage{tcolorbox}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{listings}
+\definecolor{deepred}{RGB}{139,0,0}
+\usepackage{hyperref} 
+\usepackage{xcolor} % For custom colors
+\lstset{
+	language=Python,                % Choose the language (e.g., Python, C, R)
+	basicstyle=\ttfamily\small, % Font size and type
+	keywordstyle=\color{blue},  % Keywords color
+	commentstyle=\color{gray},  % Comments color
+	stringstyle=\color{red},    % String color
+	numbers=left,               % Line numbers
+	numberstyle=\tiny\color{gray}, % Line number style
+	stepnumber=1,               % Numbering step
+	breaklines=true,            % Auto line break
+	backgroundcolor=\color{black!5}, % Light gray background
+	frame=single,               % Frame around the code
+}
+\usepackage{float}
+\usepackage[]{amsthm} %lets us use \begin{proof}
+	\usepackage[]{amssymb} %gives us the character \varnothing
 
-\title{PROBABILITY GU 4155: Spring 2026 }
+	\title{Homework 7, MATH 4155}
+	\author{Zongyi Liu}
+	\date{Tue, Feb 24, 2026}
+	\begin{document}
+		\maketitle
+		\section{Question 1}
+		
+		\begin{itemize}
+			\item[(i)] Suppose $\{S_n\}_{n\in\mathbb{N}_0}$ is the simple random walk started at $S_0=0$ (cf.\ Chapter 9 of Notes). What is the probability
+			\[
+			\mathbb{P}\bigl(S_1\ge 0,\cdots,S_{N-1}\ge 0 \mid S_N=x\bigr)
+			\]
+			that the random walk never took a negative value in between, given that it landed at the integer site $x>0$ on day $N$?
+			
+			\item[(ii)] Given that a game of ping-pong finished 21--18, what is the probability that the eventual victor never fell behind throughout the entire match? State very precisely your assumptions.
+		\end{itemize}
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 2}
+		
+		For the simple random walk $\left\{S_{n}\right\}_{n \in \mathbb{N}_{0}}$ started at $S_{0}=0$, consider the time
+		
+		
+		\begin{equation*}
+			T_{b}:=\inf \left\{n \in \mathbb{N} \mid S_{n}=b\right\} \tag{0.1}
+		\end{equation*}
+		
+		
+		of first visit (respectively, of first return) to the level $b \in \mathbb{N}$ (resp., $b=0$ ). As always, we take $\inf \emptyset=\infty$.\\
+		(i) For any given $k \in \mathbb{N}$, show that we have
+		
+		$$
+		\mathbb{P}_{0}\left(T_{k}=k+2 n\right)=\frac{k}{k+2 n}\binom{k+2 n}{n} p^{k+n} q^{n}, \quad n \in \mathbb{N}_{0}
+		$$
+		
+		(ii) In particular, for $p=q=1 / 2$ and $k=1$ show
+		
+		$$
+		\mathbb{P}_{0}\left(T_{1}=2 n-1\right)=\frac{1}{2 n-1}\binom{2 n-1}{n}\left(\frac{1}{2}\right)^{2 n-1}=\mathbb{P}_{0}\left(T_{0}=2 n\right), \quad n \in \mathbb{N} .
+		$$
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 3}
+		
+		Argue from first principles that convergence in probability implies vague convergence.
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 4}
+		
+		{\color{deepred}\fontspec{Georgia}  Markov-Cantelli Law of Large Numbers}
+		
+		 Consider independent random variables $X_{1}, X_{2}, \cdots$ with $\sup _{n \in \mathbb{N}} \mathbb{E}\left(X_{n}^{4}\right)<\infty$. Show that
+		
+		$$
+		\lim _{n \rightarrow \infty} \frac{1}{n} \sum_{j=1}^{n}\left(X_{j}-\mathbb{E}\left(X_{j}\right)\right)=0, \quad \text { holds a.e. }
+		$$
+		
+		(\emph{Hint}: Use Čebyšev, Borel-Cantelli and Theorem 10.1 in the Notes. Start with the case of identically distributed random variables. Note also that the full strength of independence is not necessary.)
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 5}
+		
+		Let $X_{1}, X_{2}, \cdots$ be independent random variables with $\mathbb{P}\left(X_{n}=1\right)=p_{n} \in (0,1)$ and $\mathbb{P}\left(X_{n}=0\right)=1-p_{n}$. Show that $\lim _{n \rightarrow \infty} X_{n}=0$ holds
+		
+		\begin{itemize}
+			\item in probability, if and only if $\lim _{n \rightarrow \infty} p_{n}=0$;
+			\item in $\mathbb{L}^{r}$ for $r>0$, if and only if $\lim _{n \rightarrow \infty} p_{n}=0$;
+			\item a.e., if and only if $\sum_{n \in \mathbb{N}} p_{n}<\infty$.
+		\end{itemize}
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 6}
+		
+		{\color{deepred}\fontspec{Georgia} Walsh 5.10} 
+		
+		Let $(X_n)$ be random variables and let $S_n=X_1+\cdots+X_n$. Suppose that $X_n\to 0$ a.e. Show that $S_n/n\to 0$. Show that this is no longer true for convergence in probability: $X_n\to 0$ in probability does not imply $S_n/n\to 0$ in probability, even if the $X_n$ are independent.
+		
+		(\emph{Hint}: Let $X_n$ equal $0$ and $2^n$ with probabilities $1-1/n$ and $1/n$ respectively.)
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 7}
+		
+		{\color{deepred}\fontspec{Georgia} Walsh 5.23} 
+	
+	Let $X_1,X_2,\cdots$ be a sequence of i.i.d.\ random variables with $E\{|X_1|\}=\infty$.
+	\begin{enumerate}
+	\item[(a)] Show that $\displaystyle \limsup_{n\to\infty}\frac{|X_n|}{n}=\infty$ a.s.
+	\item[(b)] Deduce that $\displaystyle \limsup_{n\to\infty}\frac{|X_1+\cdots+X_n|}{n}=\infty$.
+\end{enumerate}
 
-\author{HOMEWORK \# 7\\
-Professor Ioannis Karatzas\\
-Department of Mathematics, Columbia University}
-\date{}
+(\textit{Hint:} Recall the ``layered representation''
+\[
+\mathbb{E}(Z)=\int_0^\infty \mathbb{P}(Z>u)\,du
+\le \sum_{n\in\mathbb{N}_0}\mathbb{P}(Z>n)
+\le 1+\mathbb{E}(Z)
+\]
+for the expectation of a random variable $Z:\Omega\to[0,\infty)$. Use---what else---the (second) \textsc{Borel--Cantelli} Lemma.)
 
-\begin{document}
-\maketitle
-February 15, 2026
-
-Exercise \#1: (i) Suppose $\left\{S_{n}\right\}_{n \in \mathbb{N}_{0}}$ is the simple random walk started at $S_{0}=0$ (cf. Chapter 9 of Notes). What is the probability
-
-$$
-\mathbb{P}\left(S_{1} \geq 0, \cdots, S_{N-1} \geq 0 \mid S_{N}=x\right)
-$$
-
-that the random walk never took a negative value in between, given that it landed at the integer site $x>0$ on day $N$ ?\\
-(ii) Given that a game of ping-pong finished 21-18, what is the probability that the eventual victor never fell behind throughout the entire match ? State very precisely your assumptions.
-
-Exercise \#2: For the simple random walk $\left\{S_{n}\right\}_{n \in \mathbb{N}_{0}}$ started at $S_{0}=0$, consider the time
-
-
-\begin{equation*}
-T_{b}:=\inf \left\{n \in \mathbb{N} \mid S_{n}=b\right\} \tag{0.1}
-\end{equation*}
-
-
-of first visit (respectively, of first return) to the level $b \in \mathbb{N}$ (resp., $b=0$ ). As always, we take $\inf \emptyset=\infty$.\\
-(i) For any given $k \in \mathbb{N}$, show that we have
-
-$$
-\mathbb{P}_{0}\left(T_{k}=k+2 n\right)=\frac{k}{k+2 n}\binom{k+2 n}{n} p^{k+n} q^{n}, \quad n \in \mathbb{N}_{0}
-$$
-
-(ii) In particular, for $p=q=1 / 2$ and $k=1$ show
-
-$$
-\mathbb{P}_{0}\left(T_{1}=2 n-1\right)=\frac{1}{2 n-1}\binom{2 n-1}{n}\left(\frac{1}{2}\right)^{2 n-1}=\mathbb{P}_{0}\left(T_{0}=2 n\right), \quad n \in \mathbb{N} .
-$$
-
-Exercise \#3: Argue from first principles that convergence in probability implies vague convergence.
-
-Exercise \#4: The Markov-Cantelli Law of Large Numbers: Consider independent random variables $X_{1}, X_{2}, \cdots$ with $\sup _{n \in \mathbb{N}} \mathbb{E}\left(X_{n}^{4}\right)<\infty$. Show that
-
-$$
-\lim _{n \rightarrow \infty} \frac{1}{n} \sum_{j=1}^{n}\left(X_{j}-\mathbb{E}\left(X_{j}\right)\right)=0, \quad \text { holds a.e. }
-$$
-
-(Hint: Use Čebyšev, Borel-Cantelli and Theorem 10.1 in the Notes. Start with the case of identically distributed random variables. Note also that the full strength of independence is not necessary.)
-
-Exercise \#5: Let $X_{1}, X_{2}, \cdots$ be independent random variables with $\mathbb{P}\left(X_{n}=1\right)=p_{n} \in (0,1)$ and $\mathbb{P}\left(X_{n}=0\right)=1-p_{n}$. Show that $\lim _{n \rightarrow \infty} X_{n}=0$ holds
-
-\begin{itemize}
-  \item in probability, if and only if $\lim _{n \rightarrow \infty} p_{n}=0$;
-  \item in $\mathbb{L}^{r}$ for $r>0$, if and only if $\lim _{n \rightarrow \infty} p_{n}=0$;
-  \item a.e., if and only if $\sum_{n \in \mathbb{N}} p_{n}<\infty$.
-\end{itemize}
-
-Exercise \#6: Do Problem 5.10 from Walsh (2012).
-
-Exercise \#7: Do Problem 5.23 from Walsh (2012).\\
-(Hint: Recall the "layered representation"
-
-$$
-\mathbb{E}(Z)=\int_{0}^{\infty} \mathbb{P}(Z>u) \mathrm{d} u \leq \sum_{n \in \mathbb{N}_{0}} \mathbb{P}(Z>n) \leq 1+\mathbb{E}(Z)
-$$
-
-for the expectation of a random variable $Z: \Omega \rightarrow[0, \infty)$. Use - what else - the (second) Borel-Cantelli Lemma.)
-
-Problem \#8: For the simple random walk starting at the origin $x=0$ (with no barriers), find the probability that a given integer $b \in \mathbb{N}$ will eventually be reached.
-
-Problem \#9: Let $S_{0}, S_{1}, S_{2}, \cdots$ be an unconstrained ("no barriers") simple random walk starting at the origin $S_{0}=0$ (cf. Chapter 9 of Notes). Show that
-
-$$
-\mathbb{P}\left(S_{1} \geq 0, S_{2} \geq 0 \cdots, S_{2 n-1} \geq 0, S_{2 n}=0\right)=\frac{1}{n+1} u_{2 n}
-$$
-
-where
-
-$$
-u_{2 n}:=\frac{(2 n)!}{n!n!}(p q)^{n}
-$$
-
-is the probability of $n$ successes and $n$ failures in $2 n$ Bernoulli trials (coin tosses). Deduce
-
-$$
-\mathbb{P}\left(S_{1} \geq 0, S_{2} \geq 0 \cdots, S_{2 n-1} \geq 0 \mid S_{2 n}=0\right)=\frac{1}{n+1}
-$$
-
-Problem \#10: We place ourselves in the same setting as in Problem \#9, and recall the notation established there (cf. Chapter 9 of Notes). We also recall from class the computation
-
-$$
-\begin{aligned}
-h_{2 n}:=\mathbb{P}\left(S_{1} \neq 0, S_{2} \neq 0 \cdots, S_{2 n-1} \neq 0, S_{2 n}=0\right) & =2 \mathbb{P}\left(S_{1}>0, S_{2}>0 \cdots, S_{2 n-1}>0, S_{2 n}=0\right) \\
-& =\frac{2(p q)^{n}}{n} \frac{(2 n-2)!}{(n-1)!(n-1)!}=\frac{2 p q}{n} u_{2 n-2}
-\end{aligned}
-$$
-
-as well as the Stirling approximation
-
-$$
-k!\sim \sqrt{2 \pi k}(k / e)^{k}, \quad k \in \mathbb{N}
-$$
-
-for the factorial of an integer, in the sense that the ratio of the left- over the right-hand side converges to 1 as $n \rightarrow \infty$.
-
-We denote the time of first return to the origin for the random walk by
-
-$$
-R:=\inf \left\{k \geq 1: S_{k}=0\right\}
-$$
-
-We employ always the convention, that the infimum of the empty set is $+\infty$. In other words, on the event $\{R=\infty\}$ the random walk never returns to the origin.\\
-(i) What is the distribution of the random variable $R$ ?\\
-(ii) Show that the expected time of first return to the origin is infinite, i.e., $\mathbb{E}(R)=\infty$, in the "symmetric case" $p=q=1 / 2$.\\
-(iii) Verify that the generating function
-
-$$
-G(s):=\mathbb{E}\left(s^{R}\right)=\mathbb{E}\left(s^{R} 1_{\{R<\infty\}}\right)=\sum_{n \in \mathbb{N}} \mathbb{P}(R=2 n) s^{2 n}=\sum_{n \in \mathbb{N}} h_{2 n} s^{2 n}, \quad 0<s<1
-$$
-
-is given as
-
-$$
-G(s)=1-\sqrt{1-4 p q s^{2}}
-$$
-
-(iv) Recover from the computation in (iii) a result shown in class:
-
-The probability of the event $\{R=\infty\}$, that the random walk never returns to the origin, is
-
-$$
-\mathbb{P}(R=\infty)=|p-q|
-$$
-
-Deduce that, in the symmetric case $p=q=1 / 2$, the random walk returns eventually to the origin with probability one - even though this "may take an awfully long time", in the sense that $\mathbb{E}(R)=\infty$ holds as we have seen in (ii).\\
-(v) Deduce that $\mathbb{E}(R)=\infty$ holds always, not just in the symmetric case $p=q=1 / 2$.
-
-
-\end{document}
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 8}
+		
+		For the simple random walk starting at the origin $x=0$ (with no barriers), find the probability that a given integer $b\in\mathbb{N}$ will eventually be reached.
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 9}
+		
+		Let $S_{0}, S_{1}, S_{2}, \cdots$ be an unconstrained (``no barriers") simple random walk starting at the origin $S_{0}=0$ (cf. Chapter 9 of Notes). Show that
+		
+		$$
+		\mathbb{P}\left(S_{1} \geq 0, S_{2} \geq 0 \cdots, S_{2 n-1} \geq 0, S_{2 n}=0\right)=\frac{1}{n+1} u_{2 n}
+		$$
+		
+		where
+		
+		$$
+		u_{2 n}:=\frac{(2 n)!}{n!n!}(p q)^{n}
+		$$
+		
+		is the probability of $n$ successes and $n$ failures in $2 n$ Bernoulli trials (coin tosses). Deduce
+		
+		$$
+		\mathbb{P}\left(S_{1} \geq 0, S_{2} \geq 0 \cdots, S_{2 n-1} \geq 0 \mid S_{2 n}=0\right)=\frac{1}{n+1}
+		$$
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 10}
+		
+		We place ourselves in the same setting as in Problem \#9, and recall the notation established there (cf. Chapter 9 of Notes). We also recall from class the computation
+		
+		$$
+		\begin{aligned}
+			h_{2 n}:=\mathbb{P}\left(S_{1} \neq 0, S_{2} \neq 0 \cdots, S_{2 n-1} \neq 0, S_{2 n}=0\right) & =2 \mathbb{P}\left(S_{1}>0, S_{2}>0 \cdots, S_{2 n-1}>0, S_{2 n}=0\right) \\
+			& =\frac{2(p q)^{n}}{n} \frac{(2 n-2)!}{(n-1)!(n-1)!}=\frac{2 p q}{n} u_{2 n-2}
+		\end{aligned}
+		$$
+		
+		as well as the Stirling approximation
+		
+		$$
+		k!\sim \sqrt{2 \pi k}(k / e)^{k}, \quad k \in \mathbb{N}
+		$$
+		
+		for the factorial of an integer, in the sense that the ratio of the left- over the right-hand side converges to 1 as $n \rightarrow \infty$.
+		
+		We denote the time of first return to the origin for the random walk by
+		
+		$$
+		R:=\inf \left\{k \geq 1: S_{k}=0\right\}
+		$$
+		
+		We employ always the convention, that the infimum of the empty set is $+\infty$. In other words, on the event $\{R=\infty\}$ the random walk never returns to the origin.
+		
+		\begin{itemize}
+			\item[(i)] What is the distribution of the random variable $R$?
+			
+			\item[(ii)] Show that the expected time of first return to the origin is infinite, i.e., $\mathbb{E}(R)=\infty$, in the ``symmetric case'' $p=q=1/2$.
+			
+			\item[(iii)] Verify that the generating function
+			\[
+			G(s):=\mathbb{E}(s^{R})
+			=\mathbb{E}\bigl(s^{R}\mathbf{1}_{\{R<\infty\}}\bigr)
+			=\sum_{n\in\mathbb{N}}\mathbb{P}(R=2n)s^{2n}
+			=\sum_{n\in\mathbb{N}} h_{2n}s^{2n},
+			\qquad 0<s<1,
+			\]
+			is given as
+			\[
+			G(s)=1-\sqrt{\,1-4pqs^{2}\,}.
+			\]
+			
+			\item[(iv)] Recover from the computation in (iii) a result shown in class: The probability of the event $\{R=\infty\}$, that the random walk never returns to the origin, is
+			\[
+			\mathbb{P}(R=\infty)=|p-q|.
+			\]
+			Deduce that, in the symmetric case $p=q=1/2$, the random walk returns eventually to the origin with probability one---even though this ``may take an awfully long time'', in the sense that $\mathbb{E}(R)=\infty$ holds as we have seen in (ii).
+			
+			\item[(v)] Deduce that $\mathbb{E}(R)=\infty$ holds always, not just in the symmetric case $p=q=1/2$.
+		\end{itemize}
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		
+	\end{document}
