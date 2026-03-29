@@ -1,1 +1,195 @@
+\documentclass[letterpaper]{article} 
+\usepackage[utf8]{inputenc}
+\linespread{0.85}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{fontspec}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage[dvipsnames]{xcolor}
+\colorlet{LightRubineRed}{RubineRed!70}
+\colorlet{Mycolor1}{green!10!orange}
+\definecolor{Mycolor2}{HTML}{00F9DE}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{capt-of}
+\usepackage{lipsum}
+\usepackage{fancyvrb}
+\usepackage{tabularx}
+\usepackage{listings}
+\usepackage[export]{adjustbox}
+\graphicspath{ {./images/} }
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{float}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{capt-of}
+\usepackage{tcolorbox}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{listings}
+\definecolor{deepred}{RGB}{139,0,0}
+\usepackage{hyperref} 
+\usepackage{xcolor} % For custom colors
+\lstset{
+	language=Python,                % Choose the language (e.g., Python, C, R)
+	basicstyle=\ttfamily\small, % Font size and type
+	keywordstyle=\color{blue},  % Keywords color
+	commentstyle=\color{gray},  % Comments color
+	stringstyle=\color{red},    % String color
+	numbers=left,               % Line numbers
+	numberstyle=\tiny\color{gray}, % Line number style
+	stepnumber=1,               % Numbering step
+	breaklines=true,            % Auto line break
+	backgroundcolor=\color{black!5}, % Light gray background
+	frame=single,               % Frame around the code
+}
+\usepackage{float}
+\usepackage[]{amsthm} %lets us use \begin{proof}
+	\usepackage[]{amssymb} %gives us the character \varnothing
 
+	\title{Homework 12, MATH 4155}
+	\author{Zongyi Liu}
+	\date{Sun, Mar 29, 2026}
+	\begin{document}
+		\maketitle
+		\section{Question 1}
+		
+		
+		{\color{deepred}\fontspec{Georgia} TLN 8.2}
+		
+		Let $\Omega = \{(\omega_1, \omega_2) \mid \omega_i = 1, \ldots, 6 \text{ for } i = 1, 2\}$ consist of the 36 possible outcomes when tossing a die twice, let $\mathcal{F} = 2^\Omega$ be the collection of all subsets of $\Omega$, and define $X(\omega) = \omega_1$, $Y(\omega) = \omega_1 + \omega_2$.
+		
+		\indent Considering the partition $F_n = \{\omega \in \Omega \mid Y(\omega) = n\}$ for $n = 2, \ldots, 12$, compute $\mathbb{E}_{F_n}(X)$ for each $n$ and verify the property $\mathbb{E}(\mathbb{E}(X \mid \mathcal{G})) = \mathbb{E}(X)$.
+		
+		\bigskip
+		
+		Actually, a somewhat closer look at (8.6) suggests a more general approach. Suppose that we have an arbitrary sub-$\sigma$-algebra $\mathcal{G}$ of events in $\mathcal{F}$ and consider a random variable $X : \Omega \to [0, \infty)$ with $\mathbb{E}(X) < \infty$. Then the set function
+		\[
+		\mathbb{Q}_X(\Lambda) := \mathbb{E}(X \cdot \mathbf{1}_\Lambda) = \int_\Lambda X \, d\mathbb{P}, \qquad \Lambda \in \mathcal{G}
+		\]
+		on the right-hand side of (8.6) is non-negative, countably-additive and finite, since $\mathbb{Q}_X(\Omega) = \mathbb{E}(X) < \infty$. It is also absolutely continuous with respect to $\mathbb{P}$.
+		
+		\indent From the \textsc{Radon-Nikod\'{y}m} Theorem 5.5 we conclude that there exists a unique (up to a.e.\ equivalence) $\mathcal{G}$-measurable function $H := (d\mathbb{Q}_X / d\mathbb{P})$ from $\Omega$ into $[0, \infty)$, such that $\mathbb{Q}_X(\Lambda) = \int_\Lambda H \, d\mathbb{P}$, or equivalently $\mathbb{E}(X \cdot \chi_\Lambda) = \mathbb{E}(H \cdot \chi_\Lambda)$, holds for all $\Lambda \in \mathcal{G}$; in particular, this gives $\mathbb{E}(H) = \mathbb{E}(X) < \infty$. We shall denote this function by $\mathbb{E}(X \mid \mathcal{G})$, as indicated below (8.6).
+		
+		\indent More generally, if we are given an arbitrary integrable random variable $X : \Omega \to \mathbb{R}$, we can repeat this procedure to its positive and negative parts $X^+$ and $X^-$ and come up with an integrable, $\mathcal{G}$-measurable random variable
+		\[
+		\mathcal{X} := \mathbb{E}(X^+ \mid \mathcal{G}) - \mathbb{E}(X^- \mid \mathcal{G})
+		\]
+		that satisfies (8.6). Again, we shall denote this random variable $\mathcal{X}$ by $\mathbb{E}(X \mid \mathcal{G})$.
+		
+		\indent These remarks lead us to the following, formal approach.
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 2}
+		
+		{\color{deepred}\fontspec{Georgia} TLN 8.3}
+		
+		Let $X_1, X_2, \cdots$ be a sequence of independent, strictly positive random variables with the same, nondegenerate and continuous distribution function $F(x) = \mathbb{P}(X_k \leq x)$, $x \in \mathbb{R}$ for all $k \in \mathbb{N}$ that satisfies $F(0) = 0$. Think of $X_n$ as representing a potential reward available to you on day $t = n$, should you decide to terminate the game on that day, collect your reward, and go home.
+		
+		\indent Suppose you adopt the following rule: ``wait until the first day $t = n$ whose reward $X_n$ is strictly bigger than the first reward $X_1$ you have observed''; that is, you terminate the game at the random time
+		\[
+		T = \inf\{n \geq 2 \mid X_n > X_1\}
+		\]
+		if the indicated set is nonempty, otherwise you are condemned to keep playing forever ($T = \infty$) and collect nothing.
+		
+		\indent What is the distribution of $T$? of your actual reward $X_T \mathbf{1}_{\{T < \infty\}}$? What is the expected duration of the game? your expected reward? how does your expected reward compare to $\mathbb{E}(X_1)$, the expected reward you would have collected, had you stopped the game on the first day?
+		
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 3}
+		
+		{\color{deepred}\fontspec{Georgia} TLN 8.5 \textsc{Radon-Nikod\'{y}m} Derivatives}
+		
+		Let $\mathbb{P}$, $\mathbb{Q}$ be probability measures on $(\Omega, \mathcal{F})$ with $\mathbb{Q} \ll \mathbb{P}$ and denote by
+		\[
+		X := \frac{d\mathbb{Q}}{d\mathbb{P}}\bigg|_{\mathcal{F}}, \qquad Z := \frac{d\mathbb{Q}}{d\mathbb{P}}\bigg|_{\mathcal{G}}
+		\]
+		the Radon-Nikod\'{y}m derivatives of $\mathbb{Q}$ with respect to $\mathbb{P}$ on $\mathcal{F}$ and on $\mathcal{G}$, respectively, for some sub-$\sigma$-algebra $\mathcal{G}$ of $\mathcal{F}$. Show that, with $\mathbb{E}^{\mathbb{P}}[\,\cdot\,]$ denoting expectation with respect to $\mathbb{P}$, we have
+		\begin{equation}
+			Z = \mathbb{E}^{\mathbb{P}}(X \mid \mathcal{G}), \quad \text{a.s.} \tag{8.25}
+		\end{equation}
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 4}
+		
+		{\color{deepred}\fontspec{Georgia} TLN 8.6 Conditioning Decreases the Relative Entropy} 
+		
+		In the setting of Exercise 8.5, let us denote by
+		\[
+		H_{\mathcal{F}}(\mathbb{Q} \mid \mathbb{P}) := \mathbb{E}^{\mathbb{Q}}(\log X) = \mathbb{E}^{\mathbb{P}}(X \log X), \qquad H_{\mathcal{G}}(\mathbb{Q} \mid \mathbb{P}) := \mathbb{E}^{\mathbb{Q}}(\log Z) = \mathbb{E}^{\mathbb{P}}(Z \log Z)
+		\]
+		the relative entropy of $\mathbb{Q}$ with respect to $\mathbb{P}$ on the $\sigma$-algebras $\mathcal{F}$ and $\mathcal{G}$, respectively. Show that we have
+		\begin{equation}
+			H_{\mathcal{F}}(\mathbb{Q} \mid \mathbb{P}) \geq H_{\mathcal{G}}(\mathbb{Q} \mid \mathbb{P}). \tag{8.26}
+		\end{equation}
+		Then use this property to establish the \textsc{Pinsker-Csisz\'{a}r} \textit{inequality}
+		\begin{equation}
+			H_{\mathcal{F}}(\mathbb{Q} \mid \mathbb{P}) \geq 2 \cdot \left(||\mathbb{Q} - \mathbb{P}||_{\mathcal{F}}\right)^2, \tag{8.27}
+		\end{equation}
+		where $||\mathbb{Q} - \mathbb{P}||_{\mathcal{F}} := \sup_{A \in \mathcal{F}} |\mathbb{Q}(A) - \mathbb{P}(A)|$ is the total variation distance of the two measures $\mathbb{Q}$ and $\mathbb{P}$ on $\mathcal{F}$.
+		
+		(\textit{Hint:} For (8.26), observe that the function $f(x) = x \log x$, $x > 0$ is convex. For (8.27), start by establishing the elementary inequality
+		\[
+		q \cdot \log(q/p) + (1-q) \cdot \log\!\left((1-q)/(1-p)\right) \geq 2(p-q)^2
+		\]
+		for $0 < p, q < 1$.)
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 5}
+		
+		{\color{deepred}\fontspec{Georgia} TLN 8.7 Measurable Transformations Decrease the Relative Entropy} 
+		
+		Let $(\Omega, \mathcal{F})$ be a measurable space, and $\mu$, $\nu$ probability measures on it. Consider also another measurable space $(\Omega', \mathcal{F}')$, a measurable transformation $T : \Omega \to \Omega'$, as well as the measures $\mu'(A') := \mu(T^{-1}(A'))$, $\nu'(A') := \nu(T^{-1}(A'))$, $A' \in \mathcal{F}'$ induced on it by $\mu$, $\nu$, respectively. Finally, consider the Radon-Nikod\'{y}m derivatives $\xi := (d\nu/d\mu) : \Omega \to [0,\infty]$, $\xi' := (d\nu'/d\mu') : \Omega' \to [0,\infty]$.
+		\begin{itemize}
+			\item[(i)] Argue that $\xi'(T) = \mathbb{E}^{\mu}[\,\xi \mid \sigma(T)\,]$ holds $\mu$-a.e.
+			\item[(ii)] Show that $H_{\mathcal{F}'}(\nu' \mid \mu') \leq H_{\mathcal{F}}(\nu \mid \mu)$.
+		\end{itemize}
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 6}
+		
+		{\color{deepred}\fontspec{Georgia} TLN 8.8}
+		
+		On a complete probability space $(\Omega, \mathcal{F}, \mathbb{P})$ consider integrable random variables $X_1, \cdots, X_n$ and $X_{n+1} = X_1$, as well as sub-$\sigma$-algebras $\mathcal{F}_1, \cdots, \mathcal{F}_n$ of $\mathcal{F}$, for which
+		\[
+		\mathbb{E}(X_{i+1} \mid \mathcal{F}_i) = X_i, \qquad \mathbb{P}-\text{a.s.}
+		\]
+		holds for every $i = 1, \cdots n$. Show that $X_1 = \cdots = X_n$ holds a.e.
+		
+		(\textit{Hint:} Assume first that the $X_i$'s are square-integrable. For the general case, consider the random variables $b \wedge X_i$ and $a \vee X_i$ separately, for fixed real numbers $a$ and $b$; then look at the random variables $(a \vee X_i) \wedge b$ for $a < b$; and finally let $a \downarrow -\infty$, $b \uparrow \infty$.)
+		
+		\textbf{Answer}
+		
+		
+	\end{document}
