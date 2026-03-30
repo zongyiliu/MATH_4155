@@ -1,179 +1,291 @@
-\documentclass[10pt]{article}
+\documentclass[letterpaper]{article} 
 \usepackage[utf8]{inputenc}
+\linespread{0.85}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{array}
+\usepackage{fontspec}
+\usepackage{booktabs}
+\usepackage{hyperref}
 \usepackage[version=4]{mhchem}
 \usepackage{stmaryrd}
-\usepackage{bbold}
-
-\title{PROBABILITY GU4155: Spring 2026 \\
- HOMEWORK \# 9 \\
- Professor Ioannis Karatzas \\
- Department of Mathematics, Columbia University }
-
-\author{}
-\date{}
-
-
-%New command to display footnote whose markers will always be hidden
-\let\svthefootnote\thefootnote
-\newcommand\blfootnotetext[1]{%
-  \let\thefootnote\relax\footnote{#1}%
-  \addtocounter{footnote}{-1}%
-  \let\thefootnote\svthefootnote%
+\usepackage[dvipsnames]{xcolor}
+\colorlet{LightRubineRed}{RubineRed!70}
+\colorlet{Mycolor1}{green!10!orange}
+\definecolor{Mycolor2}{HTML}{00F9DE}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{capt-of}
+\usepackage{lipsum}
+\usepackage{fancyvrb}
+\usepackage{tabularx}
+\usepackage{listings}
+\usepackage[export]{adjustbox}
+\graphicspath{ {./images/} }
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{float}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{capt-of}
+\usepackage{tcolorbox}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{listings}
+\definecolor{deepred}{RGB}{139,0,0}
+\usepackage{hyperref} 
+\usepackage{xcolor} % For custom colors
+\lstset{
+	language=Python,                % Choose the language (e.g., Python, C, R)
+	basicstyle=\ttfamily\small, % Font size and type
+	keywordstyle=\color{blue},  % Keywords color
+	commentstyle=\color{gray},  % Comments color
+	stringstyle=\color{red},    % String color
+	numbers=left,               % Line numbers
+	numberstyle=\tiny\color{gray}, % Line number style
+	stepnumber=1,               % Numbering step
+	breaklines=true,            % Auto line break
+	backgroundcolor=\color{black!5}, % Light gray background
+	frame=single,               % Frame around the code
 }
+\usepackage{float}
+\usepackage[]{amsthm} %lets us use \begin{proof}
+	\usepackage[]{amssymb} %gives us the character \varnothing
 
-%Overriding the \footnotetext command to hide the marker if its value is `0`
-\let\svfootnotetext\footnotetext
-\renewcommand\footnotetext[2][?]{%
-  \if\relax#1\relax%
-    \ifnum\value{footnote}=0\blfootnotetext{#2}\else\svfootnotetext{#2}\fi%
-  \else%
-    \if?#1\ifnum\value{footnote}=0\blfootnotetext{#2}\else\svfootnotetext{#2}\fi%
-    \else\svfootnotetext[#1]{#2}\fi%
-  \fi
-}
+	\title{Homework 9, MATH 4155}
+	\author{Zongyi Liu}
+	\date{Sun, Mar 29, 2026}
+	\begin{document}
+		\maketitle
+		\section{Question 1}
+		
+		If $X_n \to X$ and $Y_n \to Y$ hold in probability as $n \to \infty$, show that $X_n \pm Y_n \to X \pm Y$ and $X_nY_n \to XY$ also hold in probability as $n \to \infty$.
+		
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 2}
+		
+		If $X_n \to X$ and $X_n \to Y$ hold in probability as $n \to \infty$, show that $\mathbb{P}(X = Y) = 1$.
+		
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 3}
+		
+		If $X_n \to c$ holds in distribution as $n \to \infty$ for some constant $c \in \mathbb{R}$, show that $X_n \to c$ holds also in probability as $n \to \infty$.
+		
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 4}
+		
+		If $X_n \to 0$ holds in probability as $n \to \infty$, and $f : \mathbb{R} \to \mathbb{R}$ is bounded and uniformly continuous, show that $\mathbb{E}[f(X_n)] \longrightarrow f(0)$ as $n \to \infty$.
+		
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 5}
+		
+		Calculate the characteristic function
+		\begin{equation}
+			\varphi_X(\xi) := \mathbb{E}\!\left(e^{i\xi X}\right), \qquad \xi \in \mathbb{R} \tag{0.1}
+		\end{equation}
+		for a random variable $X$ with a
+		\begin{itemize}
+			\item[(i)] \textsc{Gaussian} $\mathcal{N}(m, \sigma^2)$ distribution;
+			\item[(i)] uniform distribution on $[-a, a]$, where $a > 0$.
+		\end{itemize}
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 6}
+		
+		Calculate the characteristic function $\varphi_X(\cdot)$ as in (0.1) above, for a random variable $X$ with
+		\begin{itemize}
+			\item[(i)] an exponential distribution with parameter $\lambda > 0$;
+			\item[(ii)] a \textsc{Poisson}$(\lambda)$ distribution, where $\lambda > 0$.
+		\end{itemize}
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 7}
+		
+		\textbf{Exercise \#7:} Suppose that $X, Y$ are independent random variables with common distribution $\mu$ which has mean 0 and variance 1.
+		
+		\indent Show that $X + Y$ and $X - Y$ are independent \textit{if, and only if,} the distribution $\mu$ is standard normal (\textsc{Gaussian}). And in this case, the random variables
+		\[
+		Z := \frac{X+Y}{\sqrt{2}}, \quad W := \frac{X-Y}{\sqrt{2}} \quad \text{are independent, standard normal (\textsc{Gaussian}).}
+		\]
+		
+		(\textit{Hint:} Use without proof the \textsc{Taylor}-type expansion property $\varphi(\xi) = 1 - \left(\xi^2/2\right) + o(\xi^2)$ as $\xi \to 0$, for the characteristic function $\varphi$ of $\mu$.
+		If $X + Y$ and $X - Y$ are independent, argue that this leads to the functional equation
+		\[
+		\varphi(2\xi) = \left(\varphi(\xi)\right)^3 \varphi(-\xi), \qquad \xi \in \mathbb{R}
+		\]
+		for the characteristic function $\varphi$. Now use this equation to show that $\varphi$ never vanishes; that $\rho(\xi) := \varphi(\xi)/\varphi(-\xi) \equiv 1$ holds for all $\xi \in \mathbb{R}$; and finally that all this leads to $\varphi(\xi) = e^{-\xi^2/2}$.
+		
+		\indent Use without proof the fact that the \textsc{Fourier}-\textsc{L\'{e}vy} Inversion Theorem holds also for vectors of random variables: \textit{The distribution of a pair of random variables $(Z, W)$ is determined by its characteristic function}
+		\[
+		\mathbb{R}^2 \ni (\xi, \zeta) \mapsto \mathbb{E}\!\left(e^{i(\xi Z + \zeta W)}\right) \in \mathbb{C}\,;
+		\]
+		\textit{and these two random variables are independent if, and only if, this characteristic function factors into the product of the individual characteristic functions}
+		\[
+		\mathbb{E}\!\left(e^{i(\xi Z + \zeta W)}\right) = \mathbb{E}\!\left(e^{i\xi Z}\right) \cdot \mathbb{E}\!\left(e^{i\zeta W}\right), \qquad \forall\ (\xi, \zeta) \in \mathbb{R}^2\,.)
+		\]
 
-\begin{document}
-\maketitle
-February 15, 2026
-
-Consult Sections 6.1 and 6.3 of Chapter 6 in the book of John Walsh (2011).\\
-Exercise \#1: If $X_{n} \rightarrow X$ and $Y_{n} \rightarrow Y$ hold in probability as $n \rightarrow \infty$, show that $X_{n} \pm Y_{n} \rightarrow X \pm Y$ and $X_{n} Y_{n} \rightarrow X Y$ also hold in probability as $n \rightarrow \infty$.
-
-Exercise \#2: If $X_{n} \rightarrow X$ and $X_{n} \rightarrow Y$ hold in probability as $n \rightarrow \infty$, show that $\mathbb{P}(X=Y)=1$.
-
-Exercise \#3: If $X_{n} \rightarrow c$ holds in distribution as $n \rightarrow \infty$ for some constant $c \in \mathbb{R}$, show that $X_{n} \rightarrow c$ holds also in probability as $n \rightarrow \infty$.
-
-Exercise \#4: If $X_{n} \rightarrow 0$ holds in probability as $n \rightarrow \infty$, and $f: \mathbb{R} \rightarrow \mathbb{R}$ is bounded and uniformly continuous, show that $\mathbb{E}\left[f\left(X_{n}\right)\right] \longrightarrow f(0)$ as $n \rightarrow \infty$.
-
-Exercise \#5: Calculate the characteristic function
-
-
-\begin{equation*}
-\varphi_{X}(\xi):=\mathbb{E}\left(e^{i \xi X}\right), \quad \xi \in \mathbb{R} \tag{0.1}
-\end{equation*}
-
-
-for a random variable $X$ with a\\
-(i) Gaussian $\mathcal{N}\left(m, \sigma^{2}\right)$ distribution;\\
-(i) uniform distribution on $[-a, a]$, where $a>0$.
-
-Exercise \#6: Calculate the characteristic function $\varphi_{X}(\cdot)$ as in (0.1) above, for a random variable $X$ with\\
-(i) an exponential distribution with parameter $\lambda>0$;\\
-(ii) a $\operatorname{Poisson}(\lambda)$ distribution, where $\lambda>0$.
-
-Exercise \#7: Suppose that $X, Y$ are independent random variables with common distribution $\mu$ which has mean 0 and variance 1 .
-
-Show that $X+Y$ and $X-Y$ are independent if, and only if, the distribution $\mu$ is standard normal (Gaussian). And in this case, the random variables
-
-$$
-Z:=\frac{X+Y}{\sqrt{2}}, \quad W:=\frac{X-Y}{\sqrt{2}} \quad \text { are independent, standard normal (GAussian). }
-$$
-
-(Hint: Use without proof the TAYLOR-type expansion property $\varphi(\xi)=1-\left(\xi^{2} / 2\right)+o\left(\xi^{2}\right)$ as $\xi \rightarrow 0$, for the characteristic function $\varphi$ of $\mu$.\\
-If $X+Y$ and $X-Y$ are independent, argue that this leads to the functional equation
-
-$$
-\varphi(2 \xi)=(\varphi(\xi))^{3} \varphi(-\xi), \quad \xi \in \mathbb{R}
-$$
-
-for the characteristic function $\varphi$. Now use this equation to show that $\varphi$ never vanishes; that $\rho(\xi):=\varphi(\xi) / \varphi(-\xi) \equiv 1$ holds for all $\xi \in \mathbb{R}$; and finally that all this leads to $\varphi(\xi)=e^{-\xi^{2} / 2}$.
-
-Use without proof the fact that the Fourier-Lévy Inversion Theorem holds also for vectors of random variables: The distribution of a pair of random variables ( $Z, W$ ) is determined by its characteristic function
-
-$$
-\mathbb{R}^{2} \ni(\xi, \zeta) \mapsto \mathbb{E}\left(e^{i(\xi Z+\zeta W)}\right) \in \mathbb{C}
-$$
-
-and these two random variables are independent if, and only if, this characteristic function factors into the product of the individual characteristic functions
-
-$$
-\left.\mathbb{E}\left(e^{i(\xi Z+\zeta W)}\right)=\mathbb{E}\left(e^{i \xi Z}\right) \cdot \mathbb{E}\left(e^{i \zeta W}\right), \quad \forall(\xi, \zeta) \in \mathbb{R}^{2} .\right)
-$$
-
-Exercise \#8: For a given $\lambda>0$, let us denote by $X(\lambda)$ a random variable with a Poisson( $\lambda$ ) distribution.\\
-(i) Use the Central Limit Theorem to argue that
-
-$$
-\frac{X(n)-n}{\sqrt{n}} \longrightarrow Z \sim N(0,1) \text { holds in distribution, as } n \rightarrow \infty
-$$
-
-(i) Use characteristic functions, and NOT the Central Limit Theorem, to argue that
-
-$$
-\frac{X\left(\lambda_{n}\right)-\lambda_{n}}{\sqrt{\lambda_{n}}} \longrightarrow Z \sim N(0,1) \quad \text { holds in distribution, as } n \rightarrow \infty
-$$
-
-for any sequence of positive numbers $\lambda_{n} \uparrow \infty$.\\
-(Hint: At some point you may want to write a TAYLOR-type expansion of $e^{i \xi \sqrt{\lambda}}$.)\\
-Exercise \#9: The Weak Law of Large Numbers, Revisited. Let $X_{1}, X_{2}, \cdots$ be independent random variables with common distribution and $\mathbb{E}\left(\left|X_{1}\right|\right)<\infty$. Denoting $S_{n}:= \sum_{j=1}^{n} X_{j}$, use characteristic functions to prove the Weak Law of Large Numbers
-
-$$
-\frac{S_{n}}{n} \rightarrow m:=\mathbb{E}\left(X_{1}\right), \quad \text { in probability, as } n \rightarrow \infty .
-$$
-
-(Hint: Use freely the first-order Taylor expansion
-
-$$
-f(x)=f(0)+x f^{\prime}(0)+x \int_{0}^{1}\left(f^{\prime}(u x)-f^{\prime}(0)\right) \mathrm{d} u, \quad x \in \mathbb{R}
-$$
-
-for the function $f(x)=e^{i x}$, in order to show
-
-$$
-\mathbb{E}\left[\exp \left\{i \frac{\xi}{n} S_{n}\right\}\right] \rightarrow e^{i \xi m} \quad \text { as } \quad n \rightarrow \infty, \quad \text { for every } \quad \xi \in \mathbb{R}
-$$
-
-Use then freely the Lévy continuity theorem for characteristic functions, as well as Exercise \#3 above, to conclude.)
-
-Exercise \#10: The Laplace Inversion Theorem. ${ }^{1}$ Let $X: \Omega \rightarrow[0, \infty)$ be a random variable with distribution $\mu$, distribution function
-
-$$
-F(x):=\mathbb{P}(X \leq x)=\mu((-\infty, x])=\mu([0, x])=\int_{\mathbb{R}} \mathbf{1}_{[0, x]}(\theta) \mathrm{d} \mu(\theta), \quad x \in \mathbb{R}
-$$
-
-and Laplace transform
-
-$$
-\widehat{F}(\lambda):=\mathbb{E}\left(e^{-\lambda X}\right)=\int_{[0, \infty)} e^{-\lambda x} \mathrm{~d} \mu(x), \quad \lambda \in(0, \infty)
-$$
-
-Show that the Laplace transform $\widehat{F}$ determines the distribution function $F$, using the strong law of large numbers and the following steps:\\
-(a) Show that the derivatives of this LAPLACE transform $\widehat{F}$ are given by
-
-$$
-\frac{\partial^{k}}{\partial \lambda^{k}} \widehat{F}(\lambda) \equiv \widehat{F}^{(k)}(\lambda)=\int_{[0, \infty)}(-1)^{k} x^{k} e^{-\lambda x} \mathrm{~d} \mu(x), \quad \lambda \in(0, \infty), k \in \mathbb{N}
-$$
-
-(In other words, justify the interchange of the operations of differentiation and integration. Once you have done this for $k=1$, it should be obvious also for $k \geq 2$.)\\
-(b) Suppose that $Z_{1}(\theta), Z_{2}(\theta), \cdots$ are independent random variables, and have the same Poisson distribution with parameter $\theta=\mathbb{E}\left(Z_{k}(\theta)\right)$. Use the weak law of large numbers, to argue that
-
-$$
-\mathbb{P}\left(\frac{1}{n} \sum_{k=1}^{n} Z_{k}(\theta) \leq x\right) \longrightarrow \begin{cases}1, & \text { if } x>\theta \\ 0, & \text { if } x<\theta\end{cases}
-$$
-
-and thus
-
-$$
-\sum_{k \leq n x} e^{-n \theta} \frac{(n \theta)^{k}}{k!} \longrightarrow \begin{cases}1, & \text { if } x>\theta \\ 0, & \text { if } x<\theta\end{cases}
-$$
-
-What is the above limit, if $x=\theta$ ?\\
-(c) Conclude that, for any $x \in[0, \infty)$ which is a continuity point of the distribution function $F$, we have
-
-$$
-\sum_{k \leq n x} \frac{(-1)^{k}}{k!} n^{k} \widehat{F}^{(k)}(n) \longrightarrow F(x)
-$$
-
-\footnotetext{${ }^{1}$ We stated in class, without proof, the celebrated Fourier-Lévy Inversion Theorem. This exercise deals with a "kinder, gentler" version of this result; it applies to measures supported on the positive half-line $[0, \infty)$ and thus uses Laplace, as opposed to Fourier, transforms.
-}
-(d) Argue that the distribution function $F$ (thus also the measure $\mu$ ) is determined uniquely from the Laplace transform $\widehat{F}$.
-
-Exercise \#11: Do Problem 6.22, page 175 in Walsh.\\
-Exercise \#12: Do Problem 6.23, page 175 in Walsh.
-
-
-\end{document}
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 8}
+		
+		For a given $\lambda > 0$, let us denote by $X(\lambda)$ a random variable with a \textsc{Poisson}$(\lambda)$ distribution.
+		
+		(i) Use the Central Limit Theorem to argue that
+		\[
+		\frac{X(n) - n}{\sqrt{n}} \longrightarrow Z \sim N(0,1) \quad \text{holds in distribution, as } n \to \infty.
+		\]
+		
+		(i) Use characteristic functions, and NOT the Central Limit Theorem, to argue that
+		\[
+		\frac{X(\lambda_n) - \lambda_n}{\sqrt{\lambda_n}} \longrightarrow Z \sim N(0,1) \quad \text{holds in distribution, as } n \to \infty,
+		\]
+		for \textit{any} sequence of positive numbers $\lambda_n \uparrow \infty$.
+		(\textit{Hint:} At some point you may want to write a \textsc{Taylor}-type expansion of $e^{i\xi\sqrt{\lambda}}$.)
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 9}
+		
+		The Weak Law of Large Numbers, Revisited. Let $X_1,X_2,\cdots$ be independent random variables with common distribution and $\mathbb{E}(|X_1|)<\infty$. Denoting $S_n:=\sum_{j=1}^n X_j$, use characteristic functions to prove the Weak Law of Large Numbers
+		\[
+		\frac{S_n}{n}\to m:=\mathbb{E}(X_1), \qquad \text{in probability, as } n\to\infty.
+		\]
+		
+		(\emph{Hint:} Use freely the first-order Taylor expansion
+		\[
+		f(x)=f(0)+x f'(0)+x\int_0^1\bigl(f'(ux)-f'(0)\bigr)\,du, \qquad x\in\mathbb{R}
+		\]
+		for the function $f(x)=e^{ix}$, in order to show
+		\[
+		\mathbb{E}\left[\exp\left\{i\frac{\xi}{n}S_n\right\}\right]\longrightarrow e^{i\xi m}
+		\qquad \text{as } n\to\infty,\ \text{for every } \xi\in\mathbb{R}.
+		\]
+		Use then freely the L\'evy continuity theorem for characteristic functions, as well as Exercise \#3 above, to conclude.)
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 10}
+		{\color{deepred}\fontspec{Georgia} 
+		 Laplace Inversion Theorem \footnote{We stated in class, without proof, the celebrated Fourier--L\'evy Inversion Theorem. This exercise deals with a ``kinder, gentler'' version of this result; it applies to measures supported on the positive half-line $[0,\infty)$ and thus uses Laplace, as opposed to Fourier, transforms.}}
+		 
+		 
+		 Let $X:\Omega\to[0,\infty)$ be a random variable with distribution $\mu$, distribution function
+		\[
+		F(x):=\mathbb{P}(X\le x)=\mu((-\infty,x])=\mu([0,x])=\int_{\mathbb{R}}\mathbf{1}_{[0,x]}(\theta)\,d\mu(\theta), \qquad x\in\mathbb{R}
+		\]
+		and Laplace transform
+		\[
+		\widehat{F}(\lambda):=\mathbb{E}(e^{-\lambda X})=\int_{[0,\infty)} e^{-\lambda x}\,d\mu(x), \qquad \lambda\in(0,\infty).
+		\]
+		
+		Show that the Laplace transform $\widehat{F}$ determines the distribution function $F$, using the strong law of large numbers and the following steps:
+		\begin{itemize}
+			\item[(a)] Show that the derivatives of this Laplace transform $\widehat{F}$ are given by
+			\[
+			\frac{\partial^k}{\partial\lambda^k}\,\widehat{F}\equiv \widehat{F}^{(k)}(\lambda)=\int_{[0,\infty)}(-1)^k x^k e^{-\lambda x}\,d\mu(x), \qquad \lambda\in(0,\infty),\ k\in\mathbb{N}.
+			\]
+			(In other words, justify the interchange of the operations of differentiation and integration. Once you have done this for $k=1$, it should be obvious also for $k\ge 2$.)
+			
+			\item[(b)] Suppose that $Z_1(\theta),Z_2(\theta),\cdots$ are independent random variables, and have the same Poisson distribution with parameter $\theta=\mathbb{E}(Z_k(\theta))$. Use the weak law of large numbers, to argue that
+			\[
+			\mathbb{P}\left(\frac{1}{n}\sum_{k=1}^n Z_k(\theta)\le x\right)\longrightarrow
+			\begin{cases}
+				1, & \text{if } x>\theta,\\
+				0, & \text{if } x<\theta,
+			\end{cases}
+			\]
+			and thus
+			\[
+			\sum_{k\le nx} e^{-n\theta}\frac{(n\theta)^k}{k!}\longrightarrow
+			\begin{cases}
+				1, & \text{if } x>\theta,\\
+				0, & \text{if } x<\theta.
+			\end{cases}
+			\]
+			What is the above limit, if $x=\theta$?
+			
+			\item[(c)] Conclude that, for any $x\in[0,\infty)$ which is a continuity point of the distribution function $F$, we have
+			\[
+			\sum_{k\le nx}\frac{(-1)^k}{k!}\,n^k\,\widehat{F}^{(k)}(n)\longrightarrow F(x).
+			\]
+			
+			\item[(d)] Argue that the distribution function $F$ (thus also the measure $\mu$) is determined uniquely from the Laplace transform $\widehat{F}$.
+		\end{itemize}
+	
+	
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 11}
+		
+		{\color{deepred}\fontspec{Georgia} Walsh 6.22}
+		
+		\begin{itemize}
+			\item[(a)] Show that if $(X_n)$ and $(Y_n)$ converge in probability to $X$ and $Y$, respectively, that $(X_n + Y_n)$ converges in distribution to $X + Y$.
+			\item[(b)] Give an example of random variables $(X_n)$, $(Y_n)$, $X$ and $Y$ on the same probability space such that $X_n$ and $Y_n$ converge in distribution to $X$ and $Y$, respectively, but $X_n + Y_n$ does not converge in distribution to $X + Y$.
+		\end{itemize}
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 12}
+		
+		{\color{deepred}\fontspec{Georgia} Walsh 6.23}
+		
+		Let $X$, $(X_n)$, $(Y_n)$ be random variables on the same probability space, such that $(X_n)$ converges in distribution to $X$, and $(Y_n)$ converges in distribution to a constant $c$. Show that
+		\begin{itemize}
+			\item[(a)] $X_n + Y_n \Longrightarrow X + c$ and
+			\item[(b)] $Y_n X_n \Longrightarrow cX$.
+		\end{itemize}
+		(\emph{Hint}: Show first that $Y_n$ converges in probability.)
+		
+		\textbf{Answer}
+		
+		
+	\end{document}
