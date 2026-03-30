@@ -1,1 +1,262 @@
+\documentclass[letterpaper]{article} 
+\usepackage[utf8]{inputenc}
+\linespread{0.85}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{fontspec}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage[dvipsnames]{xcolor}
+\colorlet{LightRubineRed}{RubineRed!70}
+\colorlet{Mycolor1}{green!10!orange}
+\definecolor{Mycolor2}{HTML}{00F9DE}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{capt-of}
+\usepackage{lipsum}
+\usepackage{fancyvrb}
+\usepackage{tabularx}
+\usepackage{listings}
+\usepackage[export]{adjustbox}
+\graphicspath{ {./images/} }
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{float}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{capt-of}
+\usepackage{tcolorbox}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{listings}
+\definecolor{deepred}{RGB}{139,0,0}
+\usepackage{hyperref} 
+\usepackage{xcolor} % For custom colors
+\lstset{
+	language=Python,                % Choose the language (e.g., Python, C, R)
+	basicstyle=\ttfamily\small, % Font size and type
+	keywordstyle=\color{blue},  % Keywords color
+	commentstyle=\color{gray},  % Comments color
+	stringstyle=\color{red},    % String color
+	numbers=left,               % Line numbers
+	numberstyle=\tiny\color{gray}, % Line number style
+	stepnumber=1,               % Numbering step
+	breaklines=true,            % Auto line break
+	backgroundcolor=\color{black!5}, % Light gray background
+	frame=single,               % Frame around the code
+}
+\usepackage{float}
+\usepackage[]{amsthm} %lets us use \begin{proof}
+	\usepackage[]{amssymb} %gives us the character \varnothing
 
+	\title{Homework 10, MATH 4155}
+	\author{Zongyi Liu}
+	\date{Sun, Mar 29, 2026}
+	\begin{document}
+		\maketitle
+		\section{Question 1}
+
+		
+		Given a \textsc{Markov} Chain $\mathfrak{X} = \{X_0, X_1, \cdots\}$ with countable state space $\mathcal{S}$ and transition probability matrix $\mathcal{P}$, we fix a subset $A \subseteq \mathcal{S}$ of states. Show that the vector of expected hitting times $k^A = \{k^A(x)\}_{x \in \mathcal{S}}$ with
+		\[
+		k^A(x) := \mathbb{E}_x(H^A), \qquad H^A := \min\{n \in \mathbb{N}_0 \mid X_n \in A\}
+		\]
+		is the minimal nonnegative solution to the system of linear equations
+		\[
+		k^A(x) = 0, \quad x \in A \qquad \text{and} \qquad k^A(x) = 1 + \sum_{y \notin A} p_{xy}\, k^A(y), \quad x \notin A.
+		\]
+		
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 2}
+		
+		Suppose a virus can exist in $N$ different strains, and that in each generation either it stays the same or --- with probability $\alpha \in (0,1)$ --- mutates to another strain, chosen ``at random'' (that is, with equal probabilities among the remaining strains, and independently of what has happened in previous generations).
+		
+		 What is the probability that, in the $n^{th}$ generation, the strain is the same as it was at the beginning (that is, in the $0^{th}$ generation)?
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 3}
+		
+		
+		Consider a simple random walk $S_n = s_0 + \sum_{j=1}^{n} X_j$, $n \in \mathbb{N}$ with given initial position $s_0 \in \mathbb{R}$, and the sequence $M_n := \max\{s_0, S_1, \cdots, S_n\}$ for $n \in \mathbb{N}_0$ of its current maxima. Prove or disprove:
+		\begin{itemize}
+			\item[(i)] $\{M_n\}_{n \in \mathbb{N}_0}$ is a \textsc{Markov} chain;
+			\item[(ii)] $\{(S_n, M_n)\}_{n \in \mathbb{N}_0}$ is a \textsc{Markov} chain;
+			\item[(iii)] $\{|S_n|\}_{n \in \mathbb{N}_0}$ is a \textsc{Markov} chain.
+		\end{itemize}
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 4}
+		
+		Consider a \textsc{Markov} chain $\mathfrak{X} = \{X_n\}_{n \in \mathbb{N}_0}$ with state space partitioned as $\mathcal{S} = \cup A_k$ into (at most) countably many disjoint sets. Let $\mathfrak{Y} = \{Y_n\}_{n \in \mathbb{N}_0}$ be a process that takes the value $y_k$ whenever the chain $\mathfrak{X}$ lies in the set $A_k$. Show that $\mathfrak{Y}$ is also a \textsc{Markov} chain, provided $p_{i_1 j} = p_{i_2 j}$ whenever $i_1$ and $i_2$ are in the same set $A_k$.
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 5}
+		Consider a \textsc{Markov} Chain $\mathfrak{X} = \{X_0, X_1, \cdots\}$ with state space $\mathcal{S} = \{0, 1, 2\}$ and transition probability matrix
+		\[
+		\mathcal{P} = \begin{pmatrix} 1 & 0 & 0 \\ 1/4 & 1/2 & 1/4 \\ 0 & 0 & 1 \end{pmatrix}.
+		\]
+		Determine $\lim_{n \to \infty} \mathbb{P}_j(X_n = i)$ for $i, j = 0, 1, 2$.
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 6}
+		
+		A desperate gambler has only \$1, but needs \$5. He plays a (fair) coin-tossing game, and adopts the following strategy: On any given toss, he wagers all he has, or the amount necessary to reach his goal---whichever of the two is smaller. This way, his ``transition probabilities'' are $p_{00} = p_{55} = 1$ and
+		\[
+		p_{12} = p_{10} = p_{24} = p_{20} = p_{35} = p_{31} = p_{45} = p_{43} = 1/2\,.
+		\]
+		What is the expected value of the time it will take him, starting with \$1, either to reach his goal or to lose everything?
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 7}
+		
+		\begin{itemize}
+			\item[(a)] A flea hops around on the vertices of a triangle, with all jumps equally likely. Find the probability that, after $n$ hops, the flea is back where it started.
+			\item[(b)] A second flea also hops around on the vertices of a triangle, but this flea is twice as likely to jump counterclockwise as it is to jump clockwise. What is the probability that, after $n$ hops, the flea is back where it started?
+		\end{itemize}
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 8}
+		
+		Identify the communicating classes of the \textsc{Markov} Chain $(X_n)_{n \geq 0}$ with state space $\mathcal{I} = \{0, 1, 2, 3, 4\}$ and transition probability matrix
+		\[
+		\mathcal{P} = \begin{pmatrix}
+			1/2 & 0   & 0   & 0   & 1/2 \\
+			0   & 1/2 & 0   & 1/2 & 0   \\
+			0   & 0   & 1   & 0   & 0   \\
+			0   & 1/4 & 1/4 & 1/4 & 1/4 \\
+			1/2 & 0   & 0   & 0   & 1/2
+		\end{pmatrix}.
+		\]
+		\begin{itemize}
+			\item[(a)] Which of these are closed?
+			\item[(b)] Which of these classes are recurrent, and which are transient?
+		\end{itemize}
+		(\textit{Hint:} Draw the transition graph of the chain.)
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 9}
+		
+		{\color{deepred}\fontspec{Georgia}  First-Passage Decompositions} 
+		
+		Denote by
+		\[
+		T_j := \min\{n \geq 1 : X_n = j\}
+		\]
+		the first passage time of a \textsc{Markov} Chain to a given state $j$, set
+		\[
+		f_{ij}^{(n)} := \mathbb{P}_i(T_j = n), \qquad n \geq 0, \quad (i,j) \in \mathcal{I} \times \mathcal{I}
+		\]
+		and note $f_{ij}^{(0)} = 0$ even for $i = j$.
+		
+		\begin{itemize}
+			\item[(a)] Justify the identity
+			\[
+			p_{ij}^{(n)} = \sum_{k=1}^{n} f_{ij}^{(k)}\, p_{jj}^{(n-k)}, \qquad n \geq 1
+			\]
+			and note that $p_{ij}^{(0)} = \delta_{ij}$ holds, where $\delta_{ij} := \mathbf{1}_{i=j}$ is the ``\textsc{Kronecker} delta''.
+			
+			\item[(b)] Deduce the identity
+			\[
+			P_{ij}(s) = \delta_{ij} + F_{ij}(s)\, P_{jj}(s), \qquad (i,j) \in \mathcal{I} \times \mathcal{I}
+			\]
+			for the generating functions
+			\[
+			P_{ij}(s) := \sum_{n \in \mathbb{N}_0} p_{ij}^{(n)} s^n, \qquad F_{ij}(s) := \sum_{n \in \mathbb{N}_0} f_{ij}^{(n)} s^n, \qquad 0 < s < 1,
+			\]
+			where $\mathbb{N}_0 := \{0, 1, 2, \cdots\}$.
+			
+			\item[(c)] Deduce from all this, that $\mathbb{P}_i(T_i < \infty) = 1$ holds, if and only if
+			\[
+			\sum_{n \in \mathbb{N}_0} p_{ii}^{(n)} = \infty.
+			\]
+			\textit{Hint:} Use freely the so-called \textsc{Abel}'s Lemma: \textit{If $\{a_k\}_{k \in \mathbb{N}_0}$ is a sequence of non-negative numbers with} $\limsup_{k \to \infty} (a_k)^{1/k} \leq 1$, \textit{then we have}
+			\[
+			\lim_{x \uparrow 1} \sum_{k \in \mathbb{N}_0} a_k\, x^k = \sum_{k \in \mathbb{N}_0} a_k.
+			\]
+		\end{itemize}
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 10}
+		
+		In the context of Problem 9, show
+		\begin{itemize}
+			\item[(a)] that for a given state $j$ we have $\mathbb{P}_j(T_j < \infty) < 1$, if and only if
+			\[
+			\sum_{n \in \mathbb{N}_0} p_{jj}^{(n)} < \infty
+			\]
+			holds; and
+			
+			\item[(b)] that in this case, i.e., if $\mathbb{P}_j(T_j < \infty) < 1$ for the given state $j$, then we have
+			\[
+			\sum_{n \in \mathbb{N}_0} p_{ij}^{(n)} < \infty
+			\]
+			for every state $i \in \mathcal{I}$.
+			
+			\item[(c)] Use this to argue that, for a \textsc{Markov} Chain with finite state space, there exists at least one state $j$ with $\mathbb{P}_j(T_j < \infty) = 1$ (i.e., at least one state has to be recurrent).
+		\end{itemize}
+		
+
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 11}
+		
+		
+		{\color{deepred}\fontspec{Georgia} TLN  12.10} 
+		
+		In the notation of the preceding Example, show that the generating function of the first return to the origin is
+		\[
+		\mathbb{E}_0\!\left(s^{T_0}\right) = 1 - \sqrt{1 - 4pqs^2}\,.
+		\]
+		This is the generating function of the probability distribution we computed in (9.12). Argue that, in the case $p = 1/2$, this computation leads easily to $\mathbb{E}_0(T_0) = \infty$.
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		
+	\end{document}
