@@ -1,1 +1,1 @@
-MATH 4155, a course about the measure theoretic probability.
+MATH 4155, a course about measure theoretic probability.
