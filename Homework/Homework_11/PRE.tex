@@ -1,1 +1,362 @@
+\documentclass[letterpaper]{article} 
+\usepackage[utf8]{inputenc}
+\linespread{0.85}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{fontspec}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage[version=4]{mhchem}
+\usepackage{stmaryrd}
+\usepackage[dvipsnames]{xcolor}
+\colorlet{LightRubineRed}{RubineRed!70}
+\colorlet{Mycolor1}{green!10!orange}
+\definecolor{Mycolor2}{HTML}{00F9DE}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{capt-of}
+\usepackage{lipsum}
+\usepackage{fancyvrb}
+\usepackage{tabularx}
+\usepackage{listings}
+\usepackage[export]{adjustbox}
+\graphicspath{ {./images/} }
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{float}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{capt-of}
+\usepackage{tcolorbox}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{listings}
+\definecolor{deepred}{RGB}{139,0,0}
+\usepackage{hyperref} 
+\usepackage{xcolor} % For custom colors
+\lstset{
+	language=Python,                % Choose the language (e.g., Python, C, R)
+	basicstyle=\ttfamily\small, % Font size and type
+	keywordstyle=\color{blue},  % Keywords color
+	commentstyle=\color{gray},  % Comments color
+	stringstyle=\color{red},    % String color
+	numbers=left,               % Line numbers
+	numberstyle=\tiny\color{gray}, % Line number style
+	stepnumber=1,               % Numbering step
+	breaklines=true,            % Auto line break
+	backgroundcolor=\color{black!5}, % Light gray background
+	frame=single,               % Frame around the code
+}
+\usepackage{float}
+\usepackage[]{amsthm} %lets us use \begin{proof}
+	\usepackage[]{amssymb} %gives us the character \varnothing
 
+	\title{Homework 11, MATH 4155}
+	\author{Zongyi Liu}
+	\date{Sun, Mar 29, 2026}
+	\begin{document}
+		\maketitle
+		\section{Question 1}
+		
+		We are given a Markov Chain $\mathfrak{X} = \{X_0, X_1, \cdots\}$ with countable state space $\mathcal{S}$ and transition probability matrix $\mathcal{P}$ on a probability space $(\Omega, \mathcal{F}, \mathbb{P})$. For some given $N \in \mathbb{N}$ and for some state $x \in \mathcal{S}$, we assume $\mathbb{P}(X_N = x) > 0$ and condition on the event $\{X_N = x\}$.
+		
+		\indent Show that the Markov property is preserved under such conditioning; that is, show that under $\mathbb{P}(\,\cdot \mid X_N = x)$ the random sequence $\mathfrak{X} = \{X_0, X_1, \cdots\}$ has still the Markov property, even though (typically) in a time-inhomogeneous form.
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 2}
+		
+		A professor owns $N \geq 1$ umbrellas. He walks to the office in the morning and walks home in the evening. If it is raining he likes to carry an umbrella, and if it is fine he does not. Suppose that it rains on each journey with probability $p \in (0,1)$, independently of past weather.
+		\begin{itemize}
+			\item[(i)] Describe the evolution of the Markov chain
+			\[
+			X_n = \text{number of umbrellas at home on morning of day } n \quad (n = 0, 1, \cdots, N)
+			\]
+			by a graph with labeled edges indicating the transition probabilities. (No explanatory arguments needed.)
+			\item[(ii)] Argue why this chain is irreducible, aperiodic, and positive recurrent.
+			\item[(iii)] Show that the unique invariant distribution satisfies
+			\[
+			\pi_1 = \pi_2 = \cdots = \pi_N,
+			\]
+			and determine $\pi_0$ and $\pi_N$.
+			\item[(iv)] What is the long-run proportion of journeys on which the professor gets wet? Give reasons for your answer.
+		\end{itemize}
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 3}
+		
+		A sequence $\mathfrak{X} = \{X_0, X_1, \cdots\}$ of random variables is a Markov chain with state space $\mathcal{S}$, transition probability matrix $\mathcal{P} = (p_{xy})_{(x,y) \in \mathcal{S}^2}$, and initial distribution $\mu$ if, and only if, for every $n \in \mathbb{N}$ and $(x_0, \cdots, x_n) \in \mathcal{S}^{n+1}$, we have
+		\[
+		\mathbb{P}(X_0 = x_0, X_1 = x_1, \cdots, X_n = x_n) = \mu(\{x_0\}) \cdot p_{x_0 x_1}\, p_{x_1 x_2} \cdots p_{x_{n-1} x_n}.
+		\]
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 4}
+		
+		
+		A particle undergoes Random Walk on the eight vertices of a cube, by moving from a given vertex to any of the three adjacent vertices with the same probability $1/3$, independently of where it has been in the past and when.
+		
+		\indent For two opposite vertices $x$ and $y$, calculate each of the following quantities:
+		\begin{itemize}
+			\item[(i)] The expected time $m(x) = \mathbb{E}_x(T_x)$ it takes to return to $x$, when starting there.
+			\item[(ii)] The expected time $\gamma_y(x) = \mathbb{E}_x \sum_{n=0}^{T_x - 1} \mathbf{1}_{\{X_n = y\}}$ spent at $y$ before returning to $x$.
+		\end{itemize}
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 5}
+		
+		A die is thrown repeatedly. Let $S_n$ denote the sum of the first $n$ throws, and compute the limit --- if it exists! --- of the probability
+		\[
+		\mathbb{P}\left(S_n \text{ is divisible by } 13\right).
+		\]
+		Quote very carefully all general theorems you need to use.
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 6}
+		
+		\begin{itemize}
+			\item[(i)] Show that the simple random walk on the integer lattice $\mathbb{Z}$ (to wit, $p_{x,x+1} = p \in (0,1)$, $p_{x,x-1} = q = 1-p$) is recurrent, if and only if it is symmetric ($p = 1/2$).
+			\item[(ii)] Show that the simple, symmetric random walk on the two-dimensional integer lattice $\mathbb{Z}^2$ (to wit, $p_{x,y} = 1/4$ if $\|x - y\| = 1$, and $p_{x,y} = 0$ otherwise) is recurrent.
+			\item[(ii)] Show that the simple, symmetric random walk on the three-dimensional integer lattice $\mathbb{Z}^3$ (to wit, $p_{x,y} = 1/6$ if $\|x - y\| = 1$, and $p_{x,y} = 0$ otherwise) is transient.
+		\end{itemize}
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 7}
+		
+		\textbf{Exercise \#7: Birth-and-Death Markov Chain.} Consider a random walk on the non-negative integers $\mathcal{S} = \mathbb{N}_0$, with the entries of its transition probability matrix $\mathcal{P}$ given by
+		\[
+		p_{i,i+1} = p_i \in (0,1), \qquad p_{i,i-1} = q_i := 1 - p_i \qquad \text{for } i \in \mathbb{N}
+		\]
+		and $p_{0,0} = 1$ (the origin is an absorbing state).
+		
+		\indent Suppose that we start the resulting \textsc{Markov} chain at $X_0 = x \in \mathbb{N}$: imagine a population which starts with $x$ individuals and, on each successive day, either adds or loses one individual. What is the probability $h(x)$ that the chain eventually gets absorbed at the origin; i.e., that the population becomes extinct?
+		
+		(\textit{Hint:} Write down a difference equation for the function $h(\cdot)$; consider the differences $u(x) := h(x-1) - h(x)$, $x \in \mathbb{N}$; and recall a result, proved in class, involving smallest nonnegative solutions.)
+		
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 8}
+		
+		
+		{\color{deepred}\fontspec{Georgia}  An Elementary Construction of Markov Chains in Continuous Time}
+		
+		\subsection{Part 1}
+		
+		 Suppose
+		\[
+		\mathcal{P} = \{p_{xy}\}_{(x,y) \in \mathcal{I}^2}
+		\]
+		is the transition probability matrix of an irreducible, discrete-time \textsc{Markov} Chain $\mathcal{Z} = \{Z_n\}_{n \in \mathbb{N}_0}$ with state-space $\mathcal{I}$. For simplicity, and to fix ideas, you can assume that this state-space is finite --- though this is not at all necessary for the developments below to hold.
+		
+		\indent We can turn this into a \textit{continuous-time} \textsc{Markov} \textit{Chain} $\mathcal{X} = \{X(t)\}_{0 \leq t < \infty}$ with the same state space $\mathcal{I}$, via a suitable time-change. More precisely, by having it take steps from one state to another not at fixed times $n = 0, 1, 2, \cdots$, but at the event-times of an independent \textsc{Poisson} process $\mathcal{N} = \{N(t)\}_{0 \leq t < \infty}$ with intensity $\lambda = 1$:
+		\begin{equation}
+			X(t) := Z_{N(t)}, \qquad 0 \leq t < \infty. \tag{0.1}
+		\end{equation}
+		Namely, the times $T_1, T_2, \cdots$ between transitions are independent random variables with the same exponential distribution $\mathbb{P}(T_j > u) = e^{-u}$, $u > 0$.
+		
+		\textit{Caveat, Lector:} The ``lack of memory'' property of this (exponential) distribution is necessary, for the resulting continuous-time process to have the \textsc{Markov} property.
+		
+		\indent Note also that for the trivial \textsc{Markov} Chain $Z_n \equiv n$, $n \in \mathbb{N}_0$ with state space $\mathbb{N}_0$ and transition probabilities $p_{x,x+1} \equiv 1$ for $x \in \mathbb{N}_0$, this recipe gives $X(t) = N(t)$, $0 \leq t < \infty$, that is, the \textsc{Poisson} process itself.
+		
+		\begin{itemize}
+			\item[(a)] Show that the transition probabilities of the continuous-time process defined in (0.1), are given as
+			\begin{equation}
+				\mathbb{P}_x(X(t) = y) =: \mathfrak{p}_t(x,y) = e^{-t} \sum_{k \in \mathbb{N}_0} \frac{t^k}{k!}\, p_{xy}^{(k)}, \qquad 0 \leq t < \infty, \quad (x,y) \in \mathcal{I}^2. \tag{0.2}
+			\end{equation}
+			Here, $\mathbb{P}_x(\cdot)$ stands for the conditional probability $\mathbb{P}_x(\,\cdot \mid X(0) = x)$; the $p_{xy}^{(k)}$ are the $k$-step transition probabilities for the original, discrete-time Chain; and we recall the conventions $p_{xy}^{(0)} := \mathbf{1}_{x=y}$, $\mathfrak{p}_0(x,y) := \mathbf{1}_{x=y}$.
+			
+			More generally, with arbitrary $n \in \mathbb{N}$, $0 < s_1 < s_2 < \cdots < s_n = s < t < \infty$, $(x, y_1, \cdots, y_n, z) \in \mathcal{I}^{n+2}$ and with $y = y_n$, show that we have
+			\[
+			\mathbb{P}_x\bigl(X(s_1) = y_1, \cdots, X(s_n) = y_n, X(t) = z\bigr) = \mathfrak{p}_{s_1}(x, y_1)\, \mathfrak{p}_{s_2 - s_1}(y_1, y_2) \cdots \mathfrak{p}_{s - s_{n-1}}(y_{n-1}, y_n)\, \mathfrak{p}_{t-s}(y_n, z)
+			\]
+			and deduce that the process of (0.1) is indeed a continuous-time, time-homogeneous \textsc{Markov} Chain
+			\begin{align*}
+				\mathbb{P}_x\bigl(X(t) = z \mid X(s_1) = y_1, \cdots, X(s_{n-1}) = y_{n-1}, X(s) = y\bigr) \\
+				= \mathfrak{p}_{t-s}(y, z) = \mathbb{P}_x\bigl(X(t) = z \mid X(s) = y\bigr) = \mathbb{P}_y\bigl(X(t-s) = z\bigr).
+			\end{align*}
+			\end{itemize}
+			
+				\textbf{Answer}
+			
+			\clearpage
+			
+			\subsection{Part 2}
+			\begin{itemize}
+			\item[(b)] Show that the transition probability functions in (0.2) satisfy the \textsc{Chapman-Kolmogorov} \textit{equations}
+			\begin{equation}
+				\mathfrak{p}_{s+t}(x,y) = \sum_{z \in \mathcal{I}} \mathfrak{p}_s(x,z)\, \mathfrak{p}_t(z,y), \qquad (s,t) \in [0,\infty)^2, \quad (x,y) \in \mathcal{I}^2. \tag{0.3}
+			\end{equation}
+			(\textit{Hint:} Recall the Binomial Theorem.)
+			
+			\item[(c)] Assume for simplicity from now on, that the quantities in (0.2) are continuously differentiable in their time-parameter $t$, and introduce the matrix $\mathcal{Q} = \{q(x,y)\}_{(x,y) \in \mathcal{I}^2}$ of the quantities
+			\begin{equation}
+				q(x,y) := \frac{\partial}{\partial t}\, \mathfrak{p}_t(x,y)\bigg|_{t=0}, \quad (x,y) \in \mathcal{I}^2. \tag{0.4}
+			\end{equation}
+			This is called \textit{the generator}, or \textit{the $\mathcal{Q}$-matrix}, of the continuous-time \textsc{Markov} Chain. Show that we have
+			\begin{equation}
+				\mathcal{Q} = \mathcal{P} - \mathbf{I}, \qquad \text{or equivalently} \qquad q(x,y) = p_{xy} - \mathbf{1}_{x=y}, \tag{0.5}
+			\end{equation}
+			with the notation $\mathbf{I} = \{\mathbf{1}_{x=y}\}_{(x,y) \in \mathcal{I}^2}$ for the identity matrix, and note that
+			\[
+			q(x,y) \geq 0, \quad x \neq y; \qquad \sum_{y \in \mathcal{I}} q(x,y) = 0.
+			\]
+			(\textit{Hint:} Differentiate the expression of (0.2) with respect to $t$.)
+			\end{itemize}
+		
+		\textbf{Answer}
+		
+		\clearpage
+			\subsection{Part 3}
+			\begin{itemize}
+			\item[(d)] Introduce the quantities
+			\begin{equation}
+				c(x) := -q(x,x) = \sum_{y \neq x} q(x,y) = \sum_{y \neq x} p_{xy} = 1 - p_{xx} \geq 0, \qquad x \in \mathcal{I}, \tag{0.6}
+			\end{equation}
+			and assume from now on that they are finite. Show that we have the properties
+			\begin{align*}
+				\mathbb{P}\bigl(X(t+h) = y \mid X(t) = x\bigr) &= p_{xy}\, h + o(h), \qquad t \geq 0,\ h > 0,\ y \neq x, \\
+				\mathbb{P}\bigl(X(t+h) = x \mid X(t) = x\bigr) &= 1 - c(x)\, h + o(h), \qquad t \geq 0,\ h > 0,\ y = x,
+			\end{align*}
+			where $\lim_{h \downarrow 0}(o(h)/h) = 0$, as well as
+			\begin{equation}
+				\mathfrak{p}_t(x,x) \geq e^{-c(x)t}; \qquad x \in \mathcal{I}, \quad t \in [0,\infty). \tag{0.7}
+			\end{equation}
+			How would you describe a state $x \in \mathcal{I}$ for which $c(x) = 0$?\\
+			How would you describe a state $x \in \mathcal{I}$ for which $c(x) = 1$?\\
+			(\textit{Hint:} Both sides in (0.7) are probabilities; of which events?)
+			
+			\item[(e)] Establish the \textit{Backward} \textsc{Kolmogorov} \textit{Equations}
+			\begin{equation}
+				\frac{\partial}{\partial t}\, \mathfrak{p}_t(x,y) = \sum_{z \in \mathcal{I}} q(x,z)\, \mathfrak{p}_t(z,y); \qquad (x,y) \in \mathcal{I}^2, \quad t \in [0,\infty). \tag{0.8}
+			\end{equation}
+			(\textit{Hint:} Differentiate formally (0.3) with respect to the ``backward variable'' $s$, then set $s = 0$.)
+			
+			Note that this is a system of linear ordinary differential equations for the elements of the matrix-valued function $\mathfrak{P}_t = (\mathfrak{p}_t(x,y))_{(x,y) \in \mathcal{I}^2}$, and argue that its solution is given by the matrix exponential
+			\[
+			\mathfrak{P}_t = e^{t\mathcal{Q}} = \sum_{n \in \mathbb{N}_0} \frac{t^n}{n!}\, \mathcal{Q}^n.
+			\]
+				\end{itemize}
+		
+	\textbf{Answer}
+
+\clearpage
+\subsection{Part 4}
+\begin{itemize}
+			
+			\item[(f)] Establish the \textit{Forward} \textsc{Kolmogorov} \textit{Equations}
+			\begin{equation}
+				\frac{\partial}{\partial s}\, \mathfrak{p}_s(x,y) = \sum_{z \in \mathcal{I}} \mathfrak{p}_s(x,z)\, q(z,y); \qquad (x,y) \in \mathcal{I}^2, \quad s \in [0,\infty). \tag{0.9}
+			\end{equation}
+		\end{itemize}
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 9}
+		
+		{\color{deepred}\fontspec{Georgia}   General Two-State Continuous-Time Markov Chain} 
+		
+		Let us specialize the setting of Exercise 8 to a two-state chain $\mathcal{I} = \{0, 1\}$ (hard to think of a simpler case). The most general $\mathcal{Q}$-matrix is then of the form
+		\[
+		\mathcal{Q} = \begin{pmatrix} -\beta & \beta \\ \delta & -\delta \end{pmatrix},
+		\]
+		for some real numbers $\beta \geq 0$, $\delta \geq 0$.\footnote{In the case $0 \leq \beta, \delta \leq 1$, and in accordance with Exercise 8, the stochastic matrix
+			\[
+			\mathcal{P} = \mathcal{Q} + \mathbf{I} = \begin{pmatrix} 1 - \beta & \beta \\ \delta & 1 - \delta \end{pmatrix}
+			\]
+			is the transition probability matrix of the discrete-time \textsc{Markov} chain used there, to generate this continuous-time one.}
+		
+		\begin{itemize}
+			\item[(a)] Show that the corresponding transition probabilities can now be computed explicitly as
+			\begin{align*}
+				\mathfrak{p}_t(0,0) &= \frac{\delta}{\beta+\delta} + \frac{\beta}{\beta+\delta}\, e^{-t(\beta+\delta)}, \qquad \mathfrak{p}_t(0,1) = \frac{\beta}{\beta+\delta} - \frac{\beta}{\beta+\delta}\, e^{-t(\beta+\delta)}, \\[6pt]
+				\mathfrak{p}_t(1,0) &= \frac{\delta}{\beta+\delta} - \frac{\delta}{\beta+\delta}\, e^{-t(\beta+\delta)}, \qquad \mathfrak{p}_t(1,1) = \frac{\beta}{\beta+\delta} + \frac{\delta}{\beta+\delta}\, e^{-t(\beta+\delta)}.
+			\end{align*}
+			
+			\item[(b)] Show by direct computation, that these transition probabilities satisfy the property (0.4), the \textsc{Chapman-Kolmogorov} equations (0.3), as well as the Backward \textsc{Kolmogorov} Equations (0.8) and the Forward \textsc{Kolmogorov} Equations (0.9).
+			
+			\item[(c)] Compute the limits
+			\[
+			\pi(0) := \lim_{t \to \infty} \mathfrak{p}_t(0,0) = \lim_{t \to \infty} \mathfrak{p}_t(1,0), \qquad \pi(1) := \lim_{t \to \infty} \mathfrak{p}_t(0,1) = \lim_{t \to \infty} \mathfrak{p}_t(1,1)
+			\]
+			and verify that their \textit{row vector} $\pi = (\pi(0), \pi(1))$ solves the matrix equation
+			\begin{equation}
+				\pi\, \mathcal{Q} = 0, \qquad \text{or equivalently} \qquad \pi\, \mathcal{P} = \pi, \tag{0.10}
+			\end{equation}
+			as it must (why?).
+			
+			\item[(d)] Now let us go back to the more general context of Exercise 8. Assume in that generality, that the limit
+			\[
+			\pi(y) := \lim_{t \to \infty} \mathfrak{p}_t(x, y), \qquad \forall\, x \in \mathcal{I}
+			\]
+			exists for every $y \in \mathcal{I}$. (This is certainly the case for the example in (a) right above, in fact with $\pi(0) = \delta/(\beta+\delta)$, $\pi(1) = \beta/(\beta+\delta)$.)
+			
+			How would you argue then, formally, the validity of the equation (0.10) for the row vector $\pi = (\pi(y))_{y \in \mathcal{I}}$ of limiting probabilities, in that general context?
+		\end{itemize}
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 10}
+		
+		Let $\{X(t)\}_{0 \leq t < \infty}$ and $\{Y(t)\}_{0 \leq t < \infty}$ be independent \textsc{Poisson} processes with respective rate parameters $\lambda_1$ and $\lambda_2$.
+		
+		\indent These processes measure the number of customers arriving in two different stores, store 1 and store 2, respectively.
+		\begin{itemize}
+			\item[(a)] What is the probability that a customer arrives in store 1, before any customer has arrived in store 2?
+			\item[(b)] What is the probability that, in the first hour, a total of exactly four customers have arrived at the two stores?
+			\item[(c)] Given that exactly four customers have arrived at the two stores, what is the probability that all four went to store 1?
+			\item[(d)] Let $T$ denote the time of arrival of the first customer at store 2. Then $X(T)$ is the number of customers in store 1 at the time of the first customer arrival at store 2. Find the probability distribution of $X(T)$; that is, for each $k$, find $\mathbb{P}(X(T) = k)$.
+		\end{itemize}
+		
+		\textbf{Answer}
+		
+		\clearpage
+		
+		\section{Question 11}
+		
+		Suppose that $\{X(t)\}_{0 \leq t < \infty}$ and $\{Y(t)\}_{0 \leq t < \infty}$ are independent \textsc{Poisson} processes with respective rate parameters (intensities) $\lambda_1$ and $\lambda_2$, measuring the number of calls arriving at two different phones. Let $Z(t) := X(t) + Y(t)$, $0 \leq t < \infty$.
+		\begin{itemize}
+			\item[(a)] Show that $\{Z(t)\}_{0 \leq t < \infty}$ is a \textsc{Poisson} process. What is the rate parameter for it?
+			\item[(b)] What is the probability that the first call comes on the first phone?
+			\item[(c)] Let $T$ denote the first time that at least one call has come from each of the two phones. Find the density and distribution function of the random variable $T$.
+		\end{itemize}
+		
+		\textbf{Answer}
+		
+		
+	\end{document}
